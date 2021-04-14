@@ -20,7 +20,7 @@ class PlantsListView(APIView):
 
 class PlantsDetailView(APIView):
 
-    def get_plant(self, _request, _pk):
+    def get_plant(self, _request, pk):
         try:
             return Plants.objects.get(pk=pk)
         except Plants.DoesNotExist:
