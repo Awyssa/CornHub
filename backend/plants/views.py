@@ -5,7 +5,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-# from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound
 # from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from .models import Plants
@@ -18,10 +18,10 @@ class PlantsListView(APIView):
         serialized_plants = PlantsSerializer(plants, many=True)
         return Response(serialized_plants.data, status=status.HTTP_200_OK)
 
-# class PlantDetailView(APIView):
+class PlantsDetailView(APIView):
 
-#     def get_plant(self, _request, pk):
-#         try:
-#             return Plants.objects.get(pk=pk)
-#         except Plants.DoesNotExist:
-#             raise NotFound(detail="not found")
+    def get_plant(self, _request, _pk):
+        try:
+            return Plants.objects.get(pk=pk)
+        except Plants.DoesNotExist:
+            raise NotFound(detail="not found")
