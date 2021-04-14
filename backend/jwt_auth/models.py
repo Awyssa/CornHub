@@ -10,4 +10,4 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     profile_image = models.CharField(max_length=300)
-    # saved_plants = models.ManyToManyField(‘plants.Plant’, related_name=‘plants’)
+    saved_plants = models.ManyToManyField('plants.Plants', related_name="plants")
