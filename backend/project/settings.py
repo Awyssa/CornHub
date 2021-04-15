@@ -136,7 +136,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'jwt_auth.authentication.JWTAuthentication'
-    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'jwt_auth.authentication.JWTAuthentication'
+    ],
 }
