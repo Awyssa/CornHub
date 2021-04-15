@@ -10,13 +10,14 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 
 from .models import Plants
 from .serializers.common import PlantsSerializer
+from .serializers.populated import PopulatedPlantsSerializer
 
 class PlantsListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         plants = Plants.objects.all()
-        serialized_plants = PlantsSerializer(plants, many=True)
+        serialized_plants = PopulatedPlantsSerializer(plants, many=True)
         return Response(serialized_plants.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -39,7 +40,7 @@ class PlantsDetailView(APIView):
 
     def get(self, _request, pk):
         plants = self.get_plant(pk=pk)
-        serialized_plants = PlantsSerializer(plants)
+        serialized_plants = PopulatedPlantsSerializer(plants)
         return Response(serialized_plants.data, status=status.HTTP_200_OK)
 
     def delete(self, _request, pk):
