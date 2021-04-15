@@ -9,6 +9,7 @@ from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta
 from django.conf import settings
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 import jwt
 from .serializers.common import UserSerializer
 
@@ -51,4 +52,30 @@ class LoginView(APIView):
         )
 
         return Response({ 'token': token, 'message': f'Welcome back {user_to_login.first_name}'})
-        
+
+class UserDetailView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_user(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise NotFound(detail="Woah! That user does not exist!")
+
+    def get(self, _request, pk):
+        user = self.get_user(pk=pk)
+        serialized_user = UserSerializer(user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
+
+    def delete(self, _request, pk):
+        user_to_delete = self.get_user(pk=pk)
+        user_to_delete.delete()
+        return Response(status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        user_to_edit = self.get_user(pk=pk)
+        updated_user = UserSerializer(user_to_edit, data=request.data)
+        if updated_user.is_valid():
+            updated_user.save()
+            return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
+        return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
