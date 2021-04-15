@@ -33,9 +33,22 @@ class PlantsDetailView(APIView):
         try:
             return Plants.objects.get(pk=pk)
         except Plants.DoesNotExist:
-            raise NotFound(detail="🥪 Cannot find that meal")
+            raise NotFound(detail="Woah! That plant does not exist!")
 
     def get(self, _request, pk):
         plants = self.get_plant(pk=pk)
-        serialized_meal = PlantsSerializer(plants)
-        return Response(serialized_meal.data, status=status.HTTP_200_OK)
+        serialized_plants = PlantsSerializer(plants)
+        return Response(serialized_plants.data, status=status.HTTP_200_OK)
+
+    def delete(self, _request, pk):
+        plants_to_delete = self.get_plant(pk=pk)
+        plants_to_delete.delete()
+        return Response(status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        plants_to_edit = self.get_plant(pk=pk)
+        updated_plants = PlantsSerializer(plants_to_edit, data=request.data)
+        if updated_plants.is_valid():
+            updated_plants.save()
+            return Response(updated_plants.data, status=status.HTTP_202_ACCEPTED)
+        return Response(updated_plants.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
