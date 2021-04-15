@@ -62,20 +62,29 @@ class UserDetailView(APIView):
         except User.DoesNotExist:
             raise NotFound(detail="Woah! That user does not exist!")
 
-    def get(self, _request, pk):
+    def get(self, request, pk):
         user = self.get_user(pk=pk)
-        serialized_user = UserSerializer(user)
-        return Response(serialized_user.data, status=status.HTTP_200_OK)
+        if request.user.id == user.id:
+            serialized_user = UserSerializer(user)
+            return Response(serialized_user.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, _request, pk):
+    def delete(self, request, pk):
         user_to_delete = self.get_user(pk=pk)
-        user_to_delete.delete()
-        return Response(status=status.HTTP_200_OK)
+        if request.user.id == user_to_delete.id:
+            user_to_delete.delete()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk):
         user_to_edit = self.get_user(pk=pk)
-        updated_user = UserSerializer(user_to_edit, data=request.data)
-        if updated_user.is_valid():
-            updated_user.save()
-            return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
-        return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        if request.user.id == user_to_edit.id:
+            updated_user = UserSerializer(user_to_edit, data=request.data)
+            if updated_user.is_valid():
+                updated_user.save()
+                return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
+            return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        else: 
+            return Response(status=status.HTTP_400_BAD_REQUEST)
