@@ -1,0 +1,62 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$jb5QzxeBXOmGrUso4O4jRP$3325G/soTIP74wpatLJ655h8x+KD6xBRdsTnPNd+KKw=",
+    "last_login": "2021-04-15T11:10:38.847Z",
+    "is_superuser": true,
+    "username": "admin",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-04-14T14:46:55.996Z",
+    "email": "admin@admin.com",
+    "first_name": "",
+    "last_name": "",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": [],
+    "saved_plants": [1,2]
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$PTNcgbChsiabqXOqtbYVZR$gRv++9CU6E8pDyPu8s4NopNUl3GTBWiY3BRlKZGZRuA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "cornDaddy",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-15T11:22:27.378Z",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": [],
+    "saved_plants": [1,2]
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$Dqfe3lIzHmhJHNmPzdJFYL$ESDhgJlzf6QXb4ZX2bKh4w6+a+I5LC5klzGzkeNcrHU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-15T11:28:37.210Z",
+    "email": "email",
+    "first_name": "",
+    "last_name": "",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": [],
+    "saved_plants": [1,2]
+  }
+}
+]

@@ -3,6 +3,8 @@
 # pylint: disable=missing-function-docstring
 
 from django.db import models
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class Plants(models.Model):
     name = models.CharField(max_length=50)
@@ -21,7 +23,7 @@ class Plants(models.Model):
     description = models.TextField(blank=True)
     difficulty = models.PositiveSmallIntegerField(blank=True,)
     owner = models.ForeignKey(
-        'jwt_auth.User',
+        User,
         related_name='created_meals',
         on_delete = models.CASCADE
     )
