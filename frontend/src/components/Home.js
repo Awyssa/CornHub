@@ -20,11 +20,16 @@ export const Home = () => {
       {!plantData
         ? <p> loading... </p>
         : <div>
-          <p>{plantData[0].id}</p>
-        <p>{plantData[0].name}</p>
-        <p>{plantData[0].image}</p>
-        <p>{plantData[0].sunlight}</p>
-        <p>{plantData[0].owner.username}</p>
+          {plantData.map(plant => {
+            return (
+              <>
+            <p key={plant.id}>{plant.name}</p>
+            <img className="plant-home-image" src={plant.image}></img>
+            <p>{plant.description}</p>
+            </>
+            )
+          })}
+
         </div>
       }
     </div>
