@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,17 +14,20 @@ const Login = () => {
     setFormData(newFormData)
   }
 
-  const history = useHistory()
+  // const history = useHistory()
 
-  console.log(formData)
+  // console.log(formData)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
       const response = await axios.post('/api/auth/login/', formData)
-      window.localStorage.setItem('token', response.data.token)
-      console.log(response.data.token)
-      history.push('/profile')
+      const token = response.data.token
+      localStorage.setItem('token', token)
+      // window.localStorage.setItem('id', response.data.sub)
+      console.log('token', token)
+      // history.push('/profile')
+      console.log('response.data.sub', response.data.sub)
     } catch (err) {
       // setErrors('Unauthorised')
     }
