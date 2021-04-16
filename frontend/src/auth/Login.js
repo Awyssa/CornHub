@@ -22,10 +22,10 @@ const Login = () => {
     event.preventDefault()
     try {
       const response = await axios.post('/api/auth/login/', formData)
-      const token = response.data.token
-      localStorage.setItem('token', token)
-      // window.localStorage.setItem('id', response.data.sub)
-      console.log('token', token)
+      // const token = response.data.token
+      console.log('token', response.data.token)
+      window.localStorage.setItem('token', response.data.token)
+      window.localStorage.setItem('id', response.data.sub)
       // history.push('/profile')
       console.log('response.data.sub', response.data.sub)
     } catch (err) {

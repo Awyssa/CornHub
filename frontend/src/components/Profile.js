@@ -6,12 +6,12 @@ const Profile = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const token2 = window.localStorage.getItem('token')
-      // const id2 = window.localStorage.getItem('sub')
-      console.log('id of user', token2)
-      const response = await axios.get('/api/auth/41/', {
+      const token = window.localStorage.getItem('token')
+      const id = window.localStorage.getItem('id')
+      console.log('id of user', token)
+      const response = await axios.get(`/api/auth/${id}/`, {
         headers: {
-          Authorization: `Bearer ${token2}`
+          Authorization: `Bearer ${token}`
         }
       }
       )
@@ -20,10 +20,10 @@ const Profile = () => {
     getUser()
   }, [])
 
-  console.log(userData)
+  console.log('console log of user data', userData)
   return (
     <div>
-     profile
+     {userData.username}
     </div>
   )
 }
