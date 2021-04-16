@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +14,8 @@ const Login = () => {
     setFormData(newFormData)
   }
 
-  // const history = useHistory()
-
-  // console.log(formData)
+  const history = useHistory()
+  console.log(formData)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -26,7 +25,7 @@ const Login = () => {
       console.log('token', response.data.token)
       window.localStorage.setItem('token', response.data.token)
       window.localStorage.setItem('id', response.data.sub)
-      // history.push('/profile')
+      history.push('/profile')
       console.log('response.data.sub', response.data.sub)
     } catch (err) {
       // setErrors('Unauthorised')

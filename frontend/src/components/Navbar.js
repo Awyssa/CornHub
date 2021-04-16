@@ -7,6 +7,7 @@ const MyNavbar = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
+    window.localStorage.removeItem('id')
     history.push('/')
     location.reload()
   }
