@@ -27,7 +27,7 @@ const MyNavbar = () => {
           </NavDropdown>
         </Nav>
           <Nav.Link href="/Profile">Profile</Nav.Link>
-          <Nav.Link href="/Login">Register/Login</Nav.Link>
+          <Nav.Link href="/auth">Register/Login</Nav.Link>
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
       </Navbar.Collapse>
     </Navbar>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ const Login = () => {
     setFormData(newFormData)
   }
 
+  const history = useHistory()
+
   console.log(formData)
 
   const handleSubmit = async (event) => {
@@ -21,8 +24,7 @@ const Login = () => {
       const response = await axios.post('/api/auth/login/', formData)
       window.localStorage.setItem('token', response.data.token)
       console.log(response.data.token)
-      history.push('/')
-      location.reload()
+      history.push('/profile')
     } catch (err) {
       // setErrors('Unauthorised')
     }
@@ -42,6 +44,7 @@ const Login = () => {
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
+                  placeholder="Enter password"
                   className="text-muted"
                   id="login-password"
                   type="text"
