@@ -1,11 +1,37 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
-const Navbar = () => {
+const MyNavbar = () => {
+  const history = useHistory()
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    history.push('/')
+    location.reload()
+  }
+
   return (
-    <div>
-      <p>Navbar</p>
-    </div>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="#home">CornHub</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/home">Home</Nav.Link>
+          <NavDropdown title="Box of fun!" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/weather">Weather</NavDropdown.Item>
+            <NavDropdown.Item href="/spotify">Spotify</NavDropdown.Item>
+            <NavDropdown.Item href="/paypal">Paypal</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/about">About</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+          <Nav.Link href="/Profile">Profile</Nav.Link>
+          <Nav.Link href="/Login">Register/Login</Nav.Link>
+          <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }
 
-export default Navbar
+export default MyNavbar
