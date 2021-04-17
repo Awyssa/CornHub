@@ -4,6 +4,15 @@ import { getTokenFromLocalStorage } from '../helpers/auth'
 
 const Profile = () => {
   const [userData, setUserData] = useState('')
+  const [savedPlantData, setSavedPlantData] = useState('')
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get('/api/plants/')
+      setSavedPlantData(response.data)
+    }
+    getData()
+  }, [])
 
   useEffect(() => {
     const getUser = async () => {
@@ -19,9 +28,36 @@ const Profile = () => {
     getUser()
   }, [])
 
+  console.log('saved plant data', savedPlantData)
+
+  if (!savedPlantData || !userData) return 'loading'
+  let arrayOfFilteredPark = []
+  // * for Each lopp to make array of parks in wishlist
+  userData.saved_plants.forEach((saved, index) => {
+    const filteredParks = savedPlantData.filter((item) => {
+      return item.id === saved
+    })
+    arrayOfFilteredPark = [...arrayOfFilteredPark, filteredParks]
+  })
+  console.log('array of filteres parks', arrayOfFilteredPark)
+  const mappedFilteredArray = arrayOfFilteredPark.map(item => {
+    return item[0]
+  })
   return (
     <div>
-     {userData.username}
+     <p>Username: {userData.username}</p>
+     <p>First Name: {userData.first_name}</p>
+     <p>Last Name: {userData.last_name}</p>
+     <p>Profile image:  {userData.profile_image}</p>
+     <p>Saved plants:  {userData.saved_plants}</p>
+     <p>{mappedFilteredArray.map(item => {
+       return (
+         <>
+         <p key={item.id}> {item.name} </p>
+         <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
+         </>
+       )
+     })}</p>
     </div>
   )
 }
