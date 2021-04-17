@@ -5,6 +5,7 @@ import MyNavbar from '../src/components/Navbar.js'
 import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
+import Weather from './components/Weather'
 
 const App = () => {
   return (
@@ -14,14 +15,17 @@ const App = () => {
         <Route exact path ="/">
           <Home/>
         </Route>
-        <Route exact path ="/home">
+        <Route path ="/home">
           <Home/>
           </Route>
-        <Route exact path ="/auth">
+        <Route path ="/auth">
           <Auth/>
         </Route>
-        <Route exact path ="/profile">
+        <Route path ="/profile">
           <Profile/>
+        </Route>
+        <Route path ="/weather">
+          <Weather/>
         </Route>
       </Switch>
     </BrowserRouter>
