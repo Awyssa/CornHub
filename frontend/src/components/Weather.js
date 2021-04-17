@@ -5,8 +5,9 @@ import WeekWeather from '../weather/WeekWeather'
 const Weather = () => {
   const [weather, setWeather] = useState(null)
   const [forecast, setForecast] = useState('current')
+  const [viewport, setViewport] = useState('')
 
-  const [viewport, setViewport] = useState('Loading')
+  const [locationChoice, setLocationChoice] = useState(null)
 
   useEffect(() => {
     // console.log(window.navigator)
@@ -15,6 +16,16 @@ const Weather = () => {
       const { longitude, latitude } = position.coords
       setViewport({ longitude, latitude })
     })
+  }, [])
+
+  // This is the request to geocode a place name into long and lat
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/alvechurch.json?access_token=pk.eyJ1IjoiandhcmQwMzk1IiwiYSI6ImNrbXFnM3l3azJvNHgyb256N2U3NGY1NnUifQ.j9Q8uNoEEO0GBonf6TLoew')
+      setLocationChoice(data)
+    }
+    getData()
   }, [])
 
   useEffect(() => {
@@ -38,6 +49,8 @@ const Weather = () => {
     }
   }
   if (!weather) return 'Loading'
+
+  console.log('LOCATION CHOICE >>>>>>>', locationChoice.features[0].geometry.coordinates)
 
   return (
     <div>
