@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Container } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const Title = () => {
   const subtitles = ['For hardcore gardeners.', 'Nothing seedy... only plants.', 'Full of photos of dirty, filthy... root vegetables.']
@@ -13,11 +13,11 @@ const Title = () => {
   }, [])
 
   return (
-    <Container className="titleContainer">
+    <div className="titleContainer">
       <div className="imageBox"></div>
-      <h1>{subtitle}</h1>
-      <Button variant="secondary" size="lg" href='/home'>Enter</Button>
-    </Container>
+      <h1 className="subtitle">{subtitle}</h1>
+      <Button size="lg" href="/home" className="enterButton">Enter</Button>
+    </div>
   )
 }
 

@@ -10,11 +10,11 @@ import Title from './components/Title'
 const App = () => {
   return (
     <BrowserRouter>
-      <MyNavbar />
       <Switch>
         <Route exact path ="/">
           <Title/>
         </Route>
+        <MyNavbar />
         <Route exact path ="/home">
           <Home/>
           </Route>
