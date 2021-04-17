@@ -5,6 +5,7 @@ import MyNavbar from '../src/components/Navbar.js'
 import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
+import Title from './components/Title'
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <MyNavbar />
       <Switch>
         <Route exact path ="/">
-          <Home/>
+          <Title/>
         </Route>
         <Route exact path ="/home">
           <Home/>
