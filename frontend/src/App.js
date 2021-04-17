@@ -14,6 +14,7 @@ const App = () => {
         <Route exact path ="/">
           <Title/>
         </Route>
+        <div>
         <MyNavbar />
         <Route exact path ="/home">
           <Home/>
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path ="/profile">
           <Profile/>
         </Route>
+        </div>
       </Switch>
     </BrowserRouter>
   )
