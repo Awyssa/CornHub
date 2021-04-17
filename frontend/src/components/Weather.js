@@ -8,9 +8,6 @@ const Weather = () => {
   const [weather, setWeather] = useState(null)
   const [forecast, setForecast] = useState('current')
   const [viewport, setViewport] = useState('')
-
-  // const [locationChoice, setLocationChoice] = useState(null)
-
   const [formData, setFormData] = useState(null)
   const [inputLocationChoice, setInputLocationChoice] = useState(null)
 
@@ -69,9 +66,6 @@ const Weather = () => {
   }
 
   if (!weather) return 'Loading'
-
-  // console.log('LOCATION CHOICE >>>>>>>', locationChoice)
-  console.log('VIEWPORT >>>>>>>', viewport)
 
   return (
 <>
