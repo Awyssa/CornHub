@@ -12,9 +12,6 @@ const Profile = () => {
       setSavedPlantData(response.data)
     }
     getData()
-  }, [])
-
-  useEffect(() => {
     const getUser = async () => {
       const id = window.localStorage.getItem('id')
       const response = await axios.get(`/api/auth/${id}/`, {
@@ -32,6 +29,7 @@ const Profile = () => {
 
   if (!savedPlantData || !userData) return 'loading'
   let arrayOfFilteredPark = []
+
   // * for Each lopp to make array of parks in wishlist
   userData.saved_plants.forEach((saved, index) => {
     const filteredParks = savedPlantData.filter((item) => {
@@ -39,7 +37,7 @@ const Profile = () => {
     })
     arrayOfFilteredPark = [...arrayOfFilteredPark, filteredParks]
   })
-  console.log('array of filteres parks', arrayOfFilteredPark)
+
   const mappedFilteredArray = arrayOfFilteredPark.map(item => {
     return item[0]
   })
