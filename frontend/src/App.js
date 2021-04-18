@@ -7,6 +7,7 @@ import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
 import About from './components/About'
 import Resources from './components/Resources'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route exact path ="/Resources">
           <Resources />
         </Route>
+        <Footer />
       </Switch>
     </BrowserRouter>
   )

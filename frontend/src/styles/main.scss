@@ -1,5 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+  min-height: 100vh;
+}
+
 .plant-home-image {
   width: 200px;
   height: 200px;
@@ -36,14 +40,16 @@
   }
 }
 
-.spotify {
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Resources page
+.resources-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.spotify-resource {
+.resources-item {
   display: flex;
   justify-content: center;
   align-items: center;
