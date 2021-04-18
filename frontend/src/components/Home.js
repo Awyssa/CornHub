@@ -5,6 +5,7 @@ import { Table } from 'react-bootstrap'
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
   const [thisDate, setThisDate] = useState(null)
+  const [allTypes, setAllTypes] = useState(null)
 
   useEffect(() => {
     const now = new Date()
@@ -13,11 +14,17 @@ export const Home = () => {
       const response = await axios.get('/api/plants/')
       setPlantData(response.data)
       console.log('clog1', response.data)
+      const types = response.data.map(plant => {
+        return plant.type
+      })
+      setAllTypes([...new Set(types)])
     }
     getData()
     console.log('clog2', plantData)
   }, [])
 
+  if (!allTypes) return null
+  console.log(allTypes)
   return (
     <div>
       <p> welcome to the home page</p>
