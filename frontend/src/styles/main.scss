@@ -26,7 +26,7 @@
 .about-card{
   margin: 10px;
   height: 600px;
-  width: 300px;
+  width: 350px;
 }
 
 .about-image-container{
@@ -34,6 +34,20 @@
   img {
     height: 300px;
   }
+}
+
+.spotify {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spotify-resource {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 
 
