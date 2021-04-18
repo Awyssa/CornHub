@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Table } from 'react-bootstrap'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
-  const [month, setMonth] = useState(null)
+  const [thisDate, setThisDate] = useState(null)
 
   useEffect(() => {
-    const currentMonth = new Date().getMonth()
-    setMonth(currentMonth)
+    const now = new Date()
+    setThisDate(now)
     const getData = async () => {
       const response = await axios.get('/api/plants/')
       setPlantData(response.data)
@@ -34,16 +35,78 @@ export const Home = () => {
           })}
         </div>
       }
-      {!plantData
-        ? <p> loading... </p>
-        : <div>
+    {!plantData
+      ? <p> loading... </p>
+      : <div>
+    <Table responsive>
+  <thead>
+    <tr>
+      <th>Sow in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       {plantData.filter(plant => {
-        return plant.sow_month === month
-      }).map(filteredPlant => {
-        return <p key={filteredPlant.id}>{filteredPlant.name}</p>
-      })}
-      </div>
-    }
+        return plant.sow_month === thisDate.getMonth()
+      }).map(plant => (
+        <td key={plant.id}>
+          <p>{plant.name}</p>
+          <img src={plant.image}></img>
+        </td>
+      ))}
+    </tr>
+    </tbody>
+</Table>
+</div>
+}
+{!plantData
+  ? <p> loading... </p>
+  : <div>
+    <Table responsive>
+  <thead>
+    <tr>
+      <th>Plant out in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {plantData.filter(plant => {
+        return plant.plant_month === thisDate.getMonth()
+      }).map(plant => (
+        <td key={plant.id}>
+          <p>{plant.name}</p>
+          <img src={plant.image}></img>
+        </td>
+      ))}
+    </tr>
+    </tbody>
+</Table>
+</div>
+}
+{!plantData
+  ? <p> loading... </p>
+  : <div>
+    <Table responsive>
+  <thead>
+    <tr>
+      <th>Harvest in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {plantData.filter(plant => {
+        return plant.harvest_month === thisDate.getMonth()
+      }).map(plant => (
+        <td key={plant.id}>
+          <p>{plant.name}</p>
+          <img src={plant.image}></img>
+        </td>
+      ))}
+    </tr>
+    </tbody>
+</Table>
+</div>
+}
     </div>
   )
 }
