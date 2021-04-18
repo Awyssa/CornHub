@@ -26,14 +26,8 @@ export const Home = () => {
     getData()
     console.log('clog2', plantData)
   }, [])
-  // if (!allTypes) return null
-  // console.log(allTypes)
   const handleChange = (event) => {
     setDifficulty(Number(event.target.value))
-    // const appropriatePlants = plantData.filter(plant => {
-    //   return plant.difficulty <= Number(event.target.value)
-    // })
-    // setRightPlants(appropriatePlants)
   }
   const handleSearch = (event) => {
     const searchList = plantData.filter(plant => {
@@ -45,7 +39,6 @@ export const Home = () => {
   }
   return (
     <div>
-      <p> welcome to the home page</p>
       {!plantData || !rightPlants
         ? <p> loading... </p>
         : <div>
