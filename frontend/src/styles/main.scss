@@ -4,3 +4,48 @@
   width: 200px;
   height: 200px;
 }
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - About page
+.about-links {
+  display: flex;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-button{
+  width: 150px;
+  margin: 5px;
+}
+
+.about-card{
+  margin: 10px;
+  height: 600px;
+  width: 300px;
+}
+
+.about-image-container{
+  // height: 350px;  if you want to keep iamges differnt size, but text apart
+  img {
+    height: 300px;
+  }
+}
+
+
+@media screen and (max-width: 850px) {
+
+  .about-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-card{
+    width: 350px;
+    margin: 5px;
+  }
+}
