@@ -9,6 +9,14 @@ const Spotify = () => {
       <img src="https://www.southdevonchillifarm.co.uk/images/logos/1/logo.png"/>
       <a href="https://www.southdevonchillifarm.co.uk/" target="blank" >South Devon Chilli Farm </a>
       </Container>
+      <Container className="spotify-resource">
+      <img src="https://cdn.shopify.com/s/files/1/0379/6015/5267/files/Plants_House_Logo-01_x100.png?v=1588625584"/>
+      <a href="https://theplantwarehouse.co.uk/" target="blank" >Plant Warehouse London</a>
+      </Container>
+      <Container className="spotify-resource">
+      <img src="https://n1gardencentre.co.uk/wp-content/uploads/2019/02/logo-3.png"/>
+      <a href="https://n1gardencentre.co.uk/" target="blank" >N1 Garden Center</a>
+      </Container>
     </Container>
   )
 }
