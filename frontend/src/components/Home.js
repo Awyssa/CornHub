@@ -7,7 +7,7 @@ export const Home = () => {
   const [plantData, setPlantData] = useState(null)
   const [thisDate, setThisDate] = useState(null)
   const [difficulty, setDifficulty] = useState(5)
-  const [rightPlants, setRightPlants] = useState([])
+  const [rightPlants, setRightPlants] = useState(null)
   // const [allTypes, setAllTypes] = useState(null)
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export const Home = () => {
     const getData = async () => {
       const response = await axios.get('/api/plants/')
       setPlantData(response.data)
+      setRightPlants(response.data)
       console.log('clog1', response.data)
       // const types = response.data.map(plant => {
       //   return plant.type
@@ -45,7 +46,7 @@ export const Home = () => {
   return (
     <div>
       <p> welcome to the home page</p>
-      {!plantData
+      {!plantData || !rightPlants
         ? <p> loading... </p>
         : <div>
   <Table responsive>
