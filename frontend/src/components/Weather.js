@@ -87,9 +87,9 @@ const Weather = () => {
       </Container>
     <div>
       <div className="ui buttons">
-        <button className="ui button" value="current" onClick={handleWeather}>Today</button>
+        <Button value="current" variant="primary" onClick={handleWeather}>Current Weather</Button>
         <div className="or"></div>
-        <button className="ui blue button" value="week" onClick={handleWeather}>7 Day Forecast</button>
+        <Button value="week" variant="primary"onClick={handleWeather}>7 Day Forecast</Button>
       </div>
       {forecast === 'current'
         ? <CurrentWeather

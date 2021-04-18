@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Button, Container, Modal } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { ImageUploadField } from './ImageUploadField'
@@ -164,9 +164,28 @@ const EditUserProfile = () => {
       </>
     }
     {deleteCount &&
+
+    <>
     <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
     Are you sure you want to delete your profile?
    </Button>
+
+   <Modal.Dialog>
+  <Modal.Header closeButton>
+    <Modal.Title>Modal title</Modal.Title>
+  </Modal.Header>
+
+  <Modal.Body>
+    <p>Modal body text goes here.</p>
+  </Modal.Body>
+
+  <Modal.Footer>
+    <Button variant="secondary">Close</Button>
+    <Button variant="primary">Save changes</Button>
+  </Modal.Footer>
+</Modal.Dialog>
+   </>
+
     }
     </Form>
    </Container>
