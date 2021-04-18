@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { userIsAuthenticated } from '../helpers/auth'
 
 const MyNavbar = () => {
   const history = useHistory()
@@ -27,9 +28,15 @@ const MyNavbar = () => {
             <NavDropdown.Item href="/about">About</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-          <Nav.Link href="/Profile">Profile</Nav.Link>
+        {!userIsAuthenticated() &&
           <Nav.Link href="/auth">Register/Login</Nav.Link>
+        }
+          {userIsAuthenticated() &&
+          <>
+          <Nav.Link href="/Profile">Profile</Nav.Link>
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+          </>
+}
       </Navbar.Collapse>
     </Navbar>
   )

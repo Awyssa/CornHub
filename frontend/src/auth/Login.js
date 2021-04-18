@@ -30,6 +30,7 @@ const Login = () => {
     } catch (err) {
       // setErrors('Unauthorised')
     }
+    location.reload()
   }
   return (
   <Container>
