@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   const [userData, setUserData] = useState('')
@@ -64,12 +66,21 @@ const Profile = () => {
   console.log('saved plants =>>>>>>>>>>>', userData.saved_plants)
 
   const handleConfirm = async () => {
+    const id = window.localStorage.getItem('id')
     console.log('updated wish list', wishlist)
     setConfirm('')
-    await axios.put(
-      `/api/profile/${userData.data.id}`,
-      wishlist
-    )
+    try {
+      await axios.put(
+      `/api/auth/${id}/`,
+      wishlist, {
+        headers: {
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`
+        }
+      }
+      )
+    } catch (err) {
+      console.log('error', err)
+    }
   }
 
   const handleCancel = () => {
@@ -78,8 +89,9 @@ const Profile = () => {
 
   return (
     <div>
-     <p>Username: {userData.username}</p>
      <p>First Name: {userData.first_name}</p>
+     <p>Username: {userData.username}</p>
+     <p>Username: {userData.email}</p>
      <p>Last Name: {userData.last_name}</p>
      <p>Profile image:  {userData.profile_image}</p>
      <p>Saved plants:  {userData.saved_plants}</p>
@@ -103,6 +115,9 @@ const Profile = () => {
        )
      })}
       </div>
+     <Link to="/editprofile">
+     <Button >Edit user</Button>
+     </Link>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
 import Weather from './components/Weather'
+import EditUserProfile from './components/EditUserProfile'
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
         </Route>
         <Route path ="/weather">
           <Weather/>
+        </Route>
+        <Route path ="/editprofile">
+          <EditUserProfile/>
         </Route>
       </Switch>
     </BrowserRouter>
