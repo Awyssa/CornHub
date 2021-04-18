@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
+import PlantTile from './PlantTile'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
@@ -56,10 +57,10 @@ export const Home = () => {
       {plantData.filter(plant => {
         return plant.sow_month === thisDate.getMonth()
       }).map(plant => (
-        <td key={plant.id}>
-          <p>{plant.name}</p>
-          <img src={plant.image}></img>
-        </td>
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
       ))}
     </tr>
     </tbody>
@@ -80,10 +81,10 @@ export const Home = () => {
       {plantData.filter(plant => {
         return plant.plant_month === thisDate.getMonth()
       }).map(plant => (
-        <td key={plant.id}>
-          <p>{plant.name}</p>
-          <img src={plant.image}></img>
-        </td>
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
       ))}
     </tr>
     </tbody>
@@ -104,10 +105,10 @@ export const Home = () => {
       {plantData.filter(plant => {
         return plant.harvest_month === thisDate.getMonth()
       }).map(plant => (
-        <td key={plant.id}>
-          <p>{plant.name}</p>
-          <img src={plant.image}></img>
-        </td>
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
       ))}
     </tr>
     </tbody>
