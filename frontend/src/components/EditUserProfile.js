@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Form, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-
+import { useHistory } from 'react-router-dom'
+import { ImageUploadField } from './ImageUploadField'
 const EditUserProfile = () => {
   // const [userData, setUserData] = useState('')
   const [formData, setFormData] = useState({
@@ -15,8 +15,28 @@ const EditUserProfile = () => {
     password: '',
     password_confirmation: ''
   })
-  // console.log('userData>>>>>', userData, setUserData)
-  console.log('form data>>>>>', formData)
+  const history = useHistory()
+  const [deleteCount, setDeleteCount] = useState('')
+  const handleDelete = () => {
+    setDeleteCount('delete')
+  }
+  const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('id')
+    history.push('/')
+    location.reload()
+  }
+
+  const handleDeleteConfirm = async () => {
+    const id = window.localStorage.getItem('id')
+    await axios.delete(`/api/auth/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${getTokenFromLocalStorage()}`
+      }
+    }
+    )
+    handleLogout()
+  }
 
   useEffect(() => {
     const getUser = async () => {
@@ -37,7 +57,9 @@ const EditUserProfile = () => {
     setFormData(newFormData)
   }
 
-  console.log(formData)
+  // const handleImageUrl = url => {
+  //   setFormData({ ...formData, profile_image: url })
+  // }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -51,6 +73,7 @@ const EditUserProfile = () => {
           }
         }
       )
+      history.push(`/profile/${id}/`)
     } catch (err) {
       // setErrors('Unauthorised')
     }
@@ -102,14 +125,11 @@ const EditUserProfile = () => {
       </Form.Group>
       <Form.Group >
         <Form.Label>Profile Image</Form.Label>
-        <Form.Control
-                  placeholder="Edit profile image"
-                  className="text-muted"
-                  id="edit-last-name"
-                  type="text"
-                  name="profile_image"
-                  value={formData.profile_image}
-                  onChange={handleChange}/>
+        <ImageUploadField
+         name="profile_image"
+         value={formData.profile_image}
+        //  {...handleImageUrl}
+        />
       </Form.Group>
       <Form.Group >
         <Form.Label>Password</Form.Label>
@@ -133,11 +153,21 @@ const EditUserProfile = () => {
                   value={formData.password_confirmation}
                   onChange={handleChange}/>
       </Form.Group>
-      <Link to="/profile">
+      {!deleteCount &&
+      <>
       <Button variant="primary" type="submit">
         Save changes
       </Button>
-      </Link>
+      <Button onClick={handleDelete} variant="danger" type="submit">
+       Delete profile
+      </Button>
+      </>
+    }
+    {deleteCount &&
+    <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
+    Are you sure you want to delete your profile?
+   </Button>
+    }
     </Form>
    </Container>
   )
