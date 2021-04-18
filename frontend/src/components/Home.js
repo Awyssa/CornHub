@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Table } from 'react-bootstrap'
+import { Table, Form, FormControl, InputGroup } from 'react-bootstrap'
 import PlantTile from './PlantTile'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
   const [thisDate, setThisDate] = useState(null)
   const [difficulty, setDifficulty] = useState(5)
+  const [rightPlants, setRightPlants] = useState([])
   // const [allTypes, setAllTypes] = useState(null)
 
   useEffect(() => {
@@ -28,6 +29,18 @@ export const Home = () => {
   // console.log(allTypes)
   const handleChange = (event) => {
     setDifficulty(Number(event.target.value))
+    // const appropriatePlants = plantData.filter(plant => {
+    //   return plant.difficulty <= Number(event.target.value)
+    // })
+    // setRightPlants(appropriatePlants)
+  }
+  const handleSearch = (event) => {
+    const searchList = plantData.filter(plant => {
+      return plant.name.toUpperCase().includes(event.target.value.toUpperCase()) ||
+      plant.subspecies.toUpperCase().includes(event.target.value.toUpperCase()) ||
+      plant.type.toUpperCase().includes(event.target.value.toUpperCase())
+    })
+    setRightPlants(searchList)
   }
   return (
     <div>
@@ -35,25 +48,42 @@ export const Home = () => {
       {!plantData
         ? <p> loading... </p>
         : <div>
-  <select onChange={handleChange}>
-    <option value="1">Beginner</option>
-    <option value="2">Easy</option>
-    <option value="3">Medium</option>
-    <option value="4">Hard</option>
+  <Table responsive>
+  <thead>
+    <tr>
+    <Form.Label>Choose By Difficulty!</Form.Label>
+  <Form.Control as="select" onChange={handleChange}>
     <option value="5">Master (All Plants)</option>
-  </select>
-
-          {plantData.filter(plant => {
+    <option value="4">Hard</option>
+    <option value="3">Medium</option>
+    <option value="2">Easy</option>
+    <option value="1">Beginner</option>
+  </Form.Control>
+  </tr>
+  <tr>
+  <InputGroup>
+    <InputGroup.Prepend>
+      <InputGroup.Text>Search for a Plant!</InputGroup.Text>
+    </InputGroup.Prepend>
+    <FormControl as="textarea" aria-label="Search for a Plant!" onChange={handleSearch} />
+  </InputGroup>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+          {rightPlants.filter(plant => {
             return plant.difficulty <= difficulty
           }).map(plant => {
             return (
-              <>
-            <p key={plant.id}>{plant.name}</p>
-            <img className="plant-home-image" src={plant.image}></img>
-            <p>{plant.description}</p>
-            </>
+              <PlantTile
+              key={plant.id}
+              { ...plant}
+              />
             )
           })}
+              </tr>
+    </tbody>
+</Table>
         </div>
       }
     {!plantData
