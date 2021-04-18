@@ -6,7 +6,7 @@ import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
 import About from './components/About'
-import Spotify from './components/Spotify'
+import Resources from './components/Resources'
 
 const App = () => {
   return (
@@ -28,8 +28,8 @@ const App = () => {
         <Route exact path ="/about">
           <About />
         </Route>
-        <Route exact path ="/spotify">
-          <Spotify />
+        <Route exact path ="/Resources">
+          <Resources />
         </Route>
       </Switch>
     </BrowserRouter>

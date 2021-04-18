@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-const Spotify = () => {
+const Resources = () => {
   return (
     <Container className="spotify">
       <iframe src="https://open.spotify.com/embed/playlist/3B73vSUPTr7RljzlpF1wcV" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -21,4 +21,4 @@ const Spotify = () => {
   )
 }
 
-export default Spotify
+export default Resources
