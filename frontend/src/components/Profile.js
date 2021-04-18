@@ -6,6 +6,11 @@ const Profile = () => {
   const [userData, setUserData] = useState('')
   const [savedPlantData, setSavedPlantData] = useState('')
 
+  const [wishlist, setUpdateWishlist] = useState({
+    saved_plants: []
+  })
+  const [confirm, setConfirm] = useState(null)
+
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get('/api/plants/')
@@ -28,19 +33,49 @@ const Profile = () => {
   console.log('saved plant data', savedPlantData)
 
   if (!savedPlantData || !userData) return 'loading'
-  let arrayOfFilteredPark = []
+  let arrayOfSavedPlants = []
 
   // * for Each lopp to make array of parks in wishlist
   userData.saved_plants.forEach((saved, index) => {
-    const filteredParks = savedPlantData.filter((item) => {
+    const filteredPlants = savedPlantData.filter((item) => {
       return item.id === saved
     })
-    arrayOfFilteredPark = [...arrayOfFilteredPark, filteredParks]
+    arrayOfSavedPlants = [...arrayOfSavedPlants, filteredPlants]
   })
 
-  const mappedFilteredArray = arrayOfFilteredPark.map(item => {
+  const mappedFilteredArray = arrayOfSavedPlants.map(item => {
     return item[0]
   })
+
+  // * function to remove the item from the wishlist
+  const removeFromWishlist = (event) => {
+    console.log('event.target.value', event.target.value)
+    setConfirm('confirm')
+    const filteredWishlistConst = userData.saved_plants.filter(filter => {
+      console.log(typeof (event.target.value))
+      return filter !== parseFloat(event.target.value)
+    })
+    console.log('filtered wishlist ', filteredWishlistConst)
+    const newWishList = { [event.target.name]: filteredWishlistConst }
+    setUpdateWishlist(newWishList)
+  }
+
+  console.log('UPDATED WISH LIST =>>>>>>>>>>>', wishlist)
+  console.log('saved plants =>>>>>>>>>>>', userData.saved_plants)
+
+  const handleConfirm = async () => {
+    console.log('updated wish list', wishlist)
+    setConfirm('')
+    await axios.put(
+      `/api/profile/${userData.data.id}`,
+      wishlist
+    )
+  }
+
+  const handleCancel = () => {
+    setConfirm('')
+  }
+
   return (
     <div>
      <p>Username: {userData.username}</p>
@@ -48,14 +83,26 @@ const Profile = () => {
      <p>Last Name: {userData.last_name}</p>
      <p>Profile image:  {userData.profile_image}</p>
      <p>Saved plants:  {userData.saved_plants}</p>
-     <p>{mappedFilteredArray.map(item => {
+     < div className="profile-wish-list">
+     {mappedFilteredArray.map(item => {
        return (
-         <>
-         <p key={item.id}> {item.name} </p>
+         <div key={item.id} className="profile-wishlist-column">
+         <p> {item.name} </p>
          <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
-         </>
+
+         {/* <button name="wishList" onClick={removeFromWishList} value={item.id}>Remove {item.name}?</button> */}
+
+         {!confirm
+           ? <button name="saved_plants" value={item.id} onClick={removeFromWishlist} > Remove {item.name} from your wishlist</button>
+           : <div className="park-buttons">
+                      <button value={item.id} onClick={handleConfirm} > Confirm? </button>
+                      <button className="ui red basic right floated button" value={item.id} onClick={handleCancel} > Cancel </button>
+                    </div>
+                  }
+         </div>
        )
-     })}</p>
+     })}
+      </div>
     </div>
   )
 }
