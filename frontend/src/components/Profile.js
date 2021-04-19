@@ -99,8 +99,10 @@ const Profile = () => {
      {mappedFilteredArray.map(item => {
        return (
          <div key={item.id} className="profile-wishlist-column">
+        <Link to={`/plants/${item.id}`}>
          <p> {item.name} </p>
          <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
+         </Link>
 
          {/* <button name="wishList" onClick={removeFromWishList} value={item.id}>Remove {item.name}?</button> */}
 
