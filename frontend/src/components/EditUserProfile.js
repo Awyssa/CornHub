@@ -20,6 +20,9 @@ const EditUserProfile = () => {
   const handleDelete = () => {
     setDeleteCount('delete')
   }
+  const handleClose = () => {
+    setDeleteCount('')
+  }
   const handleLogout = () => {
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('id')
@@ -166,24 +169,33 @@ const EditUserProfile = () => {
     {deleteCount &&
 
     <>
-    <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
+    {/* <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
     Are you sure you want to delete your profile?
-   </Button>
+   </Button> */}
 
-   <Modal.Dialog>
-  <Modal.Header closeButton>
-    <Modal.Title>Modal title</Modal.Title>
-  </Modal.Header>
+   <Modal
+    show = {deleteCount}
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+    backdrop="static"
+    keyboard="false"
+   >
+    <Modal.Dialog>
+      <Modal.Header onClick={handleClose} closeButton>
+        <Modal.Title>Delete your profile?</Modal.Title>
+      </Modal.Header>
 
-  <Modal.Body>
-    <p>Modal body text goes here.</p>
-  </Modal.Body>
+      <Modal.Body>
+        <p>  Are you sure you want to delete your profile?</p>
+      </Modal.Body>
 
-  <Modal.Footer>
-    <Button variant="secondary">Close</Button>
-    <Button variant="primary">Save changes</Button>
-  </Modal.Footer>
-</Modal.Dialog>
+      <Modal.Footer>
+        <Button onClick={handleClose} variant="secondary">Close</Button>
+        <Button onClick={handleDeleteConfirm} variant="primary">Delete?</Button>
+      </Modal.Footer>
+  </Modal.Dialog>
+</Modal>
+
    </>
 
     }
