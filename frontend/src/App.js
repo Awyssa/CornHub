@@ -11,6 +11,7 @@ import Resources from './components/Resources'
 import Footer from './components/Footer'
 import Weather from './components/Weather'
 import EditUserProfile from './components/EditUserProfile'
+import PlantShow from './components/PlantShow.js'
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
       <Switch>
         <Route exact path ="/">
           <Title/>
+        </Route>
+        <Route path = "/plants/:id">
+          <PlantShow />
         </Route>
         <div>
         <MyNavbar />
