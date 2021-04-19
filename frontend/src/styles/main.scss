@@ -17,6 +17,7 @@ body {
 .plant-home-image {
   width: 200px;
   height: 200px;
+  margin-bottom: 0;
 }
 
 
@@ -219,4 +220,8 @@ thead, tbody, tr, th, td {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+td {
+  padding-bottom: 0;
 }
