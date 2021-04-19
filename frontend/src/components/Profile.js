@@ -108,7 +108,7 @@ const Profile = () => {
 
          {!confirm &&
           <>
-           <Button name="saved_plants" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
+           <Button name="saved_plants" className="delete-from-wishlist-buttons" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
                     </>
                   }
          </div>
@@ -143,7 +143,7 @@ const Profile = () => {
      }
       </div>
      <Link to="/editprofile">
-     <Button >Edit user</Button>
+     <Button className="delete-from-wishlist-buttons">Edit user</Button>
      </Link>
     </div>
   )

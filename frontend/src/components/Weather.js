@@ -10,7 +10,7 @@ const Weather = () => {
   const [viewport, setViewport] = useState('')
   const [formData, setFormData] = useState('London')
   const [inputLocationChoice, setInputLocationChoice] = useState(null)
-  const [currentLocation, setCurrentLocation] = useState(null)
+  // const [currentLocation, setCurrentLocation] = useState(null)
   const [reveseGeoLocation, setReverseGeoLocation] = useState(null)
 
   // handlers for the manual location input form
@@ -21,7 +21,7 @@ const Weather = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     setInputLocationChoice(formData.location)
-    setCurrentLocation(formData.location)
+    // setCurrentLocation(formData.location)
   }
 
   // this is creating latitude and longitude based on the users current location
@@ -97,7 +97,7 @@ const Weather = () => {
       </Button>
       </Form>
       </Container>
-      <p>{currentLocation}</p>
+      {/* <p>{currentLocation}</p> */}
     <div>
       <div className="forecast-buttons-container">
         <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
