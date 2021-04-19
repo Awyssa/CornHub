@@ -1,14 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
 
+<<<<<<< HEAD
 // body {
 //   margin: 0;
 // }
+=======
+body {
+  min-height: 100vh;
+}
+>>>>>>> development
 
 .plant-home-image {
   width: 200px;
   height: 200px;
 }
 
+<<<<<<< HEAD
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -40,4 +47,66 @@
   background-color: #ffa31a;
   color: #000000;
   border: 0px;
+=======
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - About page
+.about-links {
+  display: flex;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-button{
+  width: 150px;
+  margin: 5px;
+}
+
+.about-card{
+  margin: 10px;
+  height: 600px;
+  width: 350px;
+}
+
+.about-image-container{
+  // height: 350px;  if you want to keep iamges differnt size, but text apart
+  img {
+    height: 300px;
+  }
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Resources page
+.resources-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.resources-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 850px) {
+
+  .about-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-card{
+    width: 350px;
+    margin: 5px;
+  }
+>>>>>>> development
 }

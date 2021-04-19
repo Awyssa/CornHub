@@ -5,7 +5,13 @@ import MyNavbar from '../src/components/Navbar.js'
 import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
+<<<<<<< HEAD
 import Title from './components/Title'
+=======
+import About from './components/About'
+import Resources from './components/Resources'
+import Footer from './components/Footer'
+>>>>>>> development
 
 const App = () => {
   return (
@@ -25,7 +31,17 @@ const App = () => {
         <Route exact path ="/profile">
           <Profile/>
         </Route>
+<<<<<<< HEAD
         </div>
+=======
+        <Route exact path ="/about">
+          <About />
+        </Route>
+        <Route exact path ="/Resources">
+          <Resources />
+        </Route>
+        <Footer />
+>>>>>>> development
       </Switch>
     </BrowserRouter>
   )

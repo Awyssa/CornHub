@@ -20,7 +20,7 @@ const MyNavbar = () => {
           <Nav.Link href="/home">Home</Nav.Link>
           <NavDropdown title="Box of fun!" id="basic-nav-dropdown">
             <NavDropdown.Item href="/weather">Weather</NavDropdown.Item>
-            <NavDropdown.Item href="/spotify">Spotify</NavDropdown.Item>
+            <NavDropdown.Item href="/resources">Resources</NavDropdown.Item>
             <NavDropdown.Item href="/paypal">Paypal</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/about">About</NavDropdown.Item>
