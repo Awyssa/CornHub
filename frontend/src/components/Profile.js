@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Button } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
@@ -51,10 +51,10 @@ const Profile = () => {
 
   // * function to remove the item from the wishlist
   const removeFromWishlist = (event) => {
-    console.log('event.target.value', event.target.value)
+    // console.log('event.target.value', event.target.value)
     setConfirm('confirm')
     const filteredWishlistConst = userData.saved_plants.filter(filter => {
-      console.log(typeof (event.target.value))
+      // console.log(typeof (event.target.value))
       return filter !== parseFloat(event.target.value)
     })
     console.log('filtered wishlist ', filteredWishlistConst)
@@ -104,16 +104,41 @@ const Profile = () => {
 
          {/* <button name="wishList" onClick={removeFromWishList} value={item.id}>Remove {item.name}?</button> */}
 
-         {!confirm
-           ? <button name="saved_plants" value={item.id} onClick={removeFromWishlist} > Remove {item.name} from your wishlist</button>
-           : <div className="park-buttons">
-                      <button value={item.id} onClick={handleConfirm} > Confirm? </button>
-                      <button className="ui red basic right floated button" value={item.id} onClick={handleCancel} > Cancel </button>
-                    </div>
+         {!confirm &&
+          <>
+           <Button name="saved_plants" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
+                    </>
                   }
          </div>
        )
      })}
+     {confirm &&
+     <>
+     <Modal
+    show = {confirm}
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+    backdrop="static"
+    keyboard="false"
+    // size="lg"
+   >
+    <Modal.Dialog>
+      <Modal.Header onClick={handleCancel} closeButton>
+        <Modal.Title>Delete plant from your wishlist?</Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <p>  Are you sure you want to delete this from your saved plants?</p>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button onClick={handleCancel} variant="secondary">Close</Button>
+        <Button onClick={handleConfirm} variant="primary">Delete?</Button>
+      </Modal.Footer>
+    </Modal.Dialog>
+        </Modal>
+              </>
+     }
       </div>
      <Link to="/editprofile">
      <Button >Edit user</Button>
