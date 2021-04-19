@@ -5,13 +5,13 @@ import MyNavbar from '../src/components/Navbar.js'
 import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
-
-import Weather from './components/Weather'
-import EditUserProfile from './components/EditUserProfile'
+import Title from './components/Title'
 import About from './components/About'
 import Resources from './components/Resources'
 import Footer from './components/Footer'
-import Title from './components/Title'
+import Weather from './components/Weather'
+import EditUserProfile from './components/EditUserProfile'
+import PlantShow from './components/PlantShow.js'
 
 const App = () => {
   return (
@@ -20,15 +20,18 @@ const App = () => {
         <Route exact path ="/">
           <Title/>
         </Route>
+        <Route path = "/plants/:id">
+          <PlantShow />
+        </Route>
         <div>
         <MyNavbar />
         <Route exact path ="/home">
           <Home/>
           </Route>
-        <Route path ="/auth">
+        <Route exact path ="/auth">
           <Auth/>
         </Route>
-        <Route path ="/profile">
+        <Route exact path ="/profile">
           <Profile/>
         </Route>
         <Route path ="/weather">
