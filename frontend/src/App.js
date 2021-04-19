@@ -5,13 +5,11 @@ import MyNavbar from '../src/components/Navbar.js'
 import Home from '../src/components/Home.js'
 import Auth from '../src/auth/Auth'
 import Profile from './components/Profile'
-
-import Weather from './components/Weather'
-import EditUserProfile from './components/EditUserProfile'
+import Title from './components/Title'
 import About from './components/About'
 import Resources from './components/Resources'
 import Footer from './components/Footer'
-import Title from './components/Title'
+import Weather from './components/Weather'
 
 const App = () => {
   return (
@@ -25,18 +23,11 @@ const App = () => {
         <Route exact path ="/home">
           <Home/>
           </Route>
-        <Route path ="/auth">
+        <Route exact path ="/auth">
           <Auth/>
         </Route>
-        <Route path ="/profile">
+        <Route exact path ="/profile">
           <Profile/>
-        </Route>
-        </div>
-        <Route path ="/weather">
-          <Weather/>
-        </Route>
-        <Route path ="/editprofile">
-          <EditUserProfile/>
         </Route>
         <Route exact path ="/about">
           <About />
@@ -44,6 +35,10 @@ const App = () => {
         <Route exact path ="/Resources">
           <Resources />
         </Route>
+        <Route path ="/weather">
+          <Weather/>
+        </Route>
+        </div>
         <Footer />
       </Switch>
     </BrowserRouter>
