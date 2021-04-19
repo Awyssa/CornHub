@@ -44,8 +44,9 @@ const PlantShow = () => {
   if (!onePlant) return null
   return (
     <>
-    <h1>Hey, Im a plant!</h1>
     <h2>{onePlant.name}</h2>
+    <h3>{onePlant.type}</h3>
+    <h3 className="science">{onePlant.subspecies}</h3>
     {!userData
       ? <h1>Log in to save to profile!</h1>
       : <PlantWishList
