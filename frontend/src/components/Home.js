@@ -66,7 +66,7 @@ export const Home = () => {
   {/* <thead> */}
     <div className="searches">
       <div className="dropdown">
-    <Form.Label>Choose By Difficulty!</Form.Label>
+    <Form.Label className="search-label">Choose By Difficulty!</Form.Label>
   <Form.Control as="select" onChange={handleChange}>
     <option value="5">Master (All Plants)</option>
     <option value="4">Hard</option>
@@ -76,7 +76,7 @@ export const Home = () => {
   </Form.Control>
   </div>
   <div className="dropdown">
-  <Form.Label>Search for a Plant!</Form.Label>
+  <Form.Label className="search-label">Search for a Plant!</Form.Label>
     <FormControl
       placeholder="Search"
       aria-label="Search"
@@ -115,11 +115,9 @@ export const Home = () => {
       ? <p> loading... </p>
       : <div>
     <Table responsive>
-  <thead>
     <tr>
-      <th>Sow in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+      <th className="month-scroll">Sow in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
     </tr>
-  </thead>
   <tbody>
     <tr>
       {plantData.filter(plant => {
@@ -139,11 +137,9 @@ export const Home = () => {
   ? <p> loading... </p>
   : <div>
     <Table responsive>
-  <thead>
     <tr>
-      <th>Plant out in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+      <th className="month-scroll">Plant out in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
     </tr>
-  </thead>
   <tbody>
     <tr>
       {plantData.filter(plant => {
@@ -163,11 +159,9 @@ export const Home = () => {
   ? <p> loading... </p>
   : <div>
     <Table responsive>
-  <thead>
     <tr>
-      <th>Harvest in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
+      <th className="month-scroll">Harvest in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
     </tr>
-  </thead>
   <tbody>
     <tr>
       {plantData.filter(plant => {
