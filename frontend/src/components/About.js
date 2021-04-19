@@ -31,8 +31,8 @@ const About = () => {
           <p>Likes: Chillis, Goats</p>
         </Card.Text>
         <Container className="about-links">
-          <Button className="about-button" variant="primary" href="https://www.linkedin.com/in/jonty-ward-b0236164/" target="_blank">LinkedIn</Button>
-          <Button className="about-button" variant="primary" href="https://github.com/jonty-ward" target="_blank">GitHub</Button>
+          <Button className="about-button" href="https://www.linkedin.com/in/jonty-ward-b0236164/" target="_blank">LinkedIn</Button>
+          <Button className="about-button" href="https://github.com/jonty-ward" target="_blank">GitHub</Button>
         </Container>
       </Card.Body>
     </Container>

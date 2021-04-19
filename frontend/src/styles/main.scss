@@ -2,6 +2,16 @@
 
 body {
   min-height: 100vh;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  p {
+    color: white;
+  }
+
+  a {
+    color: white;
+  }
 }
 
 .plant-home-image {
@@ -37,7 +47,7 @@ height: 300px;
 }
 
 .imageBox {
-  background-image: url('../assets/Screenshot\ 2021-04-14\ at\ 15.23.11.png');
+  background-image: url('../assets/logo.png');
   background-size: cover;
   background-repeat: no-repeat;
   height: 200px;
@@ -58,6 +68,7 @@ height: 300px;
   border: 0px;
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - About page
+
 .about-links {
   display: flex;
 }
@@ -72,12 +83,20 @@ height: 300px;
 .about-button{
   width: 150px;
   margin: 5px;
+  background-color: #ffa31a;
+  border: none;
+  color: black;
+}
+
+.about-button:hover{
+  background-color: #ffa31aa8;
 }
 
 .about-card{
-  margin: 10px;
+  margin: 80px 10px;
   height: 600px;
   width: 350px;
+  text-align: center;
 }
 
 .about-image-container{
@@ -87,7 +106,23 @@ height: 300px;
   }
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navbar
 
+.home-link {
+  color: white
+}
+
+#basic-nav-dropdown {
+  color: white;
+}
+
+#basic-navbar-nav {
+  color: white;
+}
+
+.form-label {
+  color: white;
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Resources page
 .resources-page {
   display: flex;
@@ -104,6 +139,29 @@ height: 300px;
   padding: 10px;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile page
+
+.modal-content {
+  color: black;
+  p {
+    color: black;
+  }
+}
+
+.weather-button {
+  background-color: #ffa31a;
+  color: black;
+  border: none;
+}
+
+.weather-button:hover {
+  background-color: #ffa31ab0;
+  color: white;
+}
+
+.weather-button:active {
+  color: #ffa31a;
+}
 
 @media screen and (max-width: 850px) {
 
