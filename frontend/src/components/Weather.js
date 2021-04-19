@@ -8,8 +8,9 @@ const Weather = () => {
   const [weather, setWeather] = useState(null)
   const [forecast, setForecast] = useState('current')
   const [viewport, setViewport] = useState('')
-  const [formData, setFormData] = useState(null)
+  const [formData, setFormData] = useState('London')
   const [inputLocationChoice, setInputLocationChoice] = useState(null)
+  const [currentLocation, setCurrentLocation] = useState(null)
 
   // handlers for the manual location input form
   const handleChange = (event) => {
@@ -19,6 +20,7 @@ const Weather = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     setInputLocationChoice(formData.location)
+    setCurrentLocation(formData.location)
   }
 
   // this is creating latitude and longitude based on the users current location
@@ -80,16 +82,17 @@ const Weather = () => {
             value={setFormData.location}
             onChange={handleChange}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="weather-button" type="submit">
         Submit
       </Button>
       </Form>
       </Container>
+      <p>{currentLocation}</p>
     <div>
       <div className="ui buttons">
-        <Button value="current" variant="primary" onClick={handleWeather}>Current Weather</Button>
+        <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
         <div className="or"></div>
-        <Button value="week" variant="primary"onClick={handleWeather}>7 Day Forecast</Button>
+        <Button className="weather-button" value="week"onClick={handleWeather}>7 Day Forecast</Button>
       </div>
       {forecast === 'current'
         ? <CurrentWeather

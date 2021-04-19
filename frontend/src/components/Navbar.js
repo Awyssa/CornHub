@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { userIsAuthenticated } from '../helpers/auth'
+import logo from '../assets/logo.png'
 
 const MyNavbar = () => {
   const history = useHistory()
@@ -14,12 +15,18 @@ const MyNavbar = () => {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/home">CornHub</Navbar.Brand>
+    <Navbar className="navbar" bg="black" expand="lg">
+      <Navbar.Brand href="/home">
+        <img src={logo}
+        width="100"
+        height="40"
+        className="d-inline-block align-top"
+        />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link className="navbar-home" href="/home"><p className="home-link">Home</p></Nav.Link>
           <NavDropdown title="Box of fun!" id="basic-nav-dropdown">
             <NavDropdown.Item href="/weather">Weather</NavDropdown.Item>
             <NavDropdown.Item href="/resources">Resources</NavDropdown.Item>
