@@ -10,6 +10,7 @@ import About from './components/About'
 import Resources from './components/Resources'
 import Footer from './components/Footer'
 import Weather from './components/Weather'
+import EditUserProfile from './components/EditUserProfile'
 
 const App = () => {
   return (
@@ -29,14 +30,17 @@ const App = () => {
         <Route exact path ="/profile">
           <Profile/>
         </Route>
+        <Route path ="/weather">
+          <Weather/>
+        </Route>
+        <Route path ="/editprofile">
+          <EditUserProfile/>
+        </Route>
         <Route exact path ="/about">
           <About />
         </Route>
         <Route exact path ="/Resources">
           <Resources />
-        </Route>
-        <Route path ="/weather">
-          <Weather/>
         </Route>
         </div>
         <Footer />
