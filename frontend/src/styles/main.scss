@@ -176,3 +176,47 @@ height: 300px;
   }
 
 }
+
+.carousel,
+.carousel-inner,
+.carousel-item,
+.d-block,
+.w-100 {
+  height: 400px;
+  width: 500px;
+}
+
+.carousel-caption {
+  color: #ffffff;
+}
+.carousel img {
+  height: 400px;
+  width: 500px;
+}
+
+.searches {
+  display: flex;
+  width: 500px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  align-items: center;
+}
+
+thead, tbody, tr, th, td {
+  border: 2px solid black;
+  color: #ffffff;
+}
+
+.science {
+  font-style: italic;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

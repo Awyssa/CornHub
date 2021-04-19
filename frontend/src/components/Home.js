@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Table, Form, FormControl, InputGroup } from 'react-bootstrap'
+import { Table, Form, FormControl, Carousel } from 'react-bootstrap'
 import PlantTile from './PlantTile'
+import MyCarousel from './MyCarousel'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
@@ -9,6 +10,7 @@ export const Home = () => {
   const [difficulty, setDifficulty] = useState(5)
   const [rightPlants, setRightPlants] = useState(null)
   // const [allTypes, setAllTypes] = useState(null)
+  const [randomPlants, setRandomPlants] = useState(null)
 
   useEffect(() => {
     const now = new Date()
@@ -18,6 +20,19 @@ export const Home = () => {
       setPlantData(response.data)
       setRightPlants(response.data)
       console.log('clog1', response.data)
+      const randomNums = []
+      for (let i = 0; randomNums.length <= 5; i++) {
+        const num = Math.floor(Math.random() * response.data.length)
+        if (!randomNums.includes(num)) {
+          randomNums.push(num)
+        }
+      }
+      console.log(randomNums)
+      const coolPlants = response.data.filter((item, index) => {
+        return randomNums.includes(index)
+      })
+      setRandomPlants(coolPlants)
+      console.log(coolPlants)
       // const types = response.data.map(plant => {
       //   return plant.type
       // })
@@ -39,12 +54,18 @@ export const Home = () => {
   }
   return (
     <div>
-      {!plantData || !rightPlants
+      {!plantData || !rightPlants || !randomPlants
         ? <p> loading... </p>
         : <div>
-  <Table responsive>
-  <thead>
-    <tr>
+          <Carousel>
+            {randomPlants.map(plant => {
+              return <MyCarousel key={plant.id} { ...plant } />
+            })}
+  </Carousel>
+
+  {/* <thead> */}
+    <div className="searches">
+      <div className="dropdown">
     <Form.Label>Choose By Difficulty!</Form.Label>
   <Form.Control as="select" onChange={handleChange}>
     <option value="5">Master (All Plants)</option>
@@ -53,16 +74,26 @@ export const Home = () => {
     <option value="2">Easy</option>
     <option value="1">Beginner</option>
   </Form.Control>
-  </tr>
-  <tr>
-  <InputGroup>
+  </div>
+  <div className="dropdown">
+  <Form.Label>Search for a Plant!</Form.Label>
+    <FormControl
+      placeholder="Search"
+      aria-label="Search"
+      aria-describedby="basic-addon1"
+      onChange={handleSearch}
+    />
+  </div>
+  </div>
+  {/* <InputGroup>
     <InputGroup.Prepend>
       <InputGroup.Text>Search for a Plant!</InputGroup.Text>
     </InputGroup.Prepend>
     <FormControl as="textarea" aria-label="Search for a Plant!" onChange={handleSearch} />
-  </InputGroup>
-  </tr>
-  </thead>
+  </InputGroup> */}
+  {/* </tr>
+  </thead> */}
+  <Table responsive>
   <tbody>
     <tr>
           {rightPlants.filter(plant => {
