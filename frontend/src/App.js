@@ -31,7 +31,6 @@ const App = () => {
         <Route path ="/profile">
           <Profile/>
         </Route>
-        </div>
         <Route path ="/weather">
           <Weather/>
         </Route>
@@ -44,6 +43,7 @@ const App = () => {
         <Route exact path ="/Resources">
           <Resources />
         </Route>
+        </div>
         <Footer />
       </Switch>
     </BrowserRouter>
