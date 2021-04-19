@@ -12,6 +12,7 @@ from django.conf import settings
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 import jwt
 from .serializers.common import UserSerializer
+from .serializers.common import SavedPlantsSerializer
 
 User = get_user_model()
 
@@ -54,7 +55,7 @@ class LoginView(APIView):
         return Response({ 'sub': user_to_login.id,'token': token, 'message': f'Welcome back {user_to_login.username}'})
 
 class UserDetailView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_user(self, pk):
         try:
@@ -81,10 +82,21 @@ class UserDetailView(APIView):
     def put(self, request, pk):
         user_to_edit = self.get_user(pk=pk)
         if request.user.id == user_to_edit.id:
-            updated_user = UserSerializer(user_to_edit, data=request.data)
+            updated_user = SavedPlantsSerializer(user_to_edit, data=request.data, partial=True)
             if updated_user.is_valid():
                 updated_user.save()
                 return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
             return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         else: 
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    # def patch(self, request, pk):
+    #     user_to_edit = self.get_user(pk=pk)
+    #     if request.user.id == user_to_edit.id:
+    #         updated_user = UserSerializer(user_to_edit, data=request.data, partial=True)
+    #         if updated_user.is_valid():
+    #             updated_user.save()
+    #             return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
+    #         return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+    #     else: 
+    #         return Response(status=status.HTTP_400_BAD_REQUEST)

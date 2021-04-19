@@ -37,3 +37,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'password', 'password_confirmation', 'saved_plants', 'first_name', 'last_name', 'profile_image')
+
+class SavedPlantsSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = User
+        exclude = ( 'password',)
