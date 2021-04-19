@@ -28,6 +28,7 @@ height: 300px;
 .profile-wish-list{
   display: flex;
   overflow-x: auto;
+  margin-bottom: 3vh;
 }
 
 .profile-wishlist-column{
@@ -92,6 +93,11 @@ height: 300px;
   background-color: #ffa31aa8;
 }
 
+.about-button:focus{
+  background-color: #ffa31aa8;
+  
+}
+
 .about-card{
   margin: 80px 10px;
   height: 600px;
@@ -148,20 +154,52 @@ height: 300px;
   }
 }
 
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
+
 .weather-button {
   background-color: #ffa31a;
   color: black;
   border: none;
+  margin-right: 2vw;
 }
 
 .weather-button:hover {
-  background-color: #ffa31ab0;
+  background-color: #ffa31aa8;
   color: white;
 }
 
-.weather-button:active {
-  color: #ffa31a;
+.weather-button:focus{
+  background-color: #ffa31aa8;
+  border: none;
 }
+
+.forecast-buttons-container {
+  display: flex;
+  padding-left: 30px;
+  justify-content: flex-start;
+}
+
+.select-location-form {
+  display: flex;
+  
+  button {
+    max-height: 40px;
+    // align-self: baseline;
+    margin-left: 3vw;    
+  }
+  button:focus{
+    background-color: #ffa31aa8;
+    
+  }
+}
+.all-weather-buttons-forms {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
 
 @media screen and (max-width: 850px) {
 
