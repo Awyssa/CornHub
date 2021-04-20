@@ -204,6 +204,9 @@ height: 30vh;
   align-items: center;
   margin: 20px;
   padding: 10px;
+  img {
+    max-width: 300px;
+  }
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Auth
