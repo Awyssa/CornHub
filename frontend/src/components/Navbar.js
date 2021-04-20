@@ -16,7 +16,7 @@ const MyNavbar = () => {
 
   return (
     <Navbar className="navbar" bg="black" expand="lg">
-      <Navbar.Brand href="/home">
+      <Navbar.Brand href="/">
         <img src={logo}
         width="100"
         height="40"
