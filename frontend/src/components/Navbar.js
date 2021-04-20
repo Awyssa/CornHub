@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { userIsAuthenticated } from '../helpers/auth'
 import logo from '../assets/logo.png'
 
@@ -23,6 +23,7 @@ const MyNavbar = () => {
         className="d-inline-block align-top"
         />
       </Navbar.Brand>
+      <Container className="nav-container">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -45,6 +46,7 @@ const MyNavbar = () => {
           </>
 }
       </Navbar.Collapse>
+      </Container>
     </Navbar>
   )
 }
