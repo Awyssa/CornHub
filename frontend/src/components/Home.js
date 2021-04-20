@@ -9,8 +9,11 @@ export const Home = () => {
   const [thisDate, setThisDate] = useState(null)
   const [difficulty, setDifficulty] = useState(5)
   const [rightPlants, setRightPlants] = useState(null)
-  // const [allTypes, setAllTypes] = useState(null)
+  const [sow, setSow] = useState(null)
+  const [planting, setPlanting] = useState(null)
+  const [harvest, setHarvest] = useState(null)
   const [randomPlants, setRandomPlants] = useState(null)
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   useEffect(() => {
     const now = new Date()
@@ -51,6 +54,15 @@ export const Home = () => {
       plant.type.toUpperCase().includes(event.target.value.toUpperCase())
     })
     setRightPlants(searchList)
+  }
+  const handleSow = (event) => {
+    setSow(Number(event.target.value))
+  }
+  const handlePlanting = (event) => {
+    setPlanting(Number(event.target.value))
+  }
+  const handleHarvest = (event) => {
+    setHarvest(Number(event.target.value))
   }
   return (
     <>
@@ -128,20 +140,46 @@ export const Home = () => {
     {!plantData
       ? <p> loading... </p>
       : <div>
-    <Table responsive>
-    <tr>
-      <th className="month-scroll">Sow in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
-    </tr>
+<div className="searches">
+      <h2 className="month-scroll">Sow in {!sow ? thisDate.toLocaleString('default', { month: 'long' }) : monthNames[sow]}:</h2>
+      <div className="dropdown">
+    <Form.Label className="search-label">Or Choose a Month:</Form.Label>
+  <Form.Control as="select" onChange={handleSow}>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </Form.Control>
+  </div>
+  </div>
+  <Table responsive>
   <tbody>
-    <tr>
-      {plantData.filter(plant => {
+    <tr>{!sow
+      ? plantData.filter(plant => {
         return plant.sow_month === thisDate.getMonth()
       }).map(plant => (
         <PlantTile
         key={plant.id}
         { ...plant}
         />
-      ))}
+      ))
+      : plantData.filter(plant => {
+        return plant.sow_month === sow
+      }).map(plant => (
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
+      ))
+    }
     </tr>
     </tbody>
 </Table>
@@ -150,20 +188,46 @@ export const Home = () => {
 {!plantData
   ? <p> loading... </p>
   : <div>
+    <div className="searches">
+      <h2 className="month-scroll">Plant in {!planting ? thisDate.toLocaleString('default', { month: 'long' }) : monthNames[planting]}:</h2>
+      <div className="dropdown">
+    <Form.Label className="search-label">Or Choose a Month:</Form.Label>
+  <Form.Control as="select" onChange={handlePlanting}>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </Form.Control>
+  </div>
+  </div>
     <Table responsive>
-    <tr>
-      <th className="month-scroll">Plant out in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
-    </tr>
   <tbody>
-    <tr>
-      {plantData.filter(plant => {
-        return plant.plant_month === thisDate.getMonth()
-      }).map(plant => (
+  <tr>{!planting
+    ? plantData.filter(plant => {
+      return plant.plant_month === thisDate.getMonth()
+    }).map(plant => (
         <PlantTile
         key={plant.id}
         { ...plant}
         />
-      ))}
+    ))
+    : plantData.filter(plant => {
+      return plant.plant_month === planting
+    }).map(plant => (
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
+    ))
+    }
     </tr>
     </tbody>
 </Table>
@@ -172,20 +236,46 @@ export const Home = () => {
 {!plantData
   ? <p> loading... </p>
   : <div>
+    <div className="searches">
+      <h2 className="month-scroll">Harvest in {!harvest ? thisDate.toLocaleString('default', { month: 'long' }) : monthNames[harvest]}:</h2>
+      <div className="dropdown">
+    <Form.Label className="search-label">Or Choose a Month:</Form.Label>
+  <Form.Control as="select" onChange={handleHarvest}>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </Form.Control>
+  </div>
+  </div>
     <Table responsive>
-    <tr>
-      <th className="month-scroll">Harvest in {thisDate.toLocaleString('default', { month: 'long' })}:</th>
-    </tr>
   <tbody>
-    <tr>
-      {plantData.filter(plant => {
-        return plant.harvest_month === thisDate.getMonth()
-      }).map(plant => (
+  <tr>{!harvest
+    ? plantData.filter(plant => {
+      return plant.harvest_month === thisDate.getMonth()
+    }).map(plant => (
         <PlantTile
         key={plant.id}
         { ...plant}
         />
-      ))}
+    ))
+    : plantData.filter(plant => {
+      return plant.harvest_month === harvest
+    }).map(plant => (
+        <PlantTile
+        key={plant.id}
+        { ...plant}
+        />
+    ))
+    }
     </tr>
     </tbody>
 </Table>
