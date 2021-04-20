@@ -61,17 +61,17 @@ const Profile = () => {
     // console.log('updated wish list', wishlist)
     setConfirm('')
     try {
-      await axios.put(
-      `/api/auth/${id}/`,
-      wishlist, {
-        headers: {
-          Authorization: `Bearer ${getTokenFromLocalStorage()}`
+      await axios.put(`/api/auth/${id}/`,
+        wishlist, {
+          headers: {
+            Authorization: `Bearer ${getTokenFromLocalStorage()}`
+          }
         }
-      }
       )
     } catch (err) {
       console.log('error', err)
     }
+    location.reload()
   }
 
   const handleCancel = () => {
@@ -91,7 +91,7 @@ const Profile = () => {
      <p>Username: {userData.email}</p>
      <p>Last Name: {userData.last_name}</p>
      <p>Profile image:  {userData.profile_image}</p>
-     <p>Saved plants:  {userData.saved_plants}</p>
+     <p>Saved plants:  {userData.saved_plants.length}</p>
      </Container>
      {userData.saved_plants.length !== 0
        ? < div className="profile-wish-list">
