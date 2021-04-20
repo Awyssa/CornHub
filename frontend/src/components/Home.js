@@ -57,6 +57,7 @@ export const Home = () => {
         ? <p> loading... </p>
         : <>
           <Carousel>
+
             {randomPlants.map(plant => {
               return <Carousel.Item key={plant.id}>
               <img
@@ -70,8 +71,7 @@ export const Home = () => {
               </Carousel.Caption>
             </Carousel.Item>
             })}
-  </Carousel>
-
+          </Carousel>
   {/* <thead> */}
     <div className="searches">
       <div className="dropdown">
