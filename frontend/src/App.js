@@ -34,6 +34,9 @@ const App = () => {
         <Route exact path ="/profile">
           <Profile/>
         </Route>
+        <Route exact path ="/profile/:id">
+          <Profile/>
+        </Route>
         <Route path ="/weather">
           <Weather/>
         </Route>

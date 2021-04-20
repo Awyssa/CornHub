@@ -3,7 +3,8 @@ import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Form, Button, Container, Modal } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { ImageUploadField } from './ImageUploadField'
+import ImageUploadField from './ImageUploadField'
+
 const EditUserProfile = () => {
   // const [userData, setUserData] = useState('')
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const EditUserProfile = () => {
     username: '',
     first_name: '',
     last_name: '',
-    profile_image: '',
+    profile_image: 'https://lh3.googleusercontent.com/proxy/3U7unTSquVLioaqRllVU466m0hOAuvSEAyVb0UhUeZvAhZeTUwUAIGDdEFoKBnxqc2yXDmoZ_m_FbtjN_Io1jE5BLz7Te49V_4vdGuNGadVJtb0czF9dveSEVpsY',
     password: '',
     password_confirmation: ''
   })
@@ -58,18 +59,15 @@ const EditUserProfile = () => {
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
+    console.log(formData)
   }
-
-  // const handleImageUrl = url => {
-  //   setFormData({ ...formData, profile_image: url })
-  // }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    console.log(formData.profile_image)
     try {
       const id = window.localStorage.getItem('id')
-      await axios.put(
-        `/api/auth/${id}/`,
+      await axios.put(`/api/auth/${id}/`,
         formData, {
           headers: {
             Authorization: `Bearer ${getTokenFromLocalStorage()}`
@@ -78,7 +76,6 @@ const EditUserProfile = () => {
       )
       history.push(`/profile/${id}/`)
     } catch (err) {
-      // setErrors('Unauthorised')
     }
   }
   return (
@@ -130,10 +127,11 @@ const EditUserProfile = () => {
       <Form.Group >
         <Form.Label>Profile Image</Form.Label>
         <ImageUploadField
-         name="profile_image"
-         value={formData.profile_image}
-        //  {...handleImageUrl}
-        />
+            type="text"
+            value={formData.profile_image}
+            name="profile_image"
+            onChange={handleChange}
+          />
       </Form.Group>
       <Form.Group >
         <Form.Label>Password</Form.Label>

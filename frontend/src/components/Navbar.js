@@ -23,6 +23,7 @@ const MyNavbar = () => {
         className="d-inline-block align-top"
         />
       </Navbar.Brand>
+      <Container className="nav-container">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -47,6 +48,7 @@ const MyNavbar = () => {
           </>
 }
       </Navbar.Collapse>
+      </Container>
     </Navbar>
   )
 }

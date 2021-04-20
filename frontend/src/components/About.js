@@ -6,7 +6,7 @@ const About = () => {
   <Container className="about-container">
     <Container className="about-card">
       <Container className="about-image-container">
-      <Card.Img fluid variant="top" src="https://res.cloudinary.com/cornhub/image/upload/v1618756582/About/56eac38557931f5a307de2e9_lgkbad.jpg"/>
+      <Card.Img fluid variant="top" src="https://res.cloudinary.com/cornhub/image/upload/v1618923591/About/img_4304_ldpygi.jpg"/>
       </Container>
       <Card.Body>
         <Card.Title> Patrick Tapio Johnson </Card.Title>
