@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Table, Form, FormControl, Carousel } from 'react-bootstrap'
+import { Table, Form, FormControl, Carousel, Container } from 'react-bootstrap'
 import PlantTile from './PlantTile'
 
 export const Home = () => {
@@ -56,6 +56,7 @@ export const Home = () => {
       {!plantData || !rightPlants || !randomPlants
         ? <p> loading... </p>
         : <>
+        <Container className="carousel-box">
           <Carousel>
 
             {randomPlants.map(plant => {
@@ -72,6 +73,7 @@ export const Home = () => {
             </Carousel.Item>
             })}
           </Carousel>
+          </Container>
   {/* <thead> */}
     <div className="searches">
       <div className="dropdown">
