@@ -50,7 +50,10 @@ const PlantShow = () => {
     <p>Sunlight requirements: {onePlant.sunlight}</p>
     <p>Soil type: {onePlant.soil_acidity}</p>
     <p>Water every {onePlant.watering_frequency} days</p>
-    <p>Fertilize every {onePlant.fertilizing_frequency} days with {onePlant.fertilizer_type}</p>
+    {onePlant.fertilizing_frequency > 0
+      ? <p>Fertilize every {onePlant.fertilizing_frequency} days with {onePlant.fertilizer_type}</p>
+      : <p>Fertilize once before sowing with {onePlant.fertilizer_type}</p>
+    }
     <p>Ideal germination temperature: {onePlant.germination_temperature}°C</p>
     <p>Difficulty rating: {onePlant.difficulty}/5</p>
     {onePlant.verified_by_admin === false
