@@ -1,18 +1,20 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Table } from 'react-bootstrap'
 
 const WeekWeather = ({ weather }) => {
   return (
+      <Table responsive>
+    <tr>
+    <div className="weatherContainer">
 
-<div className="weatherContainer">
+<div className="day">
 
-      <div className="day">
+      { weather.daily.map((item, i) => (
 
-        { weather.daily.map((item, i) => (
-
-          <div className="weather-day" key={i}>
+        <>
+                  <div className="weather-day" key={i}>
           <Container>
           <>
                   <Row>
@@ -28,26 +30,21 @@ const WeekWeather = ({ weather }) => {
 
                   <Col>
                     <p>Max: { Math.round((item.temp.max - 273.15) * 10) / 10 } &deg;C <br/>Min: { Math.round((item.temp.min - 273.15) * 10) / 10 } &deg;C  </p>
-
-                <div className="eight wide column middle aligned">
-                  <p>Humidity: { item.humidity}%</p>
-                </div>
-                <div className="eight wide column middle aligned">
-                  <p> Sunrise { new Date(item.sunrise * 1000).toLocaleTimeString() }</p>
-                  <p> Sunset { new Date(item.sunset * 1000).toLocaleTimeString() }</p>
-                </div>
+                    <p>Humidity: { item.humidity}%</p>
+                    <p> Sunrise { new Date(item.sunrise * 1000).toLocaleTimeString() }</p>
+                    <p> Sunset { new Date(item.sunset * 1000).toLocaleTimeString() }</p>
 
               </Col>
             </Row>
-            <hr/>
           </>
         </Container>
         </div>
-        ))}
-
+        </>
+      ))}
       </div>
-
-</div>
+      </div>
+    </tr>
+</Table>
 
   )
 }

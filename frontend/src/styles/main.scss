@@ -283,7 +283,16 @@ height: 30vh;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
-
+.weather-day {
+  border: solid #ffa31a ;
+  // border-left: none;
+  margin: 10px;
+  padding: 10px;
+  // border-style: double;
+}
+.weather-button-container {
+  margin: 0px 20px;
+}
 .weather-button {
   background-color: #ffa31a;
   color: black;
@@ -331,9 +340,18 @@ height: 30vh;
 }
 .day {
   display: flex;
-  min-width: 400vw;
+  width: 400vw;
   overflow-x: auto;
 }
+
+.table-flex {
+  display: flex;
+}
+
+.weather-container {
+  display: flex;
+}
+
 
 .day-weather{
   margin-left: 80px;
