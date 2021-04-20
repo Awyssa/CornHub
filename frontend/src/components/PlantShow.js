@@ -30,6 +30,7 @@ const PlantShow = () => {
     getUser()
   }, [])
   const handleClick = () => {
+    console.log(history)
     history.push('/home')
   }
   if (!onePlant) return null

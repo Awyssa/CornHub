@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table, Form, FormControl, Carousel, Container } from 'react-bootstrap'
 import PlantTile from './PlantTile'
+import { Link } from 'react-router-dom'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
@@ -61,11 +62,13 @@ export const Home = () => {
 
             {randomPlants.map(plant => {
               return <Carousel.Item key={plant.id}>
+                <Link to={`/plants/${plant.id}`}>
               <img
                 className="d-block w-100"
                 src={plant.image}
                 alt={plant.name}
               />
+              </Link>
               <Carousel.Caption>
                 <h3>{plant.name}</h3>
                 <p>{plant.subspecies}</p>

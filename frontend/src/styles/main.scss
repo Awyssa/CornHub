@@ -15,6 +15,10 @@ body {
     color: white;
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 .nav-container {
   display: flex;
@@ -358,7 +362,7 @@ height: 30vh;
 .d-block,
 .w-100,
 .carousel img {
-  height: 90vh;
+  height: 80vh;
   width: 80vw;
 }
 
