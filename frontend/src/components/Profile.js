@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
   const [userData, setUserData] = useState('')
   const [savedPlantData, setSavedPlantData] = useState('')
-
   const [wishlist, setUpdateWishlist] = useState({
     saved_plants: []
   })
@@ -32,11 +31,8 @@ const Profile = () => {
     getUser()
   }, [])
 
-  console.log('saved plant data', savedPlantData)
-
   if (!savedPlantData || !userData) return 'loading'
   let arrayOfSavedPlants = []
-
   // * for Each lopp to make array of parks in wishlist
   userData.saved_plants.forEach((saved, index) => {
     const filteredPlants = savedPlantData.filter((item) => {
@@ -51,23 +47,18 @@ const Profile = () => {
 
   // * function to remove the item from the wishlist
   const removeFromWishlist = (event) => {
-    // console.log('event.target.value', event.target.value)
     setConfirm('confirm')
     const filteredWishlistConst = userData.saved_plants.filter(filter => {
-      // console.log(typeof (event.target.value))
       return filter !== parseFloat(event.target.value)
     })
-    console.log('filtered wishlist ', filteredWishlistConst)
+    // console.log('filtered wishlist ', filteredWishlistConst)
     const newWishList = { [event.target.name]: filteredWishlistConst }
     setUpdateWishlist(newWishList)
   }
 
-  console.log('UPDATED WISH LIST =>>>>>>>>>>>', wishlist)
-  console.log('saved plants =>>>>>>>>>>>', userData.saved_plants)
-
   const handleConfirm = async () => {
     const id = window.localStorage.getItem('id')
-    console.log('updated wish list', wishlist)
+    // console.log('updated wish list', wishlist)
     setConfirm('')
     try {
       await axios.put(
@@ -87,15 +78,23 @@ const Profile = () => {
     setConfirm('')
   }
 
+  // console.log('wishlist', wishlist)
+  // console.log('userData.saved_plants', userData.saved_plants)
+  // console.log('mappedFilteredArray', mappedFilteredArray)
+  // console.log('savedPlantData', savedPlantData)
+  // console.log('userData', userData.saved_plants.length)
   return (
-    <div>
+    <Container className="profile-container">
+      <Container className="user-profile-info">
      <p>First Name: {userData.first_name}</p>
      <p>Username: {userData.username}</p>
      <p>Username: {userData.email}</p>
      <p>Last Name: {userData.last_name}</p>
      <p>Profile image:  {userData.profile_image}</p>
      <p>Saved plants:  {userData.saved_plants}</p>
-     < div className="profile-wish-list">
+     </Container>
+     {userData.saved_plants.length !== 0
+       ? < div className="profile-wish-list">
      {mappedFilteredArray.map(item => {
        return (
          <div key={item.id} className="profile-wishlist-column">
@@ -140,10 +139,12 @@ const Profile = () => {
               </>
      }
       </div>
+       : <p>You have no saved plants!</p>
+      }
      <Link to="/editprofile">
      <Button >Edit user</Button>
      </Link>
-    </div>
+    </Container>
   )
 }
 

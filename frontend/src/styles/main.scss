@@ -163,7 +163,37 @@ height: 300px;
   color: black;
   border: none;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile page
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
+
+.edit-profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  h2 {
+    text-align: center;
+  }
+}
+
+.edit-profile-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-profile-button {
+  margin: 10px 30px;
+  width: 200px;
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
 
 .modal-content {
   color: black;

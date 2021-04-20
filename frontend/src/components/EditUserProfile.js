@@ -82,8 +82,9 @@ const EditUserProfile = () => {
     }
   }
   return (
-  <Container>
-    <Form onSubmit={handleSubmit}>
+  <Container className="edit-profile-container">
+    <Form className="edit-profile-form" onSubmit={handleSubmit}>
+    <h2>Edit Profile</h2>
       <Form.Group >
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email"
@@ -157,14 +158,14 @@ const EditUserProfile = () => {
                   onChange={handleChange}/>
       </Form.Group>
       {!deleteCount &&
-      <>
-      <Button variant="primary" type="submit">
+      <Container className="edit-profile-buttons">
+      <Button className="auth-button edit-profile-button" type="submit">
         Save changes
       </Button>
-      <Button onClick={handleDelete} variant="danger" type="submit">
+      <Button className="edit-profile-button" variant="danger" onClick={handleDelete} type="submit">
        Delete profile
       </Button>
-      </>
+      </Container>
     }
     {deleteCount &&
 
