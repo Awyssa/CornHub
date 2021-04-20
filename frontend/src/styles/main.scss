@@ -155,20 +155,22 @@ height: 30vh;
   margin: 0px;
   padding: 0px;
 }
-.home-link {
-  color: white
-}
+// .home-link {
+//   color: white
+// }
 
-.navbar-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// .navbar-nav {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
 .navbar-home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 20px 0 0 20px;
+  height: 40px;
+}
+.nav-link {
+  color: white !important;
 }
 
 #basic-nav-dropdown {
