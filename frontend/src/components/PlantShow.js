@@ -60,7 +60,7 @@ const PlantShow = () => {
         plantId={params.id}
        />
 }
-<Button variant="primary" size="sm" onClick={handleClick}>
+<Button variant="primary" className="about-button" size="sm" onClick={handleClick}>
       Back to Plants!
     </Button>
     </>
