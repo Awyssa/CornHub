@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Table, Form, FormControl, Carousel } from 'react-bootstrap'
+import { Table, Form, FormControl } from 'react-bootstrap'
 import PlantTile from './PlantTile'
 import MyCarousel from './MyCarousel'
 
@@ -56,12 +56,11 @@ export const Home = () => {
     <div>
       {!plantData || !rightPlants || !randomPlants
         ? <p> loading... </p>
-        : <div>
-          <Carousel>
+        : <>
+
             {randomPlants.map(plant => {
               return <MyCarousel key={plant.id} { ...plant } />
             })}
-  </Carousel>
 
   {/* <thead> */}
     <div className="searches">
@@ -109,7 +108,7 @@ export const Home = () => {
               </tr>
     </tbody>
 </Table>
-        </div>
+        </>
       }
     {!plantData
       ? <p> loading... </p>
