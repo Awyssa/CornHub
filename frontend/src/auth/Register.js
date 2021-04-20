@@ -22,13 +22,13 @@ const Register = () => {
     try {
       const response = await axios.post('/api/auth/register/', formData)
       window.localStorage.setItem('token', response.data.token)
+      setReg(true)
     } catch (err) {
       // setErrors('Unauthorised')
       console.log('ERROR>>>>', err.response.data)
       setErrorMessage(err.response.data)
       setShowA(true)
     }
-    setReg(true)
   }
   return (
   <Container>
@@ -100,7 +100,9 @@ const Register = () => {
         </Toast>
         </Row>
       </Container>
-      : <p>please login!</p>
+      : <div className="please-login">
+      <p>Registration successful, please login!</p>
+      </div>
       }
    </Container>
   )
