@@ -94,10 +94,12 @@ height: 30vh;
 
 .about-button:hover{
   background-color: #ffa31aa8;
+  border: none;
 }
 
 .about-button:focus{
   background-color: #ffa31aa8;
+  border: none;
   
 }
 
@@ -246,6 +248,7 @@ height: 30vh;
 .weather-button:hover {
   background-color: #ffa31aa8;
   color: white;
+  border: none;
 }
 
 .weather-button:focus{
@@ -367,7 +370,7 @@ a:hover {
   //weather 
 
 .chilli-image-profile {
-  width: 50vw;
+  width: 30vw;
   height: 30vh;
   }
 
