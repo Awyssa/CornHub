@@ -71,7 +71,7 @@ const PlantShow = () => {
        />
 }
 <Button variant="primary" className="about-button" size="sm" onClick={handleClick}>
-      Back to Plants!
+      Back
     </Button>
     </div>
     </div>
