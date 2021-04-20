@@ -11,6 +11,7 @@ const Profile = () => {
     saved_plants: []
   })
   const [confirm, setConfirm] = useState(null)
+  console.log(userData)
 
   useEffect(() => {
     const getData = async () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Button, Container, Row, Toast } from 'react-bootstrap'
 import axios from 'axios'
 
 const Register = () => {
@@ -7,27 +7,33 @@ const Register = () => {
     email: '',
     password: ''
   })
+  const [showA, setShowA] = useState(false)
+  const toggleShowA = () => setShowA(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [reg, setReg] = useState(false)
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
 
-  console.log(formData)
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
       const response = await axios.post('/api/auth/register/', formData)
       window.localStorage.setItem('token', response.data.token)
-      console.log(response.data.token)
     } catch (err) {
       // setErrors('Unauthorised')
       console.log('ERROR>>>>', err.response.data)
+      setErrorMessage(err.response.data)
+      setShowA(true)
     }
+    setReg(true)
   }
   return (
   <Container>
+    {reg === false
+      ? <Container>
     <Form className="auth-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
       <Form.Group controlId="formBasicEmail">
@@ -76,6 +82,26 @@ const Register = () => {
         Submit
       </Button>
     </Form>
+    <Row>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Woah there!</strong>
+          </Toast.Header>
+          <Toast.Body>
+            {errorMessage.email && errorMessage.email[0]}
+            {errorMessage.password && errorMessage.password[0]}
+            {errorMessage.username && errorMessage.username[0]}
+            {errorMessage.password_confirmation && errorMessage.password_confirmation[0]}
+            </Toast.Body>
+        </Toast>
+        </Row>
+      </Container>
+      : <p>please login!</p>
+      }
    </Container>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Button, Container, Toast, Row } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -8,6 +8,9 @@ const Login = () => {
     email: '',
     password: ''
   })
+  const [errors, setErrors] = useState()
+  const [showA, setShowA] = useState(false)
+  const toggleShowA = () => setShowA(!showA)
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -15,7 +18,6 @@ const Login = () => {
   }
 
   const history = useHistory()
-  console.log(formData)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -28,12 +30,14 @@ const Login = () => {
       history.push('/profile')
       console.log('response.data.sub', response.data.sub)
     } catch (err) {
-      // setErrors('Unauthorised')
+      setErrors(err.response.data)
+      toggleShowA()
       console.log('login errors', err.response.data)
     }
-    // location.reload()
   }
+  console.log(errors)
   return (
+    <Container className="login-container">
   <Container>
     <Form className="auth-form" onSubmit={handleSubmit}>
     <h2>Login</h2>
@@ -61,7 +65,20 @@ const Login = () => {
         Submit
       </Button>
     </Form>
-   </Container>
+    </Container>
+    <Row>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Unauthorised</strong>
+          </Toast.Header>
+          <Toast.Body>Invalid credentials</Toast.Body>
+        </Toast>
+        </Row>
+        </Container>
   )
 }
 

@@ -6,7 +6,8 @@ const Resources = () => {
     <Container className="resources-page">
       <Container className="spotify">
         <p>CornHub Spotify playlist</p>
-        <iframe src="https://open.spotify.com/embed/playlist/3B73vSUPTr7RljzlpF1wcV" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/playlist/3B73vSUPTr7RljzlpF1wcV" width="400" height="500" allowtransparency="true" allow="encrypted-media"></iframe>
+        <img src="https://res.cloudinary.com/cornhub/image/upload/v1618923742/About/mushroom_cwmuus.webp" />
       </Container>
         <Container className="res-info">
         <Container className="resources-item">
