@@ -51,7 +51,7 @@ const Login = () => {
                   placeholder="Enter password"
                   className="text-muted"
                   id="login-password"
-                  type="text"
+                  type="password"
                   name="password"
                   value={setFormData.password}
                   onChange={handleChange}/>

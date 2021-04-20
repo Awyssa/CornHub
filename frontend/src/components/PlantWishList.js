@@ -37,7 +37,7 @@ const PlantWishList = ({ plantId, userData }) => {
     )
   }
   return (
-    <Button variant="primary" size="sm" onClick={addToWishlist}>
+    <Button variant="primary" className="about-button" size="sm" onClick={addToWishlist}>
       Save to Profile
     </Button>
   )
