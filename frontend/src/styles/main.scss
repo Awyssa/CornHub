@@ -104,10 +104,12 @@ height: 30vh;
 
 .about-button:hover{
   background-color: #ffa31aa8;
+  border: none;
 }
 
 .about-button:focus{
   background-color: #ffa31aa8;
+  border: none;
   
 }
 
@@ -127,6 +129,10 @@ height: 30vh;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navbar
 
+.box-of-fun{
+  margin: 0px;
+  padding: 0px;
+}
 .home-link {
   color: white
 }
@@ -142,6 +148,14 @@ height: 30vh;
 .form-label {
   color: white;
 }
+
+.navbar-toggler.collapsed{
+  background-color:#ffa31a;
+}
+.navbar-toggler{
+  background-color:#ffa31a;
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Resources page
 .resources-page {
   display: flex;
@@ -244,6 +258,7 @@ height: 30vh;
 .weather-button:hover {
   background-color: #ffa31aa8;
   color: white;
+  border: none;
 }
 
 .weather-button:focus{
@@ -312,6 +327,7 @@ height: 30vh;
 }
 
 .carousel-caption {
+  background-color: #00000046;
   color: #ffffff;
 }
 // .carousel img {
@@ -365,7 +381,7 @@ a:hover {
   //weather 
 
 .chilli-image-profile {
-  width: 50vw;
+  width: 30vw;
   height: 30vh;
   }
 

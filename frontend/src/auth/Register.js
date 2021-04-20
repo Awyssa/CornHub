@@ -23,6 +23,7 @@ const Register = () => {
       console.log(response.data.token)
     } catch (err) {
       // setErrors('Unauthorised')
+      console.log('ERROR>>>>', err.response.data)
     }
   }
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { userIsAuthenticated } from '../helpers/auth'
 import logo from '../assets/logo.png'
 
@@ -27,13 +27,15 @@ const MyNavbar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link className="navbar-home" href="/home"><p className="home-link">Home</p></Nav.Link>
-          <NavDropdown title="Box of fun!" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/weather">Weather</NavDropdown.Item>
-            <NavDropdown.Item href="/resources">Resources</NavDropdown.Item>
-            <NavDropdown.Item href="/paypal">Paypal</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/about">About</NavDropdown.Item>
-          </NavDropdown>
+          <Container className="box-of-fun">
+            <NavDropdown title="Box of fun!" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/weather">Weather</NavDropdown.Item>
+              <NavDropdown.Item href="/resources">Resources</NavDropdown.Item>
+              <NavDropdown.Item href="/paypal">Paypal</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/about">About</NavDropdown.Item>
+            </NavDropdown>
+          </Container>
         </Nav>
         {!userIsAuthenticated() &&
           <Nav.Link href="/auth">Register/Login</Nav.Link>

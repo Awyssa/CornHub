@@ -29,8 +29,9 @@ const Login = () => {
       console.log('response.data.sub', response.data.sub)
     } catch (err) {
       // setErrors('Unauthorised')
+      console.log('login errors', err.response.data)
     }
-    location.reload()
+    // location.reload()
   }
   return (
   <Container>
