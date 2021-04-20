@@ -5,6 +5,8 @@ import { Col, Container, Row, Table } from 'react-bootstrap'
 
 const WeekWeather = ({ weather }) => {
   return (
+  <>
+    <p className="scroll-message-weather">Scoll on the box to see more weather information!</p>
       <Table responsive>
     <tr>
     <div className="weatherContainer">
@@ -45,6 +47,7 @@ const WeekWeather = ({ weather }) => {
       </div>
     </tr>
 </Table>
+</>
 
   )
 }

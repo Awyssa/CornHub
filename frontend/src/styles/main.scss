@@ -297,7 +297,7 @@ height: 30vh;
   background-color: #ffa31a;
   color: black;
   border: none;
-  margin-right: 2vw;
+  margin-right: 0vw;
 }
 
 .weather-button:hover {
@@ -352,9 +352,12 @@ height: 30vh;
   display: flex;
 }
 
-
 .day-weather{
   margin-left: 80px;
+}
+
+.scroll-message-weather {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 850px) {
@@ -367,6 +370,26 @@ height: 30vh;
   .about-card{
     width: 350px;
     margin: 5px;
+  }
+
+  .weather-jobs-description{
+    font-size: 12px;
+    margin: 10px;
+  }
+
+  .weather-day {
+    max-height: 25vh;
+    overflow-y: auto;
+    width: 40vw;
+  }
+  .scroll-message-weather {
+    visibility: visible;
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
+
+  .chilli-image-profile {
+    max-height: 20vh;
   }
 
 }
@@ -433,6 +456,8 @@ a:hover {
   color:#ffa31a;
 }
   //weather 
+
+
 
 .chilli-image-profile {
   width: 30vw;
