@@ -16,13 +16,13 @@ body {
 
 .plant-home-image {
   width: 200px;
-  height: 200px;
+  // height: 200px;
 }
 
 
 .chilli-image-profile {
-width: 300px;
-height: 300px;
+width: 25vw;
+height: 30vh;
 }
 
 .profile-wish-list{
@@ -186,7 +186,7 @@ height: 300px;
 
 .forecast-buttons-container {
   display: flex;
-  padding-left: 30px;
+  // padding-left: 30px;
   justify-content: flex-start;
 }
 
@@ -196,7 +196,7 @@ height: 300px;
   button {
     max-height: 40px;
     // align-self: baseline;
-    margin-left: 3vw;    
+    margin-left: 1vw;    
   }
   button:focus{
     background-color: #ffa31aa8;
@@ -208,6 +208,16 @@ height: 300px;
   flex-direction: column;
 
 }
+.day {
+  display: flex;
+  min-width: 400vw;
+  overflow-x: auto;
+}
+
+.day-weather{
+  margin-left: 80px;
+}
+
 
 
 
@@ -221,6 +231,22 @@ height: 300px;
   .about-card{
     width: 350px;
     margin: 5px;
+  }
+
+  //weather 
+
+.chilli-image-profile {
+  width: 50vw;
+  height: 30vh;
+  }
+
+  .weather-button{
+    font-size: 10px;
+  }
+
+  .weather-button-container{
+    display: flex;
+    flex-direction: column;
   }
 
 }

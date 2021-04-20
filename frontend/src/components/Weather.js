@@ -81,7 +81,7 @@ const Weather = () => {
   return (
 <>
 
-<Container>
+<Container className="weather-button-container">
   {`${reveseGeoLocation.features[0].text}, ${reveseGeoLocation.features[2].text}, ${reveseGeoLocation.features[3].text} `}
     <Form className="select-location-form" onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicLocation">
@@ -95,15 +95,20 @@ const Weather = () => {
       <Button className="weather-button" type="submit">
         Submit
       </Button>
-      </Form>
-      </Container>
-      {/* <p>{currentLocation}</p> */}
-    <div>
       <div className="forecast-buttons-container">
         <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
         <div className="or"></div>
         <Button className="weather-button" value="week"onClick={handleWeather}>7 Day Forecast</Button>
       </div>
+      </Form>
+      </Container>
+      {/* <p>{currentLocation}</p> */}
+    <div>
+      {/* <div className="forecast-buttons-container">
+        <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
+        <div className="or"></div>
+        <Button className="weather-button" value="week"onClick={handleWeather}>7 Day Forecast</Button>
+      </div> */}
 
       {forecast === 'current'
         ? <CurrentWeather
