@@ -3,14 +3,15 @@ import axios from 'axios'
 import { Container, Form, Button } from 'react-bootstrap'
 import CurrentWeather from '../weather/CurrentWeather'
 import WeekWeather from '../weather/WeekWeather'
-
+import WeatherJobs from '../weather/WeatherJobs'
 const Weather = () => {
   const [weather, setWeather] = useState(null)
   const [forecast, setForecast] = useState('current')
   const [viewport, setViewport] = useState('')
   const [formData, setFormData] = useState('London')
   const [inputLocationChoice, setInputLocationChoice] = useState(null)
-  const [currentLocation, setCurrentLocation] = useState(null)
+  // const [currentLocation, setCurrentLocation] = useState(null)
+  const [reveseGeoLocation, setReverseGeoLocation] = useState(null)
 
   // handlers for the manual location input form
   const handleChange = (event) => {
@@ -20,7 +21,7 @@ const Weather = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     setInputLocationChoice(formData.location)
-    setCurrentLocation(formData.location)
+    // setCurrentLocation(formData.location)
   }
 
   // this is creating latitude and longitude based on the users current location
@@ -33,16 +34,24 @@ const Weather = () => {
     })
   }, [])
 
+  console.log('VIEWPORT>>>>>', viewport)
+
   // This is the request to geocode a place name into long and lat- i have made this link ot the form
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputLocationChoice}.json?access_token=pk.eyJ1IjoiandhcmQwMzk1IiwiYSI6ImNrbXFnM3l3azJvNHgyb256N2U3NGY1NnUifQ.j9Q8uNoEEO0GBonf6TLoew`)
       setViewport({ longitude: data.features[0].geometry.coordinates[0], latitude: data.features[0].geometry.coordinates[1] })
-      console.log('data from geocoding', data)
     }
     getData()
   }, [inputLocationChoice])
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${viewport.longitude},${viewport.latitude}.json?access_token=pk.eyJ1IjoiandhcmQwMzk1IiwiYSI6ImNrbXFnM3l3azJvNHgyb256N2U3NGY1NnUifQ.j9Q8uNoEEO0GBonf6TLoew`)
+      setReverseGeoLocation(data)
+    }
+    getData()
+  }, [viewport])
 
   // this is the get request for the weather data for the location we have specified
   useEffect(() => {
@@ -67,14 +76,15 @@ const Weather = () => {
     }
   }
 
-  if (!weather) return 'Loading'
-
+  if (!weather || !reveseGeoLocation) return 'Loading'
+  console.log('reveseGeoLocation', reveseGeoLocation)
   return (
 <>
-<Container>
-    <Form onSubmit={handleSubmit}>
+
+<Container className="weather-button-container">
+  {`${reveseGeoLocation.features[0].text}, ${reveseGeoLocation.features[2].text}, ${reveseGeoLocation.features[3].text} `}
+    <Form className="select-location-form" onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicLocation">
-        <Form.Label>Enter location</Form.Label>
         <Form.Control type="text" placeholder="Enter location"
             className="text-muted"
             id="location"
@@ -85,15 +95,21 @@ const Weather = () => {
       <Button className="weather-button" type="submit">
         Submit
       </Button>
-      </Form>
-      </Container>
-      <p>{currentLocation}</p>
-    <div>
-      <div className="ui buttons">
+      <div className="forecast-buttons-container">
         <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
         <div className="or"></div>
         <Button className="weather-button" value="week"onClick={handleWeather}>7 Day Forecast</Button>
       </div>
+      </Form>
+      </Container>
+      {/* <p>{currentLocation}</p> */}
+    <div>
+      {/* <div className="forecast-buttons-container">
+        <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
+        <div className="or"></div>
+        <Button className="weather-button" value="week"onClick={handleWeather}>7 Day Forecast</Button>
+      </div> */}
+
       {forecast === 'current'
         ? <CurrentWeather
           weather = {weather}
@@ -101,6 +117,10 @@ const Weather = () => {
         : weatherForecastFunction()
       }
     </div>
+
+    <WeatherJobs
+    weather = {weather}
+    />
     </>
 
   )

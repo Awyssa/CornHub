@@ -98,14 +98,16 @@ const Profile = () => {
      {mappedFilteredArray.map(item => {
        return (
          <div key={item.id} className="profile-wishlist-column">
+        <Link to={`/plants/${item.id}`}>
          <p> {item.name} </p>
          <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
+         </Link>
 
          {/* <button name="wishList" onClick={removeFromWishList} value={item.id}>Remove {item.name}?</button> */}
 
          {!confirm &&
           <>
-           <Button name="saved_plants" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
+           <Button name="saved_plants" className="delete-from-wishlist-buttons" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
                     </>
                   }
          </div>
@@ -142,7 +144,7 @@ const Profile = () => {
        : <p>You have no saved plants!</p>
       }
      <Link to="/editprofile">
-     <Button >Edit user</Button>
+     <Button className="delete-from-wishlist-buttons">Edit user</Button>
      </Link>
     </Container>
   )

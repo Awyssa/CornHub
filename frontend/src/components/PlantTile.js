@@ -6,9 +6,9 @@ const PlantTile = (props) => {
   return (
 <td>
   <Link to={`/plants/${props.id}`}>
-          <p>{props.name}</p>
+          <p className="tile-title">{props.name}</p>
           <p>{props.type}</p>
-          <p>{props.subspecies}</p>
+          <p className="science">{props.subspecies}</p>
           <img src={props.image} className="plant-home-image"></img>
           </Link>
         </td>
