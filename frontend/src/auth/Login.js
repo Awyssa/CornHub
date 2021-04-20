@@ -34,7 +34,8 @@ const Login = () => {
   }
   return (
   <Container>
-    <Form onSubmit={handleSubmit}>
+    <Form className="auth-form" onSubmit={handleSubmit}>
+    <h2>Login</h2>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email"
@@ -55,7 +56,7 @@ const Login = () => {
                   value={setFormData.password}
                   onChange={handleChange}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="auth-button" type="submit">
         Submit
       </Button>
     </Form>

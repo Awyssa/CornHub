@@ -5,6 +5,7 @@ const Resources = () => {
   return (
     <Container className="resources-page">
       <Container className="spotify">
+        <p>CornHub Spotify playlist</p>
         <iframe src="https://open.spotify.com/embed/playlist/3B73vSUPTr7RljzlpF1wcV" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
       </Container>
         <Container className="res-info">

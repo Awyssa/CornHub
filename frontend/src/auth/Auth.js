@@ -5,9 +5,9 @@ import Register from './Register'
 const Auth = () => {
   return (
 
-    <div>
-      <Login/>
+    <div className="auth-container">
       <Register/>
+      <Login/>
     </div>
   )
 }
