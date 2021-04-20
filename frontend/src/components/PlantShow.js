@@ -31,7 +31,7 @@ const PlantShow = () => {
   }, [])
   const handleClick = () => {
     console.log(history)
-    history.push('/home')
+    history.goBack()
   }
   if (!onePlant) return null
   return (
