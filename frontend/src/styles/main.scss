@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
+
+
 body {
   min-height: 100vh;
   background-color: black;
@@ -75,6 +77,16 @@ height: 30vh;
   color: #000000;
   border: 0px;
 }
+
+.enterButton:hover {
+  background-color: #ffa31aa8;
+  border: 0px;
+}
+
+.enterButton:focus {
+  background-color: #ffa31aa8;
+  border: 0px;
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - About page
 
 .about-links {
@@ -98,10 +110,12 @@ height: 30vh;
 
 .about-button:hover{
   background-color: #ffa31aa8;
+  border: none;
 }
 
 .about-button:focus{
   background-color: #ffa31aa8;
+  border: none;
   
 }
 
@@ -121,6 +135,10 @@ height: 30vh;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navbar
 
+.box-of-fun{
+  margin: 0px;
+  padding: 0px;
+}
 .home-link {
   color: white
 }
@@ -148,6 +166,14 @@ height: 30vh;
 .form-label {
   color: white;
 }
+
+.navbar-toggler.collapsed{
+  background-color:#ffa31a;
+}
+.navbar-toggler{
+  background-color:#ffa31a;
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Resources page
 .resources-page {
   display: flex;
@@ -250,6 +276,7 @@ height: 30vh;
 .weather-button:hover {
   background-color: #ffa31aa8;
   color: white;
+  border: none;
 }
 
 .weather-button:focus{
@@ -309,21 +336,22 @@ height: 30vh;
 }
 
 .carousel,
-.carousel-inner,
 .carousel-item,
 .d-block,
-.w-100 {
-  height: 400px;
-  width: 500px;
+.w-100,
+.carousel img {
+  height: 90vh;
+  width: 80vw;
 }
 
 .carousel-caption {
+  background-color: #00000046;
   color: #ffffff;
 }
-.carousel img {
-  height: 400px;
-  width: 500px;
-}
+// .carousel img {
+//   height: 400px;
+//   width: 500px;
+// }
 
 .searches {
   display: flex;
@@ -371,7 +399,7 @@ a:hover {
   //weather 
 
 .chilli-image-profile {
-  width: 50vw;
+  width: 30vw;
   height: 30vh;
   }
 

@@ -23,6 +23,7 @@ const Register = () => {
       console.log(response.data.token)
     } catch (err) {
       // setErrors('Unauthorised')
+      console.log('ERROR>>>>', err.response.data)
     }
   }
   return (
@@ -55,7 +56,7 @@ const Register = () => {
                   placeholder="Enter password"
                   className="text-muted"
                   id="login-password"
-                  type="text"
+                  type="password"
                   name="password"
                   value={setFormData.password}
                   onChange={handleChange}/>
@@ -66,7 +67,7 @@ const Register = () => {
                   placeholder="Confirm password"
                   className="text-muted"
                   id="resgister-password-confirmation"
-                  type="text"
+                  type="password"
                   name="password_confirmation"
                   value={setFormData.password_confirmation}
                   onChange={handleChange}/>

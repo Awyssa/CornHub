@@ -29,8 +29,9 @@ const Login = () => {
       console.log('response.data.sub', response.data.sub)
     } catch (err) {
       // setErrors('Unauthorised')
+      console.log('login errors', err.response.data)
     }
-    location.reload()
+    // location.reload()
   }
   return (
   <Container>
@@ -51,7 +52,7 @@ const Login = () => {
                   placeholder="Enter password"
                   className="text-muted"
                   id="login-password"
-                  type="text"
+                  type="password"
                   name="password"
                   value={setFormData.password}
                   onChange={handleChange}/>

@@ -141,7 +141,7 @@ const EditUserProfile = () => {
                   placeholder="Enter password"
                   className="text-muted"
                   id="edit-password"
-                  type="text"
+                  type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}/>
@@ -152,7 +152,7 @@ const EditUserProfile = () => {
                   placeholder="Confirm password"
                   className="text-muted"
                   id="eddit-password-confirmation"
-                  type="text"
+                  type="password"
                   name="password_confirmation"
                   value={formData.password_confirmation}
                   onChange={handleChange}/>

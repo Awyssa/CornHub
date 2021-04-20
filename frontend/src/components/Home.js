@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table, Form, FormControl, Carousel } from 'react-bootstrap'
 import PlantTile from './PlantTile'
-import MyCarousel from './MyCarousel'
 
 export const Home = () => {
   const [plantData, setPlantData] = useState(null)
@@ -53,16 +52,26 @@ export const Home = () => {
     setRightPlants(searchList)
   }
   return (
-    <div>
+    <>
       {!plantData || !rightPlants || !randomPlants
         ? <p> loading... </p>
-        : <div>
+        : <>
           <Carousel>
-            {randomPlants.map(plant => {
-              return <MyCarousel key={plant.id} { ...plant } />
-            })}
-  </Carousel>
 
+            {randomPlants.map(plant => {
+              return <Carousel.Item key={plant.id}>
+              <img
+                className="d-block w-100"
+                src={plant.image}
+                alt={plant.name}
+              />
+              <Carousel.Caption>
+                <h3>{plant.name}</h3>
+                <p>{plant.subspecies}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            })}
+          </Carousel>
   {/* <thead> */}
     <div className="searches">
       <div className="dropdown">
@@ -109,7 +118,7 @@ export const Home = () => {
               </tr>
     </tbody>
 </Table>
-        </div>
+        </>
       }
     {!plantData
       ? <p> loading... </p>
@@ -177,7 +186,7 @@ export const Home = () => {
 </Table>
 </div>
 }
-    </div>
+    </>
   )
 }
 

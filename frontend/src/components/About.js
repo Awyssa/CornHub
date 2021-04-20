@@ -12,7 +12,7 @@ const About = () => {
         <Card.Title> Patrick Tapio Johnson </Card.Title>
         <Card.Text>
           <p>Software Developer from London, England</p>
-          <p>Likes: Chello, Dad Jokes</p>
+          <p>Likes: Cello, Dad Jokes</p>
         </Card.Text>
         <Container className="about-links">
           <Button className="about-button" variant="primary" href="https://www.linkedin.com/in/patrick-tapio-johnson/" target="_blank">LinkedIn</Button>
