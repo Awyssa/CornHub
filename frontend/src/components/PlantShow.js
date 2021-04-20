@@ -33,14 +33,17 @@ const PlantShow = () => {
     console.log(history)
     history.goBack()
   }
+  const handleLog = () => {
+    history.push('/auth')
+  }
   if (!onePlant) return null
   return (
-    <>
+    <div className="plantshow">
     <h2>{onePlant.name}</h2>
     <h3>{onePlant.type}</h3>
     <h3 className="science">{onePlant.subspecies}</h3>
     <img src={onePlant.image} />
-    <p>{onePlant.description}</p>
+    <p className="science">{onePlant.description}</p>
     <p>Sow in: {monthNames[onePlant.sow_month]}</p>
     <p>Plant out in: {monthNames[onePlant.plant_month]}</p>
     <p>Harvest in: {monthNames[onePlant.harvest_month]}</p>
@@ -51,11 +54,14 @@ const PlantShow = () => {
     <p>Ideal germination temperature: {onePlant.germination_temperature}°C</p>
     <p>Difficulty rating: {onePlant.difficulty}/5</p>
     {onePlant.verified_by_admin === false
-      ? <p>Not yet verified by CornHub</p>
-      : <p>Verified by CornHub</p>
+      ? <p className="not-yet">Not yet verified by CornHub</p>
+      : <p></p>
     }
+    <div className="button-holder">
     {!userData
-      ? <h1>Log in to save to profile!</h1>
+      ? <Button variant="primary" className="about-button" size="sm" onClick={handleLog}>
+      Log in to Save!
+    </Button>
       : <PlantWishList
         userData={userData}
         plantId={params.id}
@@ -64,7 +70,8 @@ const PlantShow = () => {
 <Button variant="primary" className="about-button" size="sm" onClick={handleClick}>
       Back to Plants!
     </Button>
-    </>
+    </div>
+    </div>
   )
 }
 export default PlantShow

@@ -438,3 +438,32 @@ a:hover {
   display: flex;
   justify-content: center;
 }
+
+.plantshow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  h2 {
+    font-weight: 700;
+    color:#ffa31a;
+    margin-top: 30px;
+  }
+  img {
+    height: 40vh;
+    width: 40vw;
+  }
+  p {
+    width: 60vw;
+  }
+  .science {
+    height: auto;
+  }
+  button {
+    margin-bottom: 30px;
+  }
+}
+.not-yet {
+  color: #ff0000;
+  font-size: 10px;
+}
