@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Container, Form, Button } from 'react-bootstrap'
+import { getTokenFromLocalStorage } from '../helpers/auth'
 
 const NewPlant = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,11 @@ const NewPlant = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const response = await axios.post('/api/plants/', formData)
+      const response = await axios.post('/api/plants/', formData, {
+        headers: {
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`
+        }
+      })
       console.log(response)
     } catch (err) {
       console.log('err', err.response.data)
