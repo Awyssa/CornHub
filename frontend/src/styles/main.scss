@@ -342,12 +342,19 @@ body {
 
 .please-login {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-size: 30px;
   p {
     text-align: center;
   }
+}
+
+.login-outerbox{
+  display: flex;
+  justify-content: center;
 }
 
 .toast-error {
