@@ -482,7 +482,7 @@ body {
   border: none;
 }
 
-.auth-button:focus{
+.weather-button:focus{
   background-color: #ffa31aa8;
   border: none;
 }
@@ -534,6 +534,23 @@ body {
 
 .scroll-message-weather {
   visibility: hidden;
+}
+
+.wearther-jobs-carousel {
+  display: flex;
+  overflow-x: auto;
+}
+
+.weather-jobs-description{
+  // display: flex;
+  overflow-x: auto;
+  margin-bottom: 3vh;
+}
+
+.profile-wishlist-column{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 @media screen and (max-width: 850px) {
