@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Form, Button, Container, Modal } from 'react-bootstrap'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-import ImageUploadField from './ImageUploadField'
+// import { useHistory } from 'react-router-dom'
+// import ImageUploadField from './ImageUploadField'
 
 const EditUserProfile = () => {
   // const [userData, setUserData] = useState('')
@@ -11,12 +11,9 @@ const EditUserProfile = () => {
     email: '',
     username: '',
     first_name: '',
-    last_name: '',
-    profile_image: 'https://lh3.googleusercontent.com/proxy/3U7unTSquVLioaqRllVU466m0hOAuvSEAyVb0UhUeZvAhZeTUwUAIGDdEFoKBnxqc2yXDmoZ_m_FbtjN_Io1jE5BLz7Te49V_4vdGuNGadVJtb0czF9dveSEVpsY',
-    password: '',
-    password_confirmation: ''
+    last_name: ''
   })
-  const history = useHistory()
+  // const history = useHistory()
   const [deleteCount, setDeleteCount] = useState('')
   const handleDelete = () => {
     setDeleteCount('delete')
@@ -124,7 +121,7 @@ const EditUserProfile = () => {
                   value={formData.last_name}
                   onChange={handleChange}/>
       </Form.Group>
-      <Form.Group >
+      {/* <Form.Group >
         <Form.Label>Profile Image</Form.Label>
         <ImageUploadField
             type="text"
@@ -132,8 +129,8 @@ const EditUserProfile = () => {
             name="profile_image"
             onChange={handleChange}
           />
-      </Form.Group>
-      <Form.Group >
+      </Form.Group> */}
+      {/* <Form.Group >
         <Form.Label>Password</Form.Label>
         <Form.Control
                   placeholder="Enter password"
@@ -154,24 +151,24 @@ const EditUserProfile = () => {
                   name="password_confirmation"
                   value={formData.password_confirmation}
                   onChange={handleChange}/>
-      </Form.Group>
+      </Form.Group> */}
       {!deleteCount &&
       <Container className="edit-profile-buttons">
-      <Button className="auth-button edit-profile-button" type="submit">
-        Save changes
+      {formData.first_name && formData.last_name && formData.email && formData.username
+        ? <Button className="edit-profile-button auth-button" type="submit">
+        Submit
       </Button>
-      <Button className="edit-profile-button" variant="danger" onClick={handleDelete} type="submit">
+        : <Button className="edit-profile-button auth-button-disabled" disabled="true">
+      Submit
+    </Button>
+      }
+      <Button className="edit-profile-button auth-button" variant="danger" onClick={handleDelete} type="submit">
        Delete profile
       </Button>
       </Container>
-    }
+    } <Button className="auth-button" onClick={() => history.goBack()}>Back to Profile</Button>
     {deleteCount &&
-
     <>
-    {/* <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
-    Are you sure you want to delete your profile?
-   </Button> */}
-
    <Modal
     show = {deleteCount}
     aria-labelledby="contained-modal-title-vcenter"
