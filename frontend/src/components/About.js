@@ -44,7 +44,7 @@ const About = () => {
         <Card.Title> Michael Henderson </Card.Title>
         <Card.Text>
           <p>Software Developer from London, England</p>
-          <p>Likes: When my Linter works</p>
+          <p>Likes: Sunflowers, Kate Bush</p>
         </Card.Text>
         <Container className="about-links">
           <Button className="about-button" variant="primary" href="https://www.linkedin.com/in/mhenderson24/" target="_blank">LinkedIn</Button>

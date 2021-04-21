@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Form, Button, Container, Modal } from 'react-bootstrap'
+import { Form, Button, Container, Modal, Toast } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { ImageUploadField } from './ImageUploadField'
-
+// import ImageUploadField from './ImageUploadField'
 const EditUserProfile = () => {
-  // const [userData, setUserData] = useState('')
+  const [showA, setShowA] = useState(false)
+  const toggleShowA = () => setShowA(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     username: '',
     first_name: '',
-    last_name: '',
-    profile_image: 'https://lh3.googleusercontent.com/proxy/3U7unTSquVLioaqRllVU466m0hOAuvSEAyVb0UhUeZvAhZeTUwUAIGDdEFoKBnxqc2yXDmoZ_m_FbtjN_Io1jE5BLz7Te49V_4vdGuNGadVJtb0czF9dveSEVpsY',
-    password: '',
-    password_confirmation: ''
+    last_name: ''
   })
   const history = useHistory()
   const [deleteCount, setDeleteCount] = useState('')
@@ -30,7 +28,6 @@ const EditUserProfile = () => {
     history.push('/')
     location.reload()
   }
-
   const handleDeleteConfirm = async () => {
     const id = window.localStorage.getItem('id')
     await axios.delete(`/api/auth/${id}/`, {
@@ -41,7 +38,6 @@ const EditUserProfile = () => {
     )
     handleLogout()
   }
-
   useEffect(() => {
     const getUser = async () => {
       const id = window.localStorage.getItem('id')
@@ -55,20 +51,12 @@ const EditUserProfile = () => {
     }
     getUser()
   }, [])
-
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
-    console.log(formData)
   }
-
-  const handleImageUrl = url => {
-    setFormData({ ...formData, image: url })
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(formData.profile_image)
     try {
       const id = window.localStorage.getItem('id')
       await axios.put(`/api/auth/${id}/`,
@@ -80,6 +68,9 @@ const EditUserProfile = () => {
       )
       history.push(`/profile/${id}/`)
     } catch (err) {
+      console.log(err.response.data)
+      setErrorMessage(err.response.data)
+      setShowA(true)
     }
   }
   return (
@@ -128,15 +119,33 @@ const EditUserProfile = () => {
                   value={formData.last_name}
                   onChange={handleChange}/>
       </Form.Group>
-      <Form.Group >
-        {/* <Form.Label>Profile Image</Form.Label> */}
+      <Container>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Woah there!</strong>
+          </Toast.Header>
+          <Toast.Body className="toast.body">
+            {errorMessage.email && errorMessage.email[0]}
+            {errorMessage.password && errorMessage.password[0]}
+            {errorMessage.username && errorMessage.username[0]}
+            {errorMessage.password_confirmation && errorMessage.password_confirmation[0]}
+            </Toast.Body>
+        </Toast>
+      </Container>
+      {/* <Form.Group >
+        <Form.Label>Profile Image</Form.Label>
         <ImageUploadField
-                name="profile_image"
-                value={formData.profile_image}
-                handleImageUrl={handleImageUrl}
+            type="text"
+            value={formData.profile_image}
+            name="profile_image"
+            onChange={handleChange}
           />
-      </Form.Group>
-      <Form.Group >
+      </Form.Group> */}
+      {/* <Form.Group >
         <Form.Label>Password</Form.Label>
         <Form.Control
                   placeholder="Enter password"
@@ -157,24 +166,24 @@ const EditUserProfile = () => {
                   name="password_confirmation"
                   value={formData.password_confirmation}
                   onChange={handleChange}/>
-      </Form.Group>
+      </Form.Group> */}
       {!deleteCount &&
       <Container className="edit-profile-buttons">
-      <Button className="auth-button edit-profile-button" type="submit">
-        Save changes
+      {formData.first_name && formData.last_name && formData.email && formData.username
+        ? <Button className="edit-profile-button auth-button" type="submit">
+        Submit
       </Button>
-      <Button className="edit-profile-button" variant="danger" onClick={handleDelete} type="submit">
+        : <Button className="edit-profile-button auth-button" disabled="true">
+      Submit
+    </Button>
+      }
+      <Button className="edit-profile-button auth-button" variant="danger" onClick={handleDelete} type="submit">
        Delete profile
       </Button>
       </Container>
-    }
+    } <Button className="auth-button" onClick={() => history.goBack()}>Back to Profile</Button>
     {deleteCount &&
-
     <>
-    {/* <Button onClick={handleDeleteConfirm} variant="danger" type="submit">
-    Are you sure you want to delete your profile?
-   </Button> */}
-
    <Modal
     show = {deleteCount}
     aria-labelledby="contained-modal-title-vcenter"
@@ -186,24 +195,19 @@ const EditUserProfile = () => {
       <Modal.Header onClick={handleClose} closeButton>
         <Modal.Title>Delete your profile?</Modal.Title>
       </Modal.Header>
-
       <Modal.Body>
         <p>  Are you sure you want to delete your profile?</p>
       </Modal.Body>
-
       <Modal.Footer>
         <Button onClick={handleClose} variant="secondary">Close</Button>
         <Button onClick={handleDeleteConfirm} variant="primary">Delete?</Button>
       </Modal.Footer>
   </Modal.Dialog>
 </Modal>
-
    </>
-
     }
     </Form>
    </Container>
   )
 }
-
 export default EditUserProfile

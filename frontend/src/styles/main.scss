@@ -28,23 +28,76 @@ body {
   margin-bottom: 0;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
 
-.chilli-image-profile {
-width: 25vw;
-height: 30vh;
-}
-
-.profile-wish-list{
-  display: flex;
-  overflow-x: auto;
-  margin-bottom: 3vh;
-}
-
-.profile-wishlist-column{
+.user-profile-info {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  button {
+    width: 200px
+  }
 }
+
+.user-profile-info-innerbox {
+  width: 300px;
+  text-align: center;
+}
+
+.user-profile-info-outerbox {
+  display: flex;
+}
+
+.profile-search-bar {
+  color: white;
+  background-color: black;
+  border: 1px solid #ffa31a;
+  width: 500px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.plant-info-box {
+  display: flex;
+}
+
+.profile-plants-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-plant-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-plant {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  button {
+    width: 200px;
+  }
+  img {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+  }
+}
+
+.profile-plant-info {
+  display: flex;
+  flex-direction: column;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
+
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -204,21 +257,26 @@ height: 30vh;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Auth
 
+.auth-page{
+  display: flex;
+  width: 500px;
+  margin-top: 30px;
+}
+
 .auth-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
   h2 {
     text-align: center;
   }
+  height: 80vh;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 50px;
-  padding: 30px;
+  margin: 20px;
 }
 
 .auth-button {
@@ -227,13 +285,79 @@ height: 30vh;
   border: none;
 }
 
-.login-container {
+.auth-button-disabled:focus {
+  background-color: #ffa31a;
+  color: black;
+  border: none;
+}
+
+
+.auth-button-disabled {
+  background-color: #ffa31a44;
+  color: white;
+  border: none;
+}
+
+.auth-button-disabled:hover {
+  background-color: #ffa31aa8;
+  border: 0px;
+}
+
+.auth-button:hover {
+  background-color: #ffa31aa8;
+  border: 0px;
+}
+
+.please-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  p {
+    text-align: center;
+  }
+}
+
+.toast-error {
+  width: 300px;
+  background-color: white;
+  color: black;
+  margin: 0;
+}
+
+.toast-header {
+  justify-content: space-between;
+  background-color: red;
+  color: white;
+}
+
+.login-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
+
+.login-toast {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+}
+
+.no-saved-plants {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.saved-plants-title {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Edit user profile
 
 .edit-profile-container {
   display: flex;
@@ -254,13 +378,33 @@ height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 20px;
+  button {
+    border: none;
+  }
 }
 
 .edit-profile-button {
   margin: 10px 30px;
   width: 200px;
+  background-color: #ffa31a;
+  border: none;
+  button {
+    border: none;
+  }
 }
 
+.edit-profile-button:disabled {
+  background-color: #ffa31a94;
+  color: black;
+  border: none;
+}
+
+.edit-profile-button:focus {
+  background-color: #ffa31a94;
+  color: black;
+  border: none;
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
 
@@ -306,7 +450,7 @@ height: 30vh;
   border: none;
 }
 
-.weather-button:focus{
+.auth-button:focus{
   background-color: #ffa31aa8;
   border: none;
 }
@@ -478,4 +622,41 @@ a:hover {
 .carousel-box {
   display: flex;
   justify-content: center;
+}
+
+
+@media screen and (max-width: 850px) {
+
+  .about-card{
+    width: 350px;
+    margin: 5px;
+  }
+
+  .auth-container {
+    margin-top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-toast {
+    margin-bottom: 20px;
+  }
+
+  .profile-plant-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .profile-blant-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-search-bar {
+    width: 400px;
+  }
 }
