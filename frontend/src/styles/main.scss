@@ -351,6 +351,20 @@ body {
   justify-content: center;
   height: 100px;
 }
+
+.no-saved-plants {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.saved-plants-title {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Edit user profile
 
 .edit-profile-container {
@@ -379,7 +393,6 @@ body {
   margin: 10px 30px;
   width: 200px;
 }
-
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
 

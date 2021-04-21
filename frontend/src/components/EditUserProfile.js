@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Form, Button, Container, Modal } from 'react-bootstrap'
+import { Form, Button, Container, Modal, Toast } from 'react-bootstrap'
 import axios from 'axios'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 // import ImageUploadField from './ImageUploadField'
 
 const EditUserProfile = () => {
-  // const [userData, setUserData] = useState('')
+  const [showA, setShowA] = useState(false)
+  const toggleShowA = () => setShowA(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     username: '',
     first_name: '',
     last_name: ''
   })
-  // const history = useHistory()
+  const history = useHistory()
   const [deleteCount, setDeleteCount] = useState('')
   const handleDelete = () => {
     setDeleteCount('delete')
@@ -56,12 +58,10 @@ const EditUserProfile = () => {
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
-    console.log(formData)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(formData.profile_image)
     try {
       const id = window.localStorage.getItem('id')
       await axios.put(`/api/auth/${id}/`,
@@ -73,6 +73,9 @@ const EditUserProfile = () => {
       )
       history.push(`/profile/${id}/`)
     } catch (err) {
+      console.log(err.response.data)
+      setErrorMessage(err.response.data)
+      setShowA(true)
     }
   }
   return (
@@ -121,6 +124,23 @@ const EditUserProfile = () => {
                   value={formData.last_name}
                   onChange={handleChange}/>
       </Form.Group>
+      <Container>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Woah there!</strong>
+          </Toast.Header>
+          <Toast.Body className="toast.body">
+            {errorMessage.email && errorMessage.email[0]}
+            {errorMessage.password && errorMessage.password[0]}
+            {errorMessage.username && errorMessage.username[0]}
+            {errorMessage.password_confirmation && errorMessage.password_confirmation[0]}
+            </Toast.Body>
+        </Toast>
+      </Container>
       {/* <Form.Group >
         <Form.Label>Profile Image</Form.Label>
         <ImageUploadField

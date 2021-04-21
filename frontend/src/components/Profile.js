@@ -94,12 +94,14 @@ const Profile = () => {
       <Link to="/editprofile">
         <Button className="auth-button">Edit Profile</Button>
       </Link>
+      <Container className="saved-plants-title">
+        <h2>Your Saved Plants</h2>
+        <p><small>Click on Plant Image for more info</small></p>
+        <input className="profile-search-bar" placeholder="Search by Plant Type" onChange={event => { setFilter(event.target.value.trim()) }}/>
+      </Container>
       </Container>
       {userData.saved_plants.length !== 0
         ? <Container className="profile-plants-container">
-          <h2>Your Saved Plants</h2>
-          <p><small>Click on Plant Image for more info</small></p>
-          <input className="profile-search-bar" placeholder="Search by Plant Type" onChange={event => { setFilter(event.target.value.trim()) }}/>
           {mappedFilteredArray.filter((val) => {
             if (filter === '') {
               return val
@@ -165,7 +167,9 @@ const Profile = () => {
           </>
           }
         </Container>
-        : <p>You have no saved plants!</p>
+        : <Container className="no-saved-plants">
+        <h2>You have no saved plants!</h2>
+        </Container>
       }
     </Container>
   )
