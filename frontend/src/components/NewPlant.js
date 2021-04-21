@@ -4,7 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap'
 
 const NewPlant = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    plant_name: '',
     subspecies: '',
     type: '',
     sow_month: 12,
@@ -46,7 +46,7 @@ const NewPlant = () => {
             className="text-muted"
             id="post-plant-name"
             name="plant_name"
-            value={setFormData.name}
+            value={setFormData.plant_name}
             onChange={handleChange}
           />
         </Form.Group>

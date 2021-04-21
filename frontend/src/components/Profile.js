@@ -116,10 +116,10 @@ const Profile = () => {
               <Container key={item.id} className="profile-plant">
                   <Container className="profile-plant-card">
                   <Link to={`/plants/${item.id}`}>
-                  <Image className="profile-plant-card-image" src={item.image} alt={item.name}key={item.id}/>
+                  <Image className="profile-plant-card-image" src={item.image} alt={item.plant_name}key={item.id}/>
                   </Link>
                   <Container className="profile-plant-card-info">
-                    <h3>{item.name} / <i>{item.subspecies}</i> </h3>
+                    <h3>{item.plant_name} / <i>{item.subspecies}</i> </h3>
                     <p> Type: {item.type} </p>
                     <p> Description: {item.description} </p>
                     <Container className="plant-info-box">
@@ -138,7 +138,7 @@ const Profile = () => {
                   </Container>
                 {!confirm &&
                 <Container className="profile-blant-button-container">
-                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
+                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.plant_name}?</Button>
                 </Container>
                 }
               </Container>

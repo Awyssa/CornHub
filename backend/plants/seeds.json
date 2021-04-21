@@ -3,7 +3,7 @@
   "model": "plants.plants",
   "pk": 5,
   "fields": {
-    "name": "Aji Red",
+    "plant_name": "Aji Red",
     "subspecies": "Capsicum baccatum",
     "type": "Chilli",
     "sow_month": 1,
@@ -26,7 +26,7 @@
   "model": "plants.plants",
   "pk": 6,
   "fields": {
-    "name": "Cumari",
+    "plant_name": "Cumari",
     "subspecies": "Capsicum praetermissum 'Cumari'",
     "type": "Chilli",
     "sow_month": 1,
@@ -49,7 +49,7 @@
   "model": "plants.plants",
   "pk": 7,
   "fields": {
-    "name": "King Edward",
+    "plant_name": "King Edward",
     "subspecies": "Solanum tuberosum 'King Edward'",
     "type": "Potato",
     "sow_month": 2,
@@ -72,7 +72,7 @@
   "model": "plants.plants",
   "pk": 8,
   "fields": {
-    "name": "Demon Red",
+    "plant_name": "Demon Red",
     "subspecies": "Capsicum annuum 'Demon Red'",
     "type": "Chilli",
     "sow_month": 2,
@@ -95,7 +95,7 @@
   "model": "plants.plants",
   "pk": 9,
   "fields": {
-    "name": "Rooster",
+    "plant_name": "Rooster",
     "subspecies": "Solanum tuberosum 'Rooster'",
     "type": "Potato",
     "sow_month": 2,
@@ -118,7 +118,7 @@
   "model": "plants.plants",
   "pk": 10,
   "fields": {
-    "name": "Bangalore Whippets Tail",
+    "plant_name": "Bangalore Whippets Tail",
     "subspecies": "Capsicum annuum 'Bangalore Whippets Tail'",
     "type": "Chilli",
     "sow_month": 2,
@@ -141,7 +141,7 @@
   "model": "plants.plants",
   "pk": 11,
   "fields": {
-    "name": "Yukon Gold",
+    "plant_name": "Yukon Gold",
     "subspecies": "Solanum tuberosum 'Yukon Gold'",
     "type": "Potato",
     "sow_month": 2,
@@ -164,7 +164,7 @@
   "model": "plants.plants",
   "pk": 12,
   "fields": {
-    "name": "Black Pearl",
+    "plant_name": "Black Pearl",
     "subspecies": "Capsicum annuum 'Black Pearl'",
     "type": "Chilli",
     "sow_month": 2,
@@ -187,7 +187,7 @@
   "model": "plants.plants",
   "pk": 13,
   "fields": {
-    "name": "Prairie Fire",
+    "plant_name": "Prairie Fire",
     "subspecies": "Capsicum annuum var annuum 'Prairie Fire'",
     "type": "Chilli",
     "sow_month": 1,
@@ -210,7 +210,7 @@
   "model": "plants.plants",
   "pk": 14,
   "fields": {
-    "name": "Charlotte",
+    "plant_name": "Charlotte",
     "subspecies": "Solanum tuberosum 'Charlotte'",
     "type": "Potato",
     "sow_month": 3,
@@ -233,7 +233,7 @@
   "model": "plants.plants",
   "pk": 15,
   "fields": {
-    "name": "Carolina Reaper",
+    "plant_name": "Carolina Reaper",
     "subspecies": "Capsicum chinense 'Carolina Reaper'",
     "type": "Chilli",
     "sow_month": 1,
@@ -256,7 +256,7 @@
   "model": "plants.plants",
   "pk": 16,
   "fields": {
-    "name": "Demon Red",
+    "plant_name": "Demon Red",
     "subspecies": "Capsicum annuum 'Demon Red'",
     "type": "Chilli",
     "sow_month": 2,
@@ -279,7 +279,7 @@
   "model": "plants.plants",
   "pk": 17,
   "fields": {
-    "name": "Piri Piri",
+    "plant_name": "Piri Piri",
     "subspecies": "Capsicum frutescens 'Piri piri'",
     "type": "Chilli",
     "sow_month": 2,
@@ -302,7 +302,7 @@
   "model": "plants.plants",
   "pk": 18,
   "fields": {
-    "name": "Sweet Basil",
+    "plant_name": "Sweet Basil",
     "subspecies": "Ocimum basilicum",
     "type": "Herb",
     "sow_month": 1,
@@ -325,7 +325,7 @@
   "model": "plants.plants",
   "pk": 19,
   "fields": {
-    "name": "Guajillo",
+    "plant_name": "Guajillo",
     "subspecies": "Capsicum annuum 'Guajillo'",
     "type": "Chilli",
     "sow_month": 1,
@@ -348,7 +348,7 @@
   "model": "plants.plants",
   "pk": 20,
   "fields": {
-    "name": "Little Beak Peppers",
+    "plant_name": "Little Beak Peppers",
     "subspecies": "Pimenta biquinho",
     "type": "Chilli",
     "sow_month": 1,
@@ -371,7 +371,7 @@
   "model": "plants.plants",
   "pk": 21,
   "fields": {
-    "name": "Thai Basil",
+    "plant_name": "Thai Basil",
     "subspecies": "Ocimum tenuiflorum",
     "type": "Herb",
     "sow_month": 1,
@@ -394,7 +394,7 @@
   "model": "plants.plants",
   "pk": 22,
   "fields": {
-    "name": "Purple Prince",
+    "plant_name": "Purple Prince",
     "subspecies": "Capsicum annum 'Purple Prince'",
     "type": "Chilli",
     "sow_month": 1,
@@ -417,7 +417,7 @@
   "model": "plants.plants",
   "pk": 23,
   "fields": {
-    "name": "Rosemary",
+    "plant_name": "Rosemary",
     "subspecies": "Rosmarinus officinalis",
     "type": "Herb",
     "sow_month": 11,
@@ -440,7 +440,7 @@
   "model": "plants.plants",
   "pk": 25,
   "fields": {
-    "name": "plant",
+    "plant_name": "plant",
     "subspecies": "plant",
     "type": "plant",
     "sow_month": 1,

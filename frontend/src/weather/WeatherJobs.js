@@ -37,8 +37,8 @@ const WeatherJobs = ({ weather }) => {
         return (
           <div key={item.id} className="profile-wishlist-column">
         <Link to={`/plants/${item.id}`}>
-         <p> {item.name} </p>
-         <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
+         <p> {item.plant_name} </p>
+         <img className="chilli-image-profile" src={item.image} alt={item.plant_name}key={item.id}/>
          </Link>
           </div>
         )

@@ -39,7 +39,7 @@ const PlantShow = () => {
   if (!onePlant) return null
   return (
     <div className="plantshow">
-    <h2>{onePlant.name}</h2>
+    <h2>{onePlant.plant_name}</h2>
     <h3>{onePlant.type}</h3>
     <h3 className="science">{onePlant.subspecies}</h3>
     <img src={onePlant.image} />

@@ -49,7 +49,7 @@ export const Home = () => {
   }
   const handleSearch = (event) => {
     const searchList = plantData.filter(plant => {
-      return plant.name.toUpperCase().includes(event.target.value.toUpperCase()) ||
+      return plant.plant_name.toUpperCase().includes(event.target.value.toUpperCase()) ||
       plant.subspecies.toUpperCase().includes(event.target.value.toUpperCase()) ||
       plant.type.toUpperCase().includes(event.target.value.toUpperCase())
     })
@@ -78,11 +78,11 @@ export const Home = () => {
               <img
                 className="d-block w-100"
                 src={plant.image}
-                alt={plant.name}
+                alt={plant.plant_name}
               />
               </Link>
               <Carousel.Caption>
-                <h3>{plant.name}</h3>
+                <h3>{plant.plant_name}</h3>
                 <p>{plant.subspecies}</p>
               </Carousel.Caption>
             </Carousel.Item>
