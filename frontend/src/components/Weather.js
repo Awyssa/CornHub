@@ -27,11 +27,13 @@ const Weather = () => {
   // this is creating latitude and longitude based on the users current location
   useEffect(() => {
     // console.log(window.navigator)
-    window.navigator.geolocation.getCurrentPosition(position => {
-      console.log('position', position)
-      const { longitude, latitude } = position.coords
-      setViewport({ longitude, latitude })
-    })
+    setTimeout(() => {
+      window.navigator.geolocation.getCurrentPosition(position => {
+        console.log('position', position)
+        const { longitude, latitude } = position.coords
+        setViewport({ longitude, latitude })
+      })
+    }, 300)
   }, [])
 
   console.log('VIEWPORT>>>>>', viewport)
