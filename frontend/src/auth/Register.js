@@ -4,11 +4,16 @@ import axios from 'axios'
 
 const Register = () => {
   const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
     email: '',
+    username: '',
     password: ''
   })
   const [showA, setShowA] = useState(false)
   const toggleShowA = () => setShowA(false)
+  const [showB, setShowB] = useState(false)
+  const toggleShowB = () => setShowB(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [reg, setReg] = useState(false)
 
@@ -24,8 +29,7 @@ const Register = () => {
       window.localStorage.setItem('token', response.data.token)
       setReg(true)
     } catch (err) {
-      // setErrors('Unauthorised')
-      console.log('ERROR>>>>', err.response.data)
+      console.log('err', err.response.data)
       setErrorMessage(err.response.data)
       setShowA(true)
     }
@@ -36,6 +40,24 @@ const Register = () => {
       ? <Container className="login-box">
     <Form className="auth-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
+      <Form.Group controlId="formBasicFirstName">
+        <Form.Label>First Name</Form.Label>
+        <Form.Control type="text" placeholder="Enter First Name"
+            className="text-muted"
+            id="register-first-name"
+            name="first_name"
+            value={setFormData.first_name}
+            onChange={handleChange}/>
+      </Form.Group>
+      <Form.Group controlId="formBasicLastName">
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control type="text" placeholder="Enter Last Name"
+            className="text-muted"
+            id="register-last-name"
+            name="last_name"
+            value={setFormData.last_name}
+            onChange={handleChange}/>
+      </Form.Group>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email"
@@ -78,9 +100,14 @@ const Register = () => {
                   value={setFormData.password_confirmation}
                   onChange={handleChange}/>
       </Form.Group>
-      <Button className="auth-button" type="submit">
+      {formData.first_name && formData.last_name && formData.email && formData.username && formData.password && formData.password_confirmation
+        ? <Button className="auth-button" type="submit">
         Submit
       </Button>
+        : <Button className="auth-button-disabled" onClick={() => setShowB(true)}>
+      Submit
+    </Button>
+    }
     </Form>
     <Container className="login-toast">
     <Row>
@@ -97,6 +124,18 @@ const Register = () => {
             {errorMessage.password && errorMessage.password[0]}
             {errorMessage.username && errorMessage.username[0]}
             {errorMessage.password_confirmation && errorMessage.password_confirmation[0]}
+            </Toast.Body>
+        </Toast>
+        <Toast className="toast-error" show={showB} onClose={toggleShowB}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Woah there!</strong>
+          </Toast.Header>
+          <Toast.Body>
+            Missing information
             </Toast.Body>
         </Toast>
         </Row>

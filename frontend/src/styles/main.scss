@@ -30,6 +30,34 @@ body {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
 
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  button {
+    width: 200px
+  }
+}
+
+.user-profile-info-innerbox {
+  width: 300px;
+  text-align: center;
+}
+
+.user-profile-info-outerbox {
+  display: flex;
+}
+
+.profile-search-bar {
+  color: white;
+  background-color: black;
+  border: 1px solid #ffa31a;
+  width: 500px;
+  text-align: center;
+  margin-top: 10px;
+}
 
 .plant-info-box {
   display: flex;
@@ -38,18 +66,20 @@ body {
 .profile-plants-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .profile-plant-card {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .profile-plant {
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: 20px;
   button {
     width: 200px;
   }
@@ -245,6 +275,7 @@ body {
 .auth-page{
   display: flex;
   width: 500px;
+  margin-top: 30px;
 }
 
 .auth-container {
@@ -267,6 +298,17 @@ body {
   background-color: #ffa31a;
   color: black;
   border: none;
+}
+
+.auth-button-disabled {
+  background-color: #ffa31a44;
+  color: white;
+  border: none;
+}
+
+.auth-button-disabled:hover {
+  background-color: #ffa31aa8;
+  border: 0px;
 }
 
 .auth-button:hover {
@@ -513,5 +555,22 @@ a:hover {
 
   .login-toast {
     margin-bottom: 20px;
+  }
+
+  .profile-plant-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .profile-blant-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-search-bar {
+    width: 400px;
   }
 }
