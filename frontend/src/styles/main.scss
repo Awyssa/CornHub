@@ -283,8 +283,14 @@ body {
   background-color: #ffa31a;
   color: black;
   border: none;
-  width: 200px;
 }
+
+.auth-button-disabled:focus {
+  background-color: #ffa31a;
+  color: black;
+  border: none;
+}
+
 
 .auth-button-disabled {
   background-color: #ffa31a44;
@@ -373,17 +379,31 @@ body {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  button {
+    border: none;
+  }
 }
 
 .edit-profile-button {
   margin: 10px 30px;
   width: 200px;
   background-color: #ffa31a;
+  border: none;
+  button {
+    border: none;
+  }
 }
 
 .edit-profile-button:disabled {
   background-color: #ffa31a94;
   color: black;
+  border: none;
+}
+
+.edit-profile-button:focus {
+  background-color: #ffa31a94;
+  color: black;
+  border: none;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
