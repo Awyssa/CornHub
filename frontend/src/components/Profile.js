@@ -14,6 +14,12 @@ const Profile = () => {
   const [filter, setFilter] = useState('')
   const history = useHistory()
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const [itemsFromLocalStorage, setItemsFromLocalStorage] = useState(null)
+  console.log(itemsFromLocalStorage, setItemsFromLocalStorage)
+  const [dateToComapre, setDateToCompare] = useState(null)
+  setInterval(() => {
+    setDateToCompare(Date.now())
+  }, 300000)
 
   useEffect(() => {
     const getData = async () => {
@@ -30,12 +36,19 @@ const Profile = () => {
       }
       )
       setUserData(response.data)
+      const getPlantsToWater = response.data.saved_plants.map(item => {
+        const id = window.localStorage.getItem(item)
+        return id
+      })
+      setDateToCompare(Date.now())
+      setItemsFromLocalStorage(getPlantsToWater)
+      console.log('get plants to water', getPlantsToWater[0].split(','))
     }
     getUser()
-    console.log(userData)
   }, [])
-
   if (!savedPlantData || !userData) return 'loading'
+  console.log(itemsFromLocalStorage)
+
   let arrayOfSavedPlants = []
   // * for Each lopp to make array of parks in wishlist
   userData.saved_plants.forEach((saved, index) => {
@@ -78,6 +91,33 @@ const Profile = () => {
   const handleCancel = () => {
     setConfirm('')
   }
+
+  const saveToLocalStorage = (event) => {
+    const today = Date.now()
+    const plantId = event.target.value
+    const plantName = event.target.name
+    const wateringFrequency = event.target.id
+    window.localStorage.setItem(plantId, [plantId, plantName, wateringFrequency, today, 'water now'])
+  }
+  // itemsFromLocalStorage.map(item =>{
+
+  // })
+  const splitItemsFromLocalStorage = itemsFromLocalStorage.map(item => {
+    const split = item.split(',')
+    const numberTimestamp = parseInt(split[3])
+    const frequency = parseInt(split[2])
+    const targetTimestamp = (frequency * 86.4 * 1000000) + numberTimestamp
+    const id = parseInt(split[0])
+    return [id, split[1], targetTimestamp]
+  })
+  console.log('splitItemsFromLocalStorage', splitItemsFromLocalStorage)
+
+  console.log(dateToComapre)
+
+  const needToWater = splitItemsFromLocalStorage.filter(item => {
+    return item[2] < dateToComapre
+  })
+  console.log('needToWater', needToWater)
 
   return (
     <Container className="profile-container">
@@ -139,6 +179,7 @@ const Profile = () => {
                 {!confirm &&
                 <Container className="profile-blant-button-container">
                   <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.plant_name}?</Button>
+                  <Button id={item.watering_frequency} name={item.plant_name} className="auth-button" value={item.id} onClick={saveToLocalStorage} > Watered {item.plant_name}?</Button>
                 </Container>
                 }
               </Container>
