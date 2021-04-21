@@ -8,7 +8,6 @@ const Login = () => {
     email: '',
     password: ''
   })
-  const [errors, setErrors] = useState()
   const [showA, setShowA] = useState(false)
   const toggleShowA = () => setShowA(!showA)
 
@@ -23,49 +22,44 @@ const Login = () => {
     event.preventDefault()
     try {
       const response = await axios.post('/api/auth/login/', formData)
-      // const token = response.data.token
-      console.log('token', response.data.token)
       window.localStorage.setItem('token', response.data.token)
       window.localStorage.setItem('id', response.data.sub)
       history.push('/profile')
-      console.log('response.data.sub', response.data.sub)
     } catch (err) {
-      setErrors(err.response.data)
-      toggleShowA()
-      console.log('login errors', err.response.data)
+      setShowA(true)
     }
   }
-  console.log(errors)
   return (
-    <Container className="login-container">
-  <Container>
-    <Form className="auth-form" onSubmit={handleSubmit}>
-    <h2>Login</h2>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email"
+  <Container className="login-box">
+      <Form className="auth-form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email"
             className="text-muted"
             id="login-email"
             name="email"
             value={setFormData.email}
-            onChange={handleChange}/>
-      </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
-                  placeholder="Enter password"
-                  className="text-muted"
-                  id="login-password"
-                  type="password"
-                  name="password"
-                  value={setFormData.password}
-                  onChange={handleChange}/>
-      </Form.Group>
-      <Button className="auth-button" type="submit">
-        Submit
-      </Button>
-    </Form>
-    </Container>
+          placeholder="Enter password"
+          className="text-muted"
+          id="login-password"
+          type="password"
+          name="password"
+          value={setFormData.password}
+          onChange={handleChange}
+        />
+        </Form.Group>
+        <Button className="auth-button" type="submit">
+          Submit
+        </Button>
+      </Form>
+    <Container className="login-toast">
     <Row>
       <Toast className="toast-error" show={showA} onClose={toggleShowA}>
           <Toast.Header>
@@ -73,12 +67,15 @@ const Login = () => {
               src="holder.js/20x20?text=%20"
               alt=""
             />
-            <strong className="mr-auto">Unauthorised</strong>
+            <strong className="mr-auto">Woah there!</strong>
           </Toast.Header>
-          <Toast.Body>Invalid credentials</Toast.Body>
+          <Toast.Body>
+            Not valid!
+            </Toast.Body>
         </Toast>
         </Row>
         </Container>
+    </Container>
   )
 }
 

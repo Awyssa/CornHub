@@ -31,7 +31,7 @@ const WeatherJobs = ({ weather }) => {
 
   return (
     <div>
-      <h4>The average temperature this week is going to be {weeklyDayTempAverage} &deg;C, here are some ideas of what you can germinate outside!  </h4>
+      <h5 className="weather-jobs-description">The average temperature this week is going to be {weeklyDayTempAverage} &deg;C, here are some ideas of what you can germinate outside!  </h5>
       < div className="profile-wish-list">
       {plantsToGerminateBasedOnTemp.map(item => {
         return (

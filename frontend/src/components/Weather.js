@@ -103,7 +103,7 @@ const Weather = () => {
       </Form>
       </Container>
       {/* <p>{currentLocation}</p> */}
-    <div>
+    <div className="week-weather">
       {/* <div className="forecast-buttons-container">
         <Button className="weather-button" value="current" onClick={handleWeather}>Current Weather</Button>
         <div className="or"></div>
