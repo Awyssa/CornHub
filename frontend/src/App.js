@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import Weather from './components/Weather'
 import EditUserProfile from './components/EditUserProfile'
 import PlantShow from './components/PlantShow.js'
+import Paypal from './components/Paypal'
 
 const App = () => {
   return (
@@ -48,6 +49,9 @@ const App = () => {
         </Route>
         <Route exact path ="/Resources">
           <Resources />
+        </Route>
+        <Route exact path ="/paypal">
+          <Paypal />
         </Route>
         </div>
         <Footer />
