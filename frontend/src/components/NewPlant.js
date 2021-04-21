@@ -31,6 +31,11 @@ const NewPlant = () => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
+  const handleMonth = (event) => {
+    const newFormData = { ...formData, [event.target.name]: Number(event.target.value) }
+    console.log(newFormData)
+    setFormData(newFormData)
+  }
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
@@ -93,7 +98,7 @@ const NewPlant = () => {
         </Form.Group>
         <Form.Group controlId="formBasicSowMonth">
         <Form.Label>Sowing Month</Form.Label>
-        <Form.Control
+        {/* <Form.Control
           placeholder="Enter sowing month"
           className="text-muted"
           id="post-plant-sow-month"
@@ -101,11 +106,29 @@ const NewPlant = () => {
           name="sow_month"
           value={setFormData.sow_month}
           onChange={handleChange}
-        />
+        /> */}
+        <Form.Control
+        as="select"
+        name="sow_month"
+        onChange={handleMonth}>
+    <option value="12">Please select</option>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </Form.Control>
         </Form.Group>
         <Form.Group controlId="formBasicPlantMonth">
         <Form.Label>Planting Month</Form.Label>
-        <Form.Control
+        {/* <Form.Control
           placeholder="Enter planting month"
           className="text-muted"
           id="post-plant-plant-month"
@@ -113,11 +136,29 @@ const NewPlant = () => {
           name="plant_month"
           value={setFormData.plant_month}
           onChange={handleChange}
-        />
+        /> */}
+        <Form.Control
+        as="select"
+        name="plant_month"
+        onChange={handleMonth}>
+    <option value="12">Please select</option>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+    </Form.Control>
         </Form.Group>
         <Form.Group controlId="formBasicHarvestMonth">
         <Form.Label>Harvesting Month</Form.Label>
-        <Form.Control
+        {/* <Form.Control
           placeholder="Enter harvesting month"
           className="text-muted"
           id="post-plant-harvest-month"
@@ -125,7 +166,25 @@ const NewPlant = () => {
           name="harvest_month"
           value={setFormData.harvest_month}
           onChange={handleChange}
-        />
+        /> */}
+         <Form.Control
+        as="select"
+        name="harvest_month"
+        onChange={handleMonth}>
+    <option value="12">Please select</option>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+    </Form.Control>
         </Form.Group>
         <Form.Group controlId="formBasicSunlight">
           <Form.Label>Sunlight Requirements</Form.Label>
@@ -155,6 +214,7 @@ const NewPlant = () => {
           placeholder="Enter watering frequency in days"
           className="text-muted"
           id="post-plant-plant-watering"
+          min="1"
           type="number"
           name="watering_frequency"
           value={setFormData.watering_frequency}
@@ -167,6 +227,7 @@ const NewPlant = () => {
           placeholder="Enter fertilizing frequency in days"
           className="text-muted"
           id="post-plant-fert-freq"
+          min="0"
           type="number"
           name="fertilizing_frequency"
           value={setFormData.fertilizing_frequency}
@@ -189,6 +250,7 @@ const NewPlant = () => {
           placeholder="Enter germination temperature in Celsius"
           className="text-muted"
           id="post-plant-germination"
+          min="0"
           type="number"
           name="germination_temperature"
           value={setFormData.germination_temperature}
@@ -226,6 +288,8 @@ const NewPlant = () => {
           placeholder="Enter difficulty (5 if left blank)"
           className="text-muted"
           id="post-plant-difficulty"
+          min="1"
+          max="5"
           type="number"
           name="difficulty"
           value={setFormData.difficulty}

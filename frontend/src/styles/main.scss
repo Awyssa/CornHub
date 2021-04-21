@@ -547,6 +547,12 @@ body {
   display: flex;
   overflow-x: auto;
 }
+// @media screen and (max-width: 850px) {
+//   .wearther-jobs-carousel {
+//     flex-direction: column;
+//     align-items: center;
+//   }
+// }
 
 .weather-jobs-description{
   // display: flex;
@@ -601,7 +607,8 @@ body {
   }
 
   .chilli-image-profile {
-    max-height: 20vh;
+    max-height: 40vw;
+    max-width: 40vw;
   }
 
 }
@@ -686,7 +693,7 @@ a:hover {
 
 
 .chilli-image-profile {
-  width: 30vw;
+  width: 40vh;
   height: 30vh;
   }
 

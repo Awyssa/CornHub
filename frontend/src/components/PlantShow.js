@@ -44,17 +44,32 @@ const PlantShow = () => {
     <h3 className="science">{onePlant.subspecies}</h3>
     <img src={onePlant.image} />
     <p className="science">{onePlant.description}</p>
-    <p>Sow in: {monthNames[onePlant.sow_month]}</p>
-    <p>Plant out in: {monthNames[onePlant.plant_month]}</p>
-    <p>Harvest in: {monthNames[onePlant.harvest_month]}</p>
+    {onePlant.sow_month !== 12
+      ? <p>Sow in: {monthNames[onePlant.sow_month]}</p>
+      : <p></p>
+}
+{onePlant.plant_month !== 12
+  ? <p>Plant out in: {monthNames[onePlant.plant_month]}</p>
+  : <p></p>
+}
+{onePlant.harvest_month !== 12
+  ? <p>Harvest in: {monthNames[onePlant.harvest_month]}</p>
+  : <p></p>
+}
     <p>Sunlight requirements: {onePlant.sunlight}</p>
     <p>Soil type: {onePlant.soil_acidity}</p>
-    <p>Water every {onePlant.watering_frequency} days</p>
+    {onePlant.watering_frequency > 0
+      ? <p>Water every {onePlant.watering_frequency} days</p>
+      : <p></p>
+}
     {onePlant.fertilizing_frequency > 0
       ? <p>Fertilize every {onePlant.fertilizing_frequency} days with {onePlant.fertilizer_type}</p>
       : <p>Fertilize once before sowing with {onePlant.fertilizer_type}</p>
     }
-    <p>Ideal germination temperature: {onePlant.germination_temperature}°C</p>
+    {onePlant.germination_temperature !== 1000
+      ? <p>Ideal germination temperature: {onePlant.germination_temperature}°C</p>
+      : <p></p>
+}
     <p>Difficulty rating: {onePlant.difficulty}/5</p>
     {onePlant.verified_by_admin === false
       ? <p className="not-yet">Not yet verified by CornHub</p>
