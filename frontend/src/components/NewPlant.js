@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Container, Form, Button } from 'react-bootstrap'
 import { getTokenFromLocalStorage } from '../helpers/auth'
+import { useHistory } from 'react-router-dom'
 
 const NewPlant = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,9 @@ const NewPlant = () => {
     owner: '',
     verified_by_admin: false
   })
+  const [success, setSuccess] = useState(false)
+  const [showA, setShowA] = useState(false)
+  const history = useHistory()
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
@@ -36,14 +40,24 @@ const NewPlant = () => {
         }
       })
       console.log(response)
+      setSuccess(true)
+      setShowA(false)
     } catch (err) {
       console.log('err', err.response.data)
+      setShowA(true)
     }
+  }
+  const handleClick = () => {
+    history.goBack()
+  }
+  const handleMore = () => {
+    setSuccess(false)
   }
 
   return (
-    <Container className="login-box">
-      <Form className="auth-form" onSubmit={handleSubmit}>
+    <Container className="login-box add-plant">
+      {!success
+        ? <Form className="auth-form" onSubmit={handleSubmit}>
         <h2>Help us make our app better by contributing more plants.</h2>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
@@ -222,7 +236,23 @@ const NewPlant = () => {
           Submit
         </Button>
       </Form>
-      </Container>
+        : <div className="success">
+      <h1>Thanks so much!</h1>
+      <br></br>
+      <h2>Add another?</h2>
+      <Button className="auth-button" type="button" onClick={handleMore}>
+          Add More!
+        </Button>
+        </div>
+        }
+        {!showA
+          ? <p></p>
+          : <p className="not-yet">Oops, I think you missed something.</p>
+        }
+      <Button className="auth-button back-button" type="button" onClick={handleClick}>
+          Back to Profile
+        </Button>
+       </Container>
   )
 }
 export default NewPlant

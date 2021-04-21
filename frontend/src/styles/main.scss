@@ -774,3 +774,28 @@ a:hover {
     width: 400px;
   }
 }
+
+.add-plant {
+  max-width: 500px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.back-button {
+  font-size: 12px;
+  margin: 30px;
+}
+.back-button:hover,
+.back-button:focus {
+  background-color: #ffa31aa8;
+  border: none;
+}
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30vh;
+}
