@@ -553,6 +553,16 @@ body {
   margin: 10px;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - paypal
+
+.checkout-button {
+  background-color: #ffa31a;
+  border: none;
+}
+.checkout-button:hover, .checkout-button:focus{
+  background-color: #ffa31aa8;
+}
+
 @media screen and (max-width: 850px) {
 
   .about-container{

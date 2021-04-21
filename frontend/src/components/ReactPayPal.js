@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 // import { Container, Form, Button } from 'react-bootstrap'
 
-export default function ReactPayPal () {
+export default function ReactPayPal ({ confirmedChekoutAmount }) {
   const [paid, setPaid] = useState(false)
   const [error, setError] = useState(null)
   const paypalRef = React.useRef()
+
+  console.log('confirmed-checkout amout on the paypal form page', confirmedChekoutAmount)
 
   // To show PayPal buttons once the component loads
   React.useEffect(() => {
@@ -18,7 +21,7 @@ export default function ReactPayPal () {
                 description: 'Your description',
                 amount: {
                   currency_code: 'GBP',
-                  value: 500.0
+                  value: confirmedChekoutAmount
                 }
               }
             ]
@@ -52,7 +55,7 @@ export default function ReactPayPal () {
     <>
 
     <div>
-      <h4>Total Amount in GBP: £500</h4>
+      <h4>Total Amount in GBP: £  {confirmedChekoutAmount}</h4>
       <div ref={paypalRef} />
     </div>
     </>
