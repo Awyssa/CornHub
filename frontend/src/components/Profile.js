@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Button, Modal, Container } from 'react-bootstrap'
+import { Button, Modal, Container, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
@@ -11,12 +11,13 @@ const Profile = () => {
     saved_plants: []
   })
   const [confirm, setConfirm] = useState(null)
-  console.log(userData)
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get('/api/plants/')
       setSavedPlantData(response.data)
+      console.log(savedPlantData)
     }
     getData()
     const getUser = async () => {
@@ -52,14 +53,12 @@ const Profile = () => {
     const filteredWishlistConst = userData.saved_plants.filter(filter => {
       return filter !== parseFloat(event.target.value)
     })
-    // console.log('filtered wishlist ', filteredWishlistConst)
     const newWishList = { [event.target.name]: filteredWishlistConst }
     setUpdateWishlist(newWishList)
   }
 
   const handleConfirm = async () => {
     const id = window.localStorage.getItem('id')
-    // console.log('updated wish list', wishlist)
     setConfirm('')
     try {
       await axios.put(`/api/auth/${id}/`,
@@ -74,80 +73,95 @@ const Profile = () => {
     }
     location.reload()
   }
-
   const handleCancel = () => {
     setConfirm('')
   }
 
-  // console.log('wishlist', wishlist)
-  // console.log('userData.saved_plants', userData.saved_plants)
-  // console.log('mappedFilteredArray', mappedFilteredArray)
-  // console.log('savedPlantData', savedPlantData)
-  // console.log('userData', userData.saved_plants.length)
+  console.log(filter)
+
   return (
-    <Container className="profile-container">
-      <Container className="user-profile-info">
-     <p>First Name: {userData.first_name}</p>
-     <p>Username: {userData.username}</p>
-     <p>Username: {userData.email}</p>
-     <p>Last Name: {userData.last_name}</p>
-     <p>Profile image:  {userData.profile_image}</p>
-     <p>Saved plants:  {userData.saved_plants.length}</p>
-     </Container>
-     {userData.saved_plants.length !== 0
-       ? < div className="profile-wish-list">
-     {mappedFilteredArray.map(item => {
-       return (
-         <div key={item.id} className="profile-wishlist-column">
-        <Link to={`/plants/${item.id}`}>
-         <p> {item.name} </p>
-         <img className="chilli-image-profile" src={item.image} alt={item.name}key={item.id}/>
-         </Link>
-
-         {/* <button name="wishList" onClick={removeFromWishList} value={item.id}>Remove {item.name}?</button> */}
-
-         {!confirm &&
-          <>
-           <Button name="saved_plants" className="delete-from-wishlist-buttons" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
-                    </>
-                  }
-         </div>
-       )
-     })}
-     {confirm &&
-     <>
-     <Modal
-    show = {confirm}
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
-    backdrop="static"
-    keyboard="false"
-    // size="lg"
-   >
-    <Modal.Dialog>
-      <Modal.Header onClick={handleCancel} closeButton>
-        <Modal.Title>Delete plant from your wishlist?</Modal.Title>
-      </Modal.Header>
-
-      <Modal.Body>
-        <p>  Are you sure you want to delete this from your saved plants?</p>
-      </Modal.Body>
-
-      <Modal.Footer>
-        <Button onClick={handleCancel} variant="secondary">Close</Button>
-        <Button onClick={handleConfirm} variant="primary">Delete?</Button>
-      </Modal.Footer>
-    </Modal.Dialog>
-        </Modal>
-              </>
-     }
-      </div>
-       : <p>You have no saved plants!</p>
-      }
-     <Link to="/editprofile">
-     <Button className="delete-from-wishlist-buttons">Edit user</Button>
-     </Link>
+  <Container className="profile-container">
+    <Container className="user-profile-info">
+      <p>First Name: {userData.first_name}</p>
+      <p>Last Name: {userData.last_name}</p>
+      <p>Username: {userData.username}</p>
+      <p>Username: {userData.email}</p>
+      <p>Saved plants:  {userData.saved_plants.length}</p>
     </Container>
+    <Link to="/editprofile">
+      <Button className="delete-from-wishlist-buttons">Edit user</Button>
+    </Link>
+    {userData.saved_plants.length !== 0
+      ? <Container className="profile-plants-container">
+        <input className="profile-search-bar" placeholder="Search by type" onChange={event => { setFilter(event.target.value.trim()) }}/>
+        {mappedFilteredArray.filter((val) => {
+          if (filter === '') {
+            return val
+          } else if (val.type.trim().toLowerCase().includes(filter.toLowerCase())) {
+            return val
+          }
+          return null
+        }).map((item, index) => {
+          return (
+            <Container key={item.id} className="profile-plant">
+              <Link to={`/plants/${item.id}`}>
+                <Container className="profile-plant-card">
+                <Image className="profile-plant-card-image" src={item.image} alt={item.name}key={item.id}/>
+                <Container className="profile-plant-card-info">
+                  <p> Name: {item.name} / <i>{item.subspecies}</i> </p>
+                  <p> Type: {item.type} </p>
+                  <p> Description: {item.description} </p>
+                  <Container className="plant-info-box">
+                    <Container className="plant-info-innerbox">
+                      <p> Sow Month: {item.sow_month} </p>
+                      <p> Plant Month: {item.plant_month} </p>
+                      <p> Harvest Month: {item.harvest_month} </p>
+                    </Container>
+                    <Container className="plant-info-innerbox">
+                      <p> Sow Month: {item.sunlight} </p>
+                      <p> Plant Month: {item.soil_acidity} </p>
+                      <p> Harvest Month: {item.fertilizing_frequency} </p>
+                    </Container>
+                  </Container>
+                  </Container>
+                </Container>
+              </Link>
+              {!confirm &&
+              <Container className="profile-blant-button-container">
+                <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.name}?</Button>
+              </Container>
+              }
+            </Container>
+          )
+        })}
+        {confirm &&
+        <>
+          <Modal
+            show = {confirm}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            backdrop="static"
+            keyboard="false"
+          >
+          <Modal.Dialog>
+            <Modal.Header onClick={handleCancel} closeButton>
+              <Modal.Title>Delete plant from your wishlist?</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>  Are you sure you want to delete this from your saved plants?</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={handleCancel} variant="secondary">Close</Button>
+              <Button onClick={handleConfirm} variant="primary">Delete?</Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+          </Modal>
+        </>
+        }
+      </Container>
+      : <p>You have no saved plants!</p>
+    }
+  </Container>
   )
 }
 

@@ -28,23 +28,61 @@ body {
   margin-bottom: 0;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
 
-.chilli-image-profile {
-width: 25vw;
-height: 30vh;
-}
 
-.profile-wish-list{
+.plant-info-box {
   display: flex;
-  overflow-x: auto;
-  margin-bottom: 3vh;
 }
 
-.profile-wishlist-column{
+.profile-plants-container {
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
+
+.profile-plant-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-plant {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  button {
+    width: 200px;
+  }
+  img {
+    min-width: 250px;
+    height: 250px;
+  }
+}
+
+.profile-plant-info {
+  display: flex;
+  flex-direction: column;
+}
+
+// .chilli-image-profile {
+// width: 25vw;
+// height: 30vh;
+// }
+
+// .profile-wish-list{
+//   display: flex;
+//   overflow-x: auto;
+//   margin-bottom: 3vh;
+// }
+
+// .profile-wishlist-column{
+//   display: flex;
+//   flex-direction: column;
+//   margin: 10px;
+// }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
+
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -231,6 +269,11 @@ height: 30vh;
   border: none;
 }
 
+.auth-button:hover {
+  background-color: #ffa31aa8;
+  border: 0px;
+}
+
 .please-login {
   display: flex;
   align-items: center;
@@ -266,7 +309,7 @@ height: 30vh;
   justify-content: center;
   height: 100px;
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Edit user profile
 
 .edit-profile-container {
   display: flex;
@@ -330,7 +373,7 @@ height: 30vh;
   border: none;
 }
 
-.weather-button:focus{
+.auth-button:focus{
   background-color: #ffa31aa8;
   border: none;
 }
@@ -456,19 +499,19 @@ a:hover {
 
 @media screen and (max-width: 850px) {
 
-  .about-container{
-    display: flex;
-    flex-direction: column;
-  }
-
   .about-card{
     width: 350px;
     margin: 5px;
   }
 
   .auth-container {
+    margin-top: 180px;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
+  .login-toast {
+    margin-bottom: 20px;
+  }
 }

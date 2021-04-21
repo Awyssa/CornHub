@@ -26,7 +26,7 @@ const Login = () => {
       window.localStorage.setItem('id', response.data.sub)
       history.push('/profile')
     } catch (err) {
-      toggleShowA()
+      setShowA(true)
     }
   }
   return (
