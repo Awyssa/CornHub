@@ -3,7 +3,7 @@ import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Form, Button, Container, Modal } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import ImageUploadField from './ImageUploadField'
+import { ImageUploadField } from './ImageUploadField'
 
 const EditUserProfile = () => {
   // const [userData, setUserData] = useState('')
@@ -60,6 +60,10 @@ const EditUserProfile = () => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
     console.log(formData)
+  }
+
+  const handleImageUrl = url => {
+    setFormData({ ...formData, image: url })
   }
 
   const handleSubmit = async (event) => {
@@ -125,12 +129,11 @@ const EditUserProfile = () => {
                   onChange={handleChange}/>
       </Form.Group>
       <Form.Group >
-        <Form.Label>Profile Image</Form.Label>
+        {/* <Form.Label>Profile Image</Form.Label> */}
         <ImageUploadField
-            type="text"
-            value={formData.profile_image}
-            name="profile_image"
-            onChange={handleChange}
+                name="profile_image"
+                value={formData.profile_image}
+                handleImageUrl={handleImageUrl}
           />
       </Form.Group>
       <Form.Group >

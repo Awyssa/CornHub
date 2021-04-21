@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+// import { Container, Form, Button } from 'react-bootstrap'
 
 export default function ReactPayPal () {
-  const [paid, setPaid] = React.useState(false)
-  const [error, setError] = React.useState(null)
+  const [paid, setPaid] = useState(false)
+  const [error, setError] = useState(null)
   const paypalRef = React.useRef()
 
   // To show PayPal buttons once the component loads
@@ -48,9 +49,12 @@ export default function ReactPayPal () {
 
   // Default Render
   return (
+    <>
+
     <div>
-      <h4>Total Amount in Rs. : 500 /-</h4>
+      <h4>Total Amount in GBP: £500</h4>
       <div ref={paypalRef} />
     </div>
+    </>
   )
 }

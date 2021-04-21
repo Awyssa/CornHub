@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactPayPal from './ReactPayPal'
 
 const Paypal = () => {
-  const [checkout, setCheckout] = React.useState(false)
+  const [checkout, setCheckout] = useState(false)
 
   return (
     <div className="App">

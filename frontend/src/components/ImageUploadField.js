@@ -1,45 +1,28 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import axios from 'axios'
 
 const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
 
-// console.log('upload',uploadUrl)
-// console.log(uploadPreset)
-
-//
-// eslint-disable-next-line react/prop-types
-function ImageUploadField ({ value, onChange }) {
-  const handleUpload = async e => {
+export const ImageUploadField = () => {
+  const handleUpload = async event => {
     const data = new FormData()
-    data.append('file', e.target.files[0])
+    data.append('file', event.target.files[0])
     data.append('upload_preset', uploadPreset)
+    console.log(data)
     const res = await axios.post(uploadUrl, data)
-    onChange({ target: { value: res.data.url } }) //* handleChange triggered
+    console.log(res)
   }
-
   return (
     <>
-      <div className="profile_preview">
-        <div>
-          <img src={value} alt="profileImage" style={{ width: '100%', height: 'auto' }}/>
-        </div>
-      </div>
-      <div className="upload_button_wrapper">
-        <div className="input_wrapper">
-          <label className="upload_button" htmlFor="upload" >
-              Upload Your Own Image
-          </label>
-          <input
-            id="upload"
-            type="file"
-            accept="jpg"
-            onChange={handleUpload}
-          />
-        </div>
-      </div>
+      <label> Profile Image</label>
+      <input
+        className="input"
+        type="file"
+        onChange={handleUpload}
+        />
     </>
   )
 }
-
-export default ImageUploadField
