@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Button, Modal, Container, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const Profile = () => {
   const [userData, setUserData] = useState('')
@@ -12,6 +12,8 @@ const Profile = () => {
   })
   const [confirm, setConfirm] = useState(null)
   const [filter, setFilter] = useState('')
+  const history = useHistory()
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   useEffect(() => {
     const getData = async () => {
@@ -117,19 +119,19 @@ const Profile = () => {
                   <Image className="profile-plant-card-image" src={item.image} alt={item.name}key={item.id}/>
                   </Link>
                   <Container className="profile-plant-card-info">
-                    <p> Name: {item.name} / <i>{item.subspecies}</i> </p>
+                    <h3>{item.name} / <i>{item.subspecies}</i> </h3>
                     <p> Type: {item.type} </p>
                     <p> Description: {item.description} </p>
                     <Container className="plant-info-box">
                       <Container className="plant-info-innerbox">
-                        <p> Sow Month: {item.sow_month} </p>
-                        <p> Plant Month: {item.plant_month} </p>
-                        <p> Harvest Month: {item.harvest_month} </p>
+                        <p> Sow in: {monthNames[item.sow_month]} </p>
+                        <p> Plant out in: {monthNames[item.plant_month]} </p>
+                        <p> Harvest in: {monthNames[item.harvest_month]}</p>
                       </Container>
                       <Container className="plant-info-innerbox">
-                        <p> Sow Month: {item.sunlight} </p>
-                        <p> Plant Month: {item.soil_acidity} </p>
-                        <p> Harvest Month: {item.fertilizing_frequency} </p>
+                        <p> Sunlight: {item.sunlight} </p>
+                        <p> Soil Type: {item.soil_acidity} </p>
+                        <p> Water every: {item.watering_frequency} days </p>
                       </Container>
                     </Container>
                     </Container>
@@ -169,6 +171,7 @@ const Profile = () => {
         </Container>
         : <Container className="no-saved-plants">
         <h2>You have no saved plants!</h2>
+        <Button className="auth-button" onClick={() => history.push('/home')}>View Plants</Button>
         </Container>
       }
     </Container>

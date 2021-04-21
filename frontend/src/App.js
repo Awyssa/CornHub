@@ -20,11 +20,11 @@ const App = () => {
         <Route exact path ="/">
           <Title/>
         </Route>
+        <div>
+        <MyNavbar />
         <Route path = "/plants/:id">
           <PlantShow />
         </Route>
-        <div>
-        <MyNavbar />
         <Route exact path ="/home">
           <Home/>
           </Route>

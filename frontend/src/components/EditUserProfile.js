@@ -178,7 +178,7 @@ const EditUserProfile = () => {
         ? <Button className="edit-profile-button auth-button" type="submit">
         Submit
       </Button>
-        : <Button className="edit-profile-button auth-button-disabled" disabled="true">
+        : <Button className="edit-profile-button" disabled="true">
       Submit
     </Button>
       }

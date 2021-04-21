@@ -85,7 +85,9 @@ body {
   }
   img {
     min-width: 250px;
-    height: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
   }
 }
 
@@ -93,23 +95,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-// .chilli-image-profile {
-// width: 25vw;
-// height: 30vh;
-// }
-
-// .profile-wish-list{
-//   display: flex;
-//   overflow-x: auto;
-//   margin-bottom: 3vh;
-// }
-
-// .profile-wishlist-column{
-//   display: flex;
-//   flex-direction: column;
-//   margin: 10px;
-// }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
 
@@ -298,6 +283,7 @@ body {
   background-color: #ffa31a;
   color: black;
   border: none;
+  width: 200px;
 }
 
 .auth-button-disabled {
@@ -392,6 +378,12 @@ body {
 .edit-profile-button {
   margin: 10px 30px;
   width: 200px;
+  background-color: #ffa31a;
+}
+
+.edit-profile-button:disabled {
+  background-color: #ffa31a94;
+  color: black;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Weather Page
