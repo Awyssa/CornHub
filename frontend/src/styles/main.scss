@@ -204,34 +204,31 @@ height: 30vh;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Auth
 
+.auth-page{
+  display: flex;
+  width: 500px;
+}
+
 .auth-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
   h2 {
     text-align: center;
   }
+  height: 80vh;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 50px;
-  padding: 30px;
+  margin: 20px;
 }
 
 .auth-button {
   background-color: #ffa31a;
   color: black;
   border: none;
-}
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .please-login {
@@ -245,7 +242,7 @@ height: 30vh;
 }
 
 .toast-error {
-  width: 250px;
+  width: 300px;
   background-color: white;
   color: black;
   margin: 0;
@@ -257,6 +254,18 @@ height: 30vh;
   color: white;
 }
 
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-toast {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Profile Page
 
 .edit-profile-container {
@@ -362,21 +371,6 @@ height: 30vh;
 .day-weather{
   margin-left: 80px;
 }
-
-@media screen and (max-width: 850px) {
-
-  .about-container{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .about-card{
-    width: 350px;
-    margin: 5px;
-  }
-
-}
-
 .carousel,
 .carousel-item,
 .d-block,
@@ -457,4 +451,24 @@ a:hover {
 .carousel-box {
   display: flex;
   justify-content: center;
+}
+
+
+@media screen and (max-width: 850px) {
+
+  .about-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-card{
+    width: 350px;
+    margin: 5px;
+  }
+
+  .auth-container {
+    display: flex;
+    flex-direction: column;
+  }
+
 }

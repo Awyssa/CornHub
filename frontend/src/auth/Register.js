@@ -31,9 +31,9 @@ const Register = () => {
     }
   }
   return (
-  <Container>
+  <>
     {reg === false
-      ? <Container>
+      ? <Container className="login-box">
     <Form className="auth-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
       <Form.Group controlId="formBasicEmail">
@@ -82,6 +82,7 @@ const Register = () => {
         Submit
       </Button>
     </Form>
+    <Container className="login-toast">
     <Row>
       <Toast className="toast-error" show={showA} onClose={toggleShowA}>
           <Toast.Header>
@@ -99,12 +100,13 @@ const Register = () => {
             </Toast.Body>
         </Toast>
         </Row>
+        </Container>
       </Container>
       : <div className="please-login">
       <p>Registration successful, please login!</p>
       </div>
       }
-   </Container>
+   </>
   )
 }
 

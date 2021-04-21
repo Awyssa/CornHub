@@ -6,8 +6,12 @@ const Auth = () => {
   return (
 
     <div className="auth-container">
+      <div className="auth-page">
       <Register/>
+      </div>
+      <div className="auth-page">
       <Login/>
+      </div>
     </div>
   )
 }

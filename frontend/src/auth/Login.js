@@ -30,8 +30,7 @@ const Login = () => {
     }
   }
   return (
-  <>
-    <Container className="login-container">
+  <Container className="login-box">
       <Form className="auth-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
         <Form.Group controlId="formBasicEmail">
@@ -60,21 +59,23 @@ const Login = () => {
           Submit
         </Button>
       </Form>
-    </Container>
-    <Container>
-      <Row>
-        <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+    <Container className="login-toast">
+    <Row>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
           <Toast.Header>
-            <strong>Woah!</strong>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">Woah there!</strong>
           </Toast.Header>
           <Toast.Body>
-            Invalid credentials <br/>
-            Please try again
-          </Toast.Body>
+            Not valid!
+            </Toast.Body>
         </Toast>
-      </Row>
+        </Row>
+        </Container>
     </Container>
-  </>
   )
 }
 
