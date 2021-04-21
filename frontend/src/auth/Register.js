@@ -35,7 +35,7 @@ const Register = () => {
     }
   }
   return (
-  <>
+  <Container className="login-outerbox">
     {reg === false
       ? <Container className="login-box">
     <Form className="auth-form" onSubmit={handleSubmit}>
@@ -142,10 +142,12 @@ const Register = () => {
         </Container>
       </Container>
       : <div className="please-login">
-      <p>Registration successful, please login!</p>
+      <p><strong> Welcome {formData.first_name}{formData.last_name}! </strong></p>
+      <p>Registration successful</p>
+      <p>Your email address is {formData.email}</p>
       </div>
       }
-   </>
+   </Container>
   )
 }
 
