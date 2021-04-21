@@ -45,7 +45,7 @@ const NewPlant = () => {
           <Form.Control type="text" placeholder="Enter plant name"
             className="text-muted"
             id="post-plant-name"
-            name="name"
+            name="plant_name"
             value={setFormData.name}
             onChange={handleChange}
           />
