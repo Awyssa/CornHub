@@ -3,7 +3,7 @@ import { getTokenFromLocalStorage } from '../helpers/auth'
 import { Form, Button, Container, Modal, Toast } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-// import ImageUploadField from './ImageUploadField'
+// import { ImageUploadField } from './ImageUploadField'
 const EditUserProfile = () => {
   const [showA, setShowA] = useState(false)
   const toggleShowA = () => setShowA(false)
@@ -73,6 +73,9 @@ const EditUserProfile = () => {
       setShowA(true)
     }
   }
+
+  const profileimg = formData.profile_image
+  console.log(profileimg)
   return (
   <Container className="edit-profile-container">
     <Form className="edit-profile-form" onSubmit={handleSubmit}>

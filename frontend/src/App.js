@@ -13,6 +13,7 @@ import Weather from './components/Weather'
 import EditUserProfile from './components/EditUserProfile'
 import PlantShow from './components/PlantShow.js'
 import Paypal from './components/Paypal'
+import NewPlant from './components/NewPlant.js'
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
       <Switch>
         <Route exact path ="/">
           <Title/>
+        </Route>
+        <Route path="/add">
+          <NewPlant />
         </Route>
         <div>
         <MyNavbar />

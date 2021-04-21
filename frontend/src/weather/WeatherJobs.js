@@ -32,7 +32,7 @@ const WeatherJobs = ({ weather }) => {
   return (
     <div>
       <h5 className="weather-jobs-description">The average temperature this week is going to be {weeklyDayTempAverage} &deg;C, here are some ideas of what you can germinate outside!  </h5>
-      < div className="profile-wish-list">
+      < div className="wearther-jobs-carousel">
       {plantsToGerminateBasedOnTemp.map(item => {
         return (
           <div key={item.id} className="profile-wishlist-column">
