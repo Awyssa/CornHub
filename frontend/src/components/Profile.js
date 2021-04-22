@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/auth'
-import { Button, Modal, Container, Image } from 'react-bootstrap'
+import { Button, Modal, Container, Image, Row, Toast } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 
 const Profile = () => {
@@ -14,9 +14,18 @@ const Profile = () => {
   const [filter, setFilter] = useState('')
   const history = useHistory()
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  const [itemsFromLocalStorage, setItemsFromLocalStorage] = useState(null)
+  const [itemsFromLocalStorage, setItemsFromLocalStorage] = useState([])
   console.log(itemsFromLocalStorage, setItemsFromLocalStorage)
   const [dateToComapre, setDateToCompare] = useState(null)
+  const [showA, setShowA] = useState(false)
+  const [needToWater, setNeedToWater] = useState([])
+
+  const toggleShowA = () => {
+    setShowA(false)
+    needToWater.map(item => {
+      return window.localStorage.removeItem(item[0])
+    })
+  }
   setInterval(() => {
     setDateToCompare(Date.now())
   }, 300000)
@@ -36,16 +45,69 @@ const Profile = () => {
       }
       )
       setUserData(response.data)
-      const getPlantsToWater = response.data.saved_plants.map(item => {
+      const getPlantsToWater = response.data.saved_plants.filter(item => {
         const id = window.localStorage.getItem(item)
         return id
       })
       setDateToCompare(Date.now())
-      setItemsFromLocalStorage(getPlantsToWater)
-      console.log('get plants to water', getPlantsToWater[0].split(','))
+      console.log('PLANTS TO WATER >>>', getPlantsToWater)
+
+      const mappedGetPlantsToWater = getPlantsToWater.map(item => {
+        return window.localStorage.getItem(item)
+      })
+      setItemsFromLocalStorage(mappedGetPlantsToWater)
+
+      console.log('mappedGetPlantsToWater>>>', mappedGetPlantsToWater)
+      // console.log('get plants to water', getPlantsToWater[0].split(','))
     }
     getUser()
   }, [])
+
+  const saveToLocalStorage = (event) => {
+    const today = Date.now()
+    const plantId = event.target.value
+    const plantName = event.target.name
+    const wateringFrequency = event.target.id
+    window.localStorage.setItem(plantId, [plantId, plantName, wateringFrequency, today, 'water now'])
+  }
+  // itemsFromLocalStorage.map(item =>{
+
+  // })
+  // if (!itemsFromLocalStorage) {
+  const splitItemsFromLocalStorage = itemsFromLocalStorage.map(item => {
+    console.log('item >>>>>', item)
+    const split = item.split(',')
+    const numberTimestamp = parseInt(split[3])
+    const frequency = parseInt(split[2])
+    const targetTimestamp = (frequency * 30000) + numberTimestamp
+    const id = parseInt(split[0])
+    return [id, split[1], targetTimestamp]
+  })
+  console.log('splitItemsFromLocalStorage', splitItemsFromLocalStorage)
+
+  console.log(dateToComapre)
+
+  const water = splitItemsFromLocalStorage.filter(item => {
+    return item[2] < dateToComapre
+  })
+  console.log(water, setNeedToWater)
+
+  // setTimeout(() => {
+  //   clearInterval(myInterval)
+  // }, 10000)
+
+  // const myInterval = setInterval(() => {
+  //   setNeedToWater(water)
+  // }, 3000)
+
+  useEffect(() => {
+    setNeedToWater(water)
+  }, [itemsFromLocalStorage])
+  useEffect(() => {
+    if (needToWater.length > 0) setShowA(true)
+  }, [needToWater])
+  console.log('needToWater', needToWater)
+  // }
   if (!savedPlantData || !userData) return 'loading'
   console.log(itemsFromLocalStorage)
 
@@ -91,33 +153,6 @@ const Profile = () => {
   const handleCancel = () => {
     setConfirm('')
   }
-
-  const saveToLocalStorage = (event) => {
-    const today = Date.now()
-    const plantId = event.target.value
-    const plantName = event.target.name
-    const wateringFrequency = event.target.id
-    window.localStorage.setItem(plantId, [plantId, plantName, wateringFrequency, today, 'water now'])
-  }
-  // itemsFromLocalStorage.map(item =>{
-
-  // })
-  const splitItemsFromLocalStorage = itemsFromLocalStorage.map(item => {
-    const split = item.split(',')
-    const numberTimestamp = parseInt(split[3])
-    const frequency = parseInt(split[2])
-    const targetTimestamp = (frequency * 86.4 * 1000000) + numberTimestamp
-    const id = parseInt(split[0])
-    return [id, split[1], targetTimestamp]
-  })
-  console.log('splitItemsFromLocalStorage', splitItemsFromLocalStorage)
-
-  console.log(dateToComapre)
-
-  const needToWater = splitItemsFromLocalStorage.filter(item => {
-    return item[2] < dateToComapre
-  })
-  console.log('needToWater', needToWater)
 
   return (
     <Container className="profile-container">
@@ -178,8 +213,8 @@ const Profile = () => {
                   </Container>
                 {!confirm &&
                 <Container className="profile-blant-button-container">
-                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.plant_name}?</Button>
-                  <Button id={item.watering_frequency} name={item.plant_name} className="auth-button" value={item.id} onClick={saveToLocalStorage} > Watered {item.plant_name}?</Button>
+                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove <br/> {item.plant_name}?</Button>
+                  <Button id={item.watering_frequency} name={item.plant_name} className="auth-button" value={item.id} onClick={saveToLocalStorage} > Click for a watering reminder</Button>
                 </Container>
                 }
               </Container>
@@ -215,6 +250,27 @@ const Profile = () => {
         <Button className="auth-button" onClick={() => history.push('/home')}>View Plants</Button>
         </Container>
       }
+
+<Container className="login-toast">
+    <Row>
+      <Toast className="toast-error" show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              alt=""
+            />
+            <strong className="mr-auto">You need to water your:</strong>
+          </Toast.Header>
+          <Toast.Body>
+           {needToWater.map(item => {
+             return <li key={item[0]}>{item[1]}</li>
+           })
+           }
+           Click the button again for another reminder!
+            </Toast.Body>
+        </Toast>
+        </Row>
+        </Container>
     </Container>
   )
 }

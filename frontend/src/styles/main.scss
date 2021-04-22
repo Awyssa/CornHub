@@ -576,7 +576,45 @@ body {
   background-color: #ffa31aa8;
 }
 
+.paypal-button-label-container {
+  min-width: 500px;
+}
+
+.paypal-checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  button {
+    width: 210px
+  }
+  p {
+    max-width: 40vw;
+    text-align: center;
+  }
+}
+
+.paypal-buttons-context-iframe {
+  min-width: 500px !important;
+}
+
 @media screen and (max-width: 850px) {
+
+  .paypal-checkout-container {
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 15px;
+      max-width: 85vw;
+    }
+  }
+
+  .paypal-buttons-context-iframe {
+    min-width: 80vw !important;
+  }
 
   .about-container{
     display: flex;

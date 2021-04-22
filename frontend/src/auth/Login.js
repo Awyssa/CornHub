@@ -25,6 +25,7 @@ const Login = () => {
       window.localStorage.setItem('token', response.data.token)
       window.localStorage.setItem('id', response.data.sub)
       history.push('/profile')
+      location.reload()
     } catch (err) {
       setShowA(true)
     }
