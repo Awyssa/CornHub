@@ -315,6 +315,10 @@ body {
   background-color: #ffa31a;
   color: black;
   border: none;
+  margin: 10px;
+}
+.auth-button:focus {
+  background-color: #ffa31aa8;
 }
 
 .auth-button-disabled:focus {
@@ -355,6 +359,13 @@ body {
 .login-outerbox{
   display: flex;
   justify-content: center;
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 850px) {
+  .auth-container {
+    padding-top: 200px;
+  }
 }
 
 .toast-error {

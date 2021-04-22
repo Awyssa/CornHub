@@ -8,6 +8,7 @@ const PlantWishList = ({ plantId, userData }) => {
   const [wishlist] = useState({
     saved_plants: [...userData.saved_plants, plantId]
   })
+  const [savedText, setSavedText] = useState('Save to Profile')
   // const submit = async () => {
   //   const id = window.localStorage.getItem('id')
   //   console.log('updated wish list', wishlist)
@@ -35,10 +36,11 @@ const PlantWishList = ({ plantId, userData }) => {
             }
           }
     )
+    setSavedText('Saved!')
   }
   return (
     <Button variant="primary" className="about-button" size="sm" onClick={addToWishlist}>
-      Save to Profile
+      {savedText}
     </Button>
   )
 }
