@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 
 export default function ReactPayPal ({ confirmedChekoutAmount }) {
   const [paid, setPaid] = useState(false)
   const [error, setError] = useState(null)
   const paypalRef = React.useRef()
-
+  const history = useHistory()
   console.log('confirmed-checkout amout on the paypal form page', confirmedChekoutAmount)
 
   // To show PayPal buttons once the component loads
@@ -42,7 +43,13 @@ export default function ReactPayPal ({ confirmedChekoutAmount }) {
 
   // If the payment has been made
   if (paid) {
-    return <div>Payment successful.!</div>
+    return (
+    <Container className="paypal-checkout-container">
+     <h2>Payment successful!</h2>
+     <h4>Click the button below to take you to the homepage!</h4>
+      <Button className="auth-button" onClick={() => history.push('/home')}>Back to home page?</Button>
+    </Container>
+    )
   }
 
   // If any error occurs

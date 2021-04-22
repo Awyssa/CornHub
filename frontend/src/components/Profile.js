@@ -171,9 +171,6 @@ const Profile = () => {
       <Link to="/editprofile">
         <Button className="auth-button">Edit Profile</Button>
       </Link>
-      <Link to="/add">
-        <Button className="auth-button">Add a Plant</Button>
-      </Link>
       <Container className="saved-plants-title">
         <h2>Your Saved Plants</h2>
         <p><small>Click on Plant Image for more info</small></p>
