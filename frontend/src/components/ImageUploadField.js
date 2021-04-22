@@ -3,8 +3,8 @@
 import React from 'react'
 import axios from 'axios'
 
-const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
-const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+const uploadUrl = 'https://api.cloudinary.com/v1_1/cornhub/image/upload'
+const uploadPreset = 'eagiqpce'
 
 export const ImageUploadField = () => {
   const handleUpload = async event => {

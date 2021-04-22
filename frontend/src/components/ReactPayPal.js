@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
-// import { Container, Form, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 export default function ReactPayPal ({ confirmedChekoutAmount }) {
   const [paid, setPaid] = useState(false)
@@ -54,10 +54,10 @@ export default function ReactPayPal ({ confirmedChekoutAmount }) {
   return (
     <>
 
-    <div>
+    <Container className="paypal-checkout-container">
       <h4>Total Amount in GBP: £  {confirmedChekoutAmount}</h4>
       <div ref={paypalRef} />
-    </div>
+    </Container>
     </>
   )
 }

@@ -36,13 +36,20 @@ const Profile = () => {
       }
       )
       setUserData(response.data)
-      const getPlantsToWater = response.data.saved_plants.map(item => {
+      const getPlantsToWater = response.data.saved_plants.filter(item => {
         const id = window.localStorage.getItem(item)
         return id
       })
       setDateToCompare(Date.now())
-      setItemsFromLocalStorage(getPlantsToWater)
-      console.log('get plants to water', getPlantsToWater[0].split(','))
+      console.log('PLANTS TO WATER >>>', getPlantsToWater)
+
+      const mappedGetPlantsToWater = getPlantsToWater.map(item => {
+        return window.localStorage.getItem(item)
+      })
+      setItemsFromLocalStorage(mappedGetPlantsToWater)
+
+      console.log('mappedGetPlantsToWater>>>', mappedGetPlantsToWater)
+      // console.log('get plants to water', getPlantsToWater[0].split(','))
     }
     getUser()
   }, [])
@@ -102,7 +109,9 @@ const Profile = () => {
   // itemsFromLocalStorage.map(item =>{
 
   // })
+  // if (!itemsFromLocalStorage) {
   const splitItemsFromLocalStorage = itemsFromLocalStorage.map(item => {
+    console.log('item >>>>>', item)
     const split = item.split(',')
     const numberTimestamp = parseInt(split[3])
     const frequency = parseInt(split[2])
@@ -118,7 +127,7 @@ const Profile = () => {
     return item[2] < dateToComapre
   })
   console.log('needToWater', needToWater)
-
+  // }
   return (
     <Container className="profile-container">
       <Container className="user-profile-info">

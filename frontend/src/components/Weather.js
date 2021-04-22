@@ -12,6 +12,7 @@ const Weather = () => {
   const [inputLocationChoice, setInputLocationChoice] = useState(null)
   // const [currentLocation, setCurrentLocation] = useState(null)
   const [reveseGeoLocation, setReverseGeoLocation] = useState(null)
+  // const mapboxtoken = process.env.MAPBOX_ACCESS_TOKEN
 
   // handlers for the manual location input form
   const handleChange = (event) => {
