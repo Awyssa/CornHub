@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Plants',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
+                ('plant_name', models.CharField(max_length=50)),
                 ('subspecies', models.CharField(max_length=50)),
                 ('type', models.CharField(max_length=50)),
                 ('sow_month', models.PositiveSmallIntegerField()),

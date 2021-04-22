@@ -30,4 +30,4 @@ class Plants(models.Model):
     verified_by_admin = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.plant_name}"
