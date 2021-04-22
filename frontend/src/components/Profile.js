@@ -213,8 +213,8 @@ const Profile = () => {
                   </Container>
                 {!confirm &&
                 <Container className="profile-blant-button-container">
-                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove {item.plant_name}?</Button>
-                  <Button id={item.watering_frequency} name={item.plant_name} className="auth-button" value={item.id} onClick={saveToLocalStorage} > Watered {item.plant_name}?</Button>
+                  <Button name="saved_plants" className="auth-button" value={item.id} onClick={removeFromWishlist} > Remove <br/> {item.plant_name}?</Button>
+                  <Button id={item.watering_frequency} name={item.plant_name} className="auth-button" value={item.id} onClick={saveToLocalStorage} > Click for a watering reminder</Button>
                 </Container>
                 }
               </Container>
@@ -266,6 +266,7 @@ const Profile = () => {
              return <li key={item[0]}>{item[1]}</li>
            })
            }
+           Click the button again for another reminder!
             </Toast.Body>
         </Toast>
         </Row>
