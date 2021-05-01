@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/plants/', include('plants.urls')),
     path('api/auth/', include('jwt_auth.urls')),
-    re_path(r'^.*$', index) 
+    re_path(r'^.*$', index),
 ]

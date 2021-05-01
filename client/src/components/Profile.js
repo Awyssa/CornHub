@@ -79,7 +79,7 @@ const Profile = () => {
     const split = item.split(',')
     const numberTimestamp = parseInt(split[3])
     const frequency = parseInt(split[2])
-    const targetTimestamp = (frequency * 30000) + numberTimestamp
+    const targetTimestamp = (frequency * 86.4 * 1000000) + numberTimestamp
     const id = parseInt(split[0])
     return [id, split[1], targetTimestamp]
   })
