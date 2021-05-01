@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'jwt',
+    'jwt_auth',
     'plants',
     'corsheaders',
     'django_on_heroku',
