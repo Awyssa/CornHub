@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'jwt_auth',
     'plants',
     'corsheaders',
+    'django_on_heroku',
 ]
 
 MIDDLEWARE = [
