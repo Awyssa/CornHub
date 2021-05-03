@@ -36,7 +36,7 @@ const PlantShow = () => {
   const handleLog = () => {
     history.push('/auth')
   }
-  if (!onePlant) return null
+  if (!onePlant) return <h1>Loading</h1>
   return (
     <div className="plantshow">
     <h2>{onePlant.plant_name}</h2>

@@ -5,26 +5,12 @@ import { getTokenFromLocalStorage } from '../helpers/auth'
 import axios from 'axios'
 
 const PlantWishList = ({ plantId, userData }) => {
+  console.log('plant id', plantId)
   const [wishlist] = useState({
     saved_plants: [...userData.saved_plants, plantId]
   })
   const [savedText, setSavedText] = useState('Save to Profile')
-  // const submit = async () => {
-  //   const id = window.localStorage.getItem('id')
-  //   console.log('updated wish list', wishlist)
-  //   try {
-  //     await axios.put(
-  //     `/api/auth/${id}/`,
-  //     wishlist, {
-  //       headers: {
-  //         Authorization: `Bearer ${getTokenFromLocalStorage()}`
-  //       }
-  //     }
-  //     )
-  //   } catch (err) {
-  //     console.log('error', err)
-  //   }
-  // }
+
   if (!wishlist) return ''
   const addToWishlist = async () => {
     const id = window.localStorage.getItem('id')
