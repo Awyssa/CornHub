@@ -37,6 +37,8 @@ const PlantShow = () => {
     history.push('/auth')
   }
   if (!onePlant) return <h1>Loading</h1>
+  console.log('user data', userData)
+  console.log('plantData', onePlant)
   return (
     <div className="plantshow">
     <h2>{onePlant.plant_name}</h2>
