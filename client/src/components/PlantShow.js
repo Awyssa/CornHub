@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { getTokenFromLocalStorage } from '../helpers/auth'
+// import { getTokenFromLocalStorage } from '../helpers/auth'
 import PlantWishList from './PlantWishList'
 import { Button } from 'react-bootstrap'
 
@@ -17,17 +17,18 @@ const PlantShow = () => {
       setOnePlant(response.data)
     }
     getOnePlant()
-    const getUser = async () => {
-      const id = window.localStorage.getItem('id')
-      const response = await axios.get(`/api/auth/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${getTokenFromLocalStorage()}`
-        }
-      }
-      )
-      setUserData(response.data)
-    }
-    getUser()
+    // const getUser = async () => {
+    //   const id = window.localStorage.getItem('id')
+    //   const response = await axios.get(`/api/auth/${id}/`, {
+    //     headers: {
+    //       Authorization: `Bearer ${getTokenFromLocalStorage()}`
+    //     }
+    //   }
+    //   )
+    //   setUserData(response.data)
+    // }
+    // getUser()
+    console.log(setUserData)
   }, [])
   const handleClick = () => {
     console.log(history)
