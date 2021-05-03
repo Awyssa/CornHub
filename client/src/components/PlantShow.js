@@ -20,17 +20,21 @@ const PlantShow = () => {
     console.log(setUserData)
   }, [])
   useEffect(() => {
-    const getUser = async () => {
-      const id = window.localStorage.getItem('id')
-      const response = await axios.get(`/api/auth/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${getTokenFromLocalStorage()}`
+    if (!getTokenFromLocalStorage) {
+      console.log('logged out')
+    } else {
+      const getUser = async () => {
+        const id = window.localStorage.getItem('id')
+        const response = await axios.get(`/api/auth/${id}/`, {
+          headers: {
+            Authorization: `Bearer ${getTokenFromLocalStorage()}`
+          }
         }
+        )
+        setUserData(response.data)
       }
-      )
-      setUserData(response.data)
+      getUser()
     }
-    getUser()
   }, [])
 
   const handleClick = () => {
