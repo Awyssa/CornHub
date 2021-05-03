@@ -20,7 +20,7 @@ const PlantShow = () => {
     console.log(setUserData)
   }, [])
   useEffect(() => {
-    if (!getTokenFromLocalStorage) {
+    if (!window.localStorage.getItem('id')) {
       console.log('logged out')
     } else {
       const getUser = async () => {
