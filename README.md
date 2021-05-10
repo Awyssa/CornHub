@@ -63,3 +63,49 @@ The final functionality for the weather page was some temperature specific infor
 
 The integration of PayPal started off as a very challenging proposition. I spent a large portion of one of my weekend days trying to figure it out to no avail. I went back to the drawing board, spoke to my team and came up with a plan. I reset, went back to through information online, and ended up with a simple solution. Once the paypal integration was working, I modified it so that it could take custom donation amounts. 
 ![paypal gif](https://media.giphy.com/media/bg5DdFf0EzBc9nADGe/giphy.gif)
+
+A crucial styling feature that we incorporated across the board was responsive design. This was due, almost entirely, to the fact that I wanted to integrate a Spotify plugin (complete with a playlist of predominantly metal songs with gardening pun names), and knew that gardeners would be listening on a mobile device:
+![paypal gif](ReadmeComponents/phone.png)
+
+
+Purely because of this one feature, the entire site works on mobile. Similarly, we made a point of being as comprehensive with error handling and conditional rendering as we could possibly think of.
+
+The most ambitious feature of our app, by far, was the optional watering reminder for each saved plant. Building this involved several steps and a lot of experimentation, and was absolutely a collective effort. In a nutshell, this is how it works:
+
+Clicking the reminder button generates a Date.now() timestamp and saves it to local storage, along with a payload of the plant ID, the watering frequency, the plant name and an instruction to water
+On page load, a new Date.now() is generated and saved to state
+On page load, the reminder payload is retrieved from local storage
+The watering frequency is multiplied by 86.4 million (the number of milliseconds in a day) and added to the timestamp from the payload
+This figure is compared to the current Date.now()
+If the payload figure is the lower of the two numbers, a toast reminder is displayed, with a reminder to water, and the name of the plant to water; it will display a list if multiple plants need watering
+When the toast appears, the payload is removed from local storage; accordingly, the toast also displays an instruction to click the reminder button again if further reminders are wanted
+
+For presentation purposes, we expedited the watering_frequency * 86.4 * 100000 figure to a mere five minutes; but in the deployed version, the original figure remains.
+
+# Bugs, Blockers and Wins
+
+## Known or suspected bugs
+One or two images from the database don’t load
+Scrollbars may not stay hidden on Firefox
+Default germination temperature is not the same on PlantShow as it is on NewPlant
+
+## Blockers
+
+We did have to abandon profile images for the user, as we were unable to get our requests to Cloudinary to work as intended; however, we also realised we didn’t have much of a need for this feature in the first place
+Deployment to Heroku resulted in the PlantShow page remaining blank unless the user was logged in. Eventually we figured out that we needed to refactor our GET request for the current user, so that the app wouldn’t hang if local storage was empty
+
+## Wins
+
+As a team, we set ourselves a project which had a lot of stretch goals. Aside from adding in a fertilizing reminder in addition to the watering reminder we have managed to hit all of our goals for the project, and come up with a project we are all  very proud of
+The team all were completely committed to the project, and it was a joy to work with a group that were all motivated to achieving the same goal. 
+
+## Key Learning and Future Features
+
+Learning-wise, my biggest takeaway is the power of teamwork. Without Paddy and Michael, this project would have been substantially smaller and far less interesting, and some of the features (especially the watering reminder) would have been impossible to build without the combined mental power of the three of us. Working with a group of talented coders meant that one of us always had the answer to the others problems, and building out more complex components was much smoother. 
+
+In terms of future features, on the whole the three of us are extremely happy with the end result; however, some additions could include:
+
+Reminders for fertilization
+Some fine-tuning on the aspect ratios for the plant photos
+Changing PayPal integration from test to live
+A mailto: link for users to make suggestions about plant edits
