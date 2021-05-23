@@ -3,7 +3,7 @@ Gardening app for hardcore gardeners
 
 ----
 
-# Project Brief
+# Project Brief test
 In one week, build a full-stack app (PostgreSQL, Python/Django, React) with CRUD functionality, working solo, in a pair, or in a group of three. I was asked to join a group with Paddy Johnson and Michael Henderson, two like-minded lockdown gardeners! 
  
 ## Link to Deployed Project
