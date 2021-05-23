@@ -68,12 +68,14 @@ The final functionality for the weather page was some temperature specific infor
 The integration of PayPal started off as a very challenging proposition. I spent a large portion of one of my weekend days trying to figure it out to no avail. I went back to the drawing board, spoke to my team and came up with a plan. I reset, went back to through information online, and ended up with a simple solution. Once the paypal integration was working, I modified it so that it could take custom donation amounts. 
 ![paypal gif](https://media.giphy.com/media/bg5DdFf0EzBc9nADGe/giphy.gif)
 
+## Resposive design
 A crucial styling feature that we incorporated across the board was responsive design. This was due, almost entirely, to the fact that I wanted to integrate a Spotify plugin (complete with a playlist of predominantly metal songs with gardening pun names), and knew that gardeners would be listening on a mobile device:
 ![paypal gif](ReadmeComponents/phone.png)
 
 
 Purely because of this one feature, the entire site works on mobile. Similarly, we made a point of being as comprehensive with error handling and conditional rendering as we could possibly think of.
 
+## Watering reminders
 The most ambitious feature of our app, by far, was the optional watering reminder for each saved plant. Building this involved several steps and a lot of experimentation, and was absolutely a collective effort. In a nutshell, this is how it works:
 
 Clicking the reminder button generates a Date.now() timestamp and saves it to local storage, along with a payload of the plant ID, the watering frequency, the plant name and an instruction to water
