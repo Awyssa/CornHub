@@ -30,6 +30,8 @@ I have discovered a real love for gardening during the first lockdown. When I am
 * Heroku
 
 # Approach Taken
+
+## Introduction and planning 
 The idea for the project came mostly formed- Paddy had been thinking about the project a few days prior to the start of the project. Once Michael and I had been recruited, we promptly fleshed out the pseudocode, with post-MVP features even listed in order of preference, and wireframes of design layout and user flow were made on Exacalidraw. We started a Trello for visibility, task assignment and assessment of priorities, and a Google Sheet for collecting information for our database. Crucially, we outlined models for our User and our Plants with every field that we felt we might conceivably need, so as to avoid having to make subsequent changes. 
 ![models](ReadmeComponents/Cornhub-models.png)
 
@@ -43,6 +45,7 @@ The tasks that I took responsibility for as solo tasks were the integration of t
 
 The integration of paypal and a weather API were my ideas to add to the project, and i wanted to see them from concept through implementation. 
 
+## Weather page 
 The first of the solo tasks I decided to tackle was the integrating a weather API. The idea behind this was to incorporate a weather forecast app into the site that would default to the users current location, but would be changeable to allow the user to search other locations to facilitate planning gardening jobs. To this end, I decided to incorporate the temperature from the API, and make suggestions of what to sow based on the week's forecasted temperature. Below is a gif of the final product!
 
 ![weather page gif](https://media.giphy.com/media/8k513RyelRCUvyfaFu/giphy.gif)
@@ -61,6 +64,7 @@ Now that the data was being pulled in, I added some visualisation of this inform
 The final functionality for the weather page was some temperature specific information for which plants could be sown outdoors. This required me to map through the data, and use .reduce to sum up the daily temperatures to calculate the average temperature for the week. I then ran a filter on the plant data so that only plants that met the criteria would be returned on the weather page. The nice thing about this is it updates when locations are changed! Once I returned an array of plants that met the criteria, I mapped through this to display the relevant data about the plants on the page. 
 ![reverse geocoding code snippet](ReadmeComponents/reverse-geocodin.png)
 
+## PayPal integration 
 The integration of PayPal started off as a very challenging proposition. I spent a large portion of one of my weekend days trying to figure it out to no avail. I went back to the drawing board, spoke to my team and came up with a plan. I reset, went back to through information online, and ended up with a simple solution. Once the paypal integration was working, I modified it so that it could take custom donation amounts. 
 ![paypal gif](https://media.giphy.com/media/bg5DdFf0EzBc9nADGe/giphy.gif)
 
