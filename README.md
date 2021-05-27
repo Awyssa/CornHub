@@ -68,7 +68,7 @@ The final functionality for the weather page was some temperature specific infor
 The integration of PayPal started off as a very challenging proposition. I spent a large portion of one of my weekend days trying to figure it out to no avail. I went back to the drawing board, spoke to my team and came up with a plan. I reset, went back to through information online, and ended up with a simple solution. Once the paypal integration was working, I modified it so that it could take custom donation amounts. 
 ![paypal gif](https://media.giphy.com/media/bg5DdFf0EzBc9nADGe/giphy.gif)
 
-## Resposive design
+## Responsive design
 A crucial styling feature that we incorporated across the board was responsive design. This was due, almost entirely, to the fact that I wanted to integrate a Spotify plugin (complete with a playlist of predominantly metal songs with gardening pun names), and knew that gardeners would be listening on a mobile device:
 ![paypal gif](ReadmeComponents/phone.png)
 
@@ -84,7 +84,7 @@ On page load, the reminder payload is retrieved from local storage
 The watering frequency is multiplied by 86.4 million (the number of milliseconds in a day) and added to the timestamp from the payload
 This figure is compared to the current Date.now()
 If the payload figure is the lower of the two numbers, a toast reminder is displayed, with a reminder to water, and the name of the plant to water; it will display a list if multiple plants need watering
-When the toast appears, the payload is removed from local storage; accordingly, the toast also displays an instruction to click the reminder button again if further reminders are wanted
+When the toast appears, the payload is removed from local storage; accordingly, the toast also displays an instruction to click the reminder button again if further reminders are required.
 
 For presentation purposes, we expedited the watering_frequency * 86.4 * 100000 figure to a mere five minutes; but in the deployed version, the original figure remains.
 
@@ -93,12 +93,12 @@ For presentation purposes, we expedited the watering_frequency * 86.4 * 100000 f
 ## Known or suspected bugs
 One or two images from the database don’t load
 Scrollbars may not stay hidden on Firefox
-Default germination temperature is not the same on PlantShow as it is on NewPlant
+Default germination temperature is not the same on PlantShow as it is on NewPlant.
 
 ## Blockers
 
 We did have to abandon profile images for the user, as we were unable to get our requests to Cloudinary to work as intended; however, we also realised we didn’t have much of a need for this feature in the first place
-Deployment to Heroku resulted in the PlantShow page remaining blank unless the user was logged in. Eventually we figured out that we needed to refactor our GET request for the current user, so that the app wouldn’t hang if local storage was empty
+Deployment to Heroku resulted in the PlantShow page remaining blank unless the user was logged in. Eventually we figured out that we needed to refactor our GET request for the current user, so that the app wouldn’t hang if local storage was empty.
 
 ## Wins
 
@@ -114,4 +114,4 @@ In terms of future features, on the whole the three of us are extremely happy wi
 Reminders for fertilization
 Some fine-tuning on the aspect ratios for the plant photos
 Changing PayPal integration from test to live
-A mailto: link for users to make suggestions about plant edits
+A mailto: link for users to make suggestions about plant edits.
