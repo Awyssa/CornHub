@@ -1,0 +1,103 @@
+[
+  {
+    "model": "jwt_auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$Dqfe3lIzHmhJHNmPzdJFYL$ESDhgJlzf6QXb4ZX2bKh4w6+a+I5LC5klzGzkeNcrHU=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-04-15T11:28:37.210Z",
+      "email": "email",
+      "username": "",
+      "first_name": "",
+      "last_name": "",
+      "profile_image": "",
+      "groups": [],
+      "user_permissions": [],
+      "saved_plants": []
+    }
+  },
+  {
+    "model": "jwt_auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$MtwNzR6JdL70ueIOS1WCHO$V9ZkGrBC1cE9k8DHDXAFtjUQkSF8w0XGBQ53sdhFDko=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-04-15T13:54:27.461Z",
+      "email": "",
+      "username": "admin2",
+      "first_name": "",
+      "last_name": "",
+      "profile_image": "",
+      "groups": [],
+      "user_permissions": [],
+      "saved_plants": []
+    }
+  },
+  {
+    "model": "jwt_auth.user",
+    "pk": 37,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$QLMoCn8W2Hgji8NAv35Q6J$Vb1wkBuQ+YAN8RERmvaKDjpw8yMqThXhEISxQZudEY8=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-04-15T14:44:33.344Z",
+      "email": "michael2@email.com",
+      "username": "michael2",
+      "first_name": "",
+      "last_name": "",
+      "profile_image": "",
+      "groups": [],
+      "user_permissions": [],
+      "saved_plants": []
+    }
+  },
+  {
+    "model": "jwt_auth.user",
+    "pk": 38,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$oOVQjuLJvJbKJy1GBmEh6g$trwlQr5maUhsOWmp65QeGS89LxhZI4ieptfEykllsUk=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-04-15T14:48:26.810Z",
+      "email": "michael5@email.com",
+      "username": "michael5",
+      "first_name": "",
+      "last_name": "",
+      "profile_image": "",
+      "groups": [],
+      "user_permissions": [],
+      "saved_plants": []
+    }
+  },
+  {
+    "model": "jwt_auth.user",
+    "pk": 40,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$j3bqVWHua26DWAXEy7X6bj$Jw8smPE5WY+QmR7Bs5gPNNc2mEiYlo6Wb2u+CkOYkNQ=",
+      "last_login": "2021-04-16T09:32:27.609Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-04-15T15:05:39.256Z",
+      "email": "admin@admin.com",
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "profile_image": "",
+      "groups": [],
+      "user_permissions": [],
+      "saved_plants": []
+    }
+  }
+  ]
+  
