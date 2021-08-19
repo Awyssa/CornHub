@@ -79,7 +79,7 @@ const Profile = () => {
     const split = item.split(',')
     const numberTimestamp = parseInt(split[3])
     const frequency = parseInt(split[2])
-    const targetTimestamp = (frequency * 30000) + numberTimestamp
+    const targetTimestamp = (frequency * 86.4 * 1000000) + numberTimestamp
     const id = parseInt(split[0])
     return [id, split[1], targetTimestamp]
   })
@@ -170,6 +170,9 @@ const Profile = () => {
       </Container>
       <Link to="/editprofile">
         <Button className="auth-button">Edit Profile</Button>
+      </Link>
+      <Link to="/add">
+        <Button className="auth-button">Add a plant</Button>
       </Link>
       <Container className="saved-plants-title">
         <h2>Your Saved Plants</h2>

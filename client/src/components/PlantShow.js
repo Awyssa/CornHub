@@ -13,22 +13,30 @@ const PlantShow = () => {
   const history = useHistory()
   useEffect(() => {
     const getOnePlant = async () => {
-      const response = await axios.get(`/api/plants/${params.id}`)
+      const response = await axios.get(`/api/plants/${params.id}/`)
       setOnePlant(response.data)
     }
     getOnePlant()
-    const getUser = async () => {
-      const id = window.localStorage.getItem('id')
-      const response = await axios.get(`/api/auth/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${getTokenFromLocalStorage()}`
-        }
-      }
-      )
-      setUserData(response.data)
-    }
-    getUser()
+    console.log(setUserData)
   }, [])
+  useEffect(() => {
+    if (!window.localStorage.getItem('id')) {
+      console.log('logged out')
+    } else {
+      const getUser = async () => {
+        const id = window.localStorage.getItem('id')
+        const response = await axios.get(`/api/auth/${id}/`, {
+          headers: {
+            Authorization: `Bearer ${getTokenFromLocalStorage()}`
+          }
+        }
+        )
+        setUserData(response.data)
+      }
+      getUser()
+    }
+  }, [])
+
   const handleClick = () => {
     console.log(history)
     history.goBack()
@@ -36,7 +44,9 @@ const PlantShow = () => {
   const handleLog = () => {
     history.push('/auth')
   }
-  if (!onePlant) return null
+  if (!onePlant) return <h1>Loading</h1>
+  console.log('user data', userData)
+  console.log('plantData', onePlant)
   return (
     <div className="plantshow">
     <h2>{onePlant.plant_name}</h2>

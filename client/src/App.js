@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import MyNavbar from '../src/components/Navbar.js'
-import Home from '../src/components/Home.js'
-import Auth from '../src/auth/Auth'
+import MyNavbar from './components/Navbar.js'
+import Home from './components/Home.js'
+import Auth from './auth/Auth'
 import Profile from './components/Profile'
 import Title from './components/Title'
 import About from './components/About'

@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+appdirs = "==1.4.4"
+asgiref = "==3.3.4"
+certifi = "==2020.12.5"
+distlib = "==0.3.1"
+filelock = "==3.0.12"
+pipenv = "==2020.11.15"
+pytz = "==2021.1"
+six = "==1.15.0"
+sqlparse = "==0.4.1"
+virtualenv = "==20.4.3"
+virtualenv-clone = "==0.5.4"
+djangorestframework = "==3.12.4"
+django-cors-headers = "==3.7.0"
+Django = "==3.2"
+django-on-heroku = "*"
+pyjwt = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
